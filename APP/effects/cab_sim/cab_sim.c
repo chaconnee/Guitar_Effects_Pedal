@@ -3,7 +3,7 @@
 #include <string.h>
 #include "main.h"
 
-#include "effects/cab_sim/ir_data.h"
+#include "effects/cab_sim/ir_OwnHammer_412.h"
 
 /*
  * Overlap-save fast convolution (BLOCK_SIZE=128, 4ms 块周期)
@@ -28,23 +28,10 @@ static void cab_init(Effect *self)
 
     arm_rfft_fast_init_f32(&fft_inst, FFT_SIZE);
 
-    /* 加载 IR: 取前 IR_SIZE 个样本, 峰值归一化到 0.5 */
+    /* 加载 IR: 取前 IR_SIZE 个样本 (NeuralRack 风格归一化: 峰值0.8 + 功率归一化) */
     memset(ir_tmp, 0, sizeof(ir_tmp));
-    uint32_t copy_len = IR_LENGTH < IR_SIZE ? IR_LENGTH : IR_SIZE;
-    memcpy(ir_tmp, ir_ownhammer_412, copy_len * sizeof(float));
-
-    //找出峰值
-    float peak = 0.0f;
-    for (uint32_t i = 0; i < copy_len; i++) {
-        float a = ir_tmp[i] > 0.0f ? ir_tmp[i] : -ir_tmp[i];
-        if (a > peak) peak = a;
-    }
-    //归一化到0.5
-    if (peak > 0.0f) {
-        float s = 0.5f / peak;
-        for (uint32_t i = 0; i < copy_len; i++)
-            ir_tmp[i] *= s;
-    }
+    uint32_t copy_len = IR_OWNHAMMER_412_LENGTH < IR_SIZE ? IR_OWNHAMMER_412_LENGTH : IR_SIZE;
+    memcpy(ir_tmp, ir_OwnHammer_412, copy_len * sizeof(float));
 
     /* 预计算 IR 的 FFT */
     memset(ir_fft, 0, sizeof(ir_fft));

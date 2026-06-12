@@ -14,6 +14,8 @@ static float    dsp_buffer[AUDIO_BUFFER_SIZE];
 static volatile uint8_t adc_half;
 static volatile uint8_t adc_pending;
 
+static float master_volume = 0.3f;  /* 主音量: 调此值控制响度 */
+
 static void Process_Half(uint8_t half)
 {
     const uint16_t *src = &adc_buffer[half * AUDIO_BUFFER_SIZE];
@@ -27,6 +29,11 @@ static void Process_Half(uint8_t half)
     /* 软限幅: 防止 Cab 共振频域输出超过 ±1.0 时硬削波 */
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++) {
         dsp_buffer[i] = tanhf(dsp_buffer[i]);
+    }
+
+    /* 主音量: 软限幅之后, I2S 之前 */
+    for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++) {
+        dsp_buffer[i] *= master_volume;
     }
 
     int16_t *dst = &i2s_buffer[half * AUDIO_BUFFER_SIZE * 2];
