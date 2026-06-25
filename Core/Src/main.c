@@ -30,7 +30,9 @@
 #include "AudioPipeline.h"
 #include "effects/amp_sim/amp_sim.h"
 #include "effects/cab_sim/cab_sim.h"
-#include  "cdc_command.h"
+#include "cdc_command.h"
+#include "i2c.h"
+#include "wm8978_port.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,12 +97,24 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
+  MX_I2C1_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
   MX_USB_DEVICE_Init();
   MX_I2S2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start(&htim2);
+
+  /* Initialize WM8978 codec (guitar mode: L2/R2 input → HP + OUT3/OUT4 output) */
+  if (WM8978_PORT_Init() != WM8978_OK)
+  {
+    /* Codec init failed - LED rapid blink to indicate error */
+    while (1)
+    {
+      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+      HAL_Delay(100);
+    }
+  }
 
   AudioPipeline_Init();
 

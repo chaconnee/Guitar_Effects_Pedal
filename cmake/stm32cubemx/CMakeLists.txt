@@ -33,6 +33,7 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/gpio.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/adc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2c.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2s.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/tim.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32f4xx_it.c
@@ -65,12 +66,16 @@ set(STM32_Drivers_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
 )
 
-# Drivers Midllewares
-
+# WM8978 Audio Codec Driver
+set(WM8978_Driver_Src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978_port.c
+)
 
 set(USB_Device_Library_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
@@ -106,6 +111,7 @@ set(MX_LINK_LIBS
     ${TOOLCHAIN_LINK_LIBRARIES}
     USB_Device_Library
     CMSIS_DSP
+    WM8978_Driver
 )
 # Interface library for includes and symbols
 add_library(stm32cubemx INTERFACE)
@@ -127,6 +133,12 @@ target_link_libraries(USB_Device_Library PUBLIC stm32cubemx)
 add_library(CMSIS_DSP OBJECT)
 target_sources(CMSIS_DSP PRIVATE ${CMSIS_DSP_Src})
 target_link_libraries(CMSIS_DSP PUBLIC stm32cubemx)
+
+# Create WM8978_Driver static library
+add_library(WM8978_Driver OBJECT)
+target_sources(WM8978_Driver PRIVATE ${WM8978_Driver_Src})
+target_include_directories(WM8978_Driver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978)
+target_link_libraries(WM8978_Driver PUBLIC stm32cubemx)
 
 # Add STM32CubeMX generated application sources to the project
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${MX_Application_Src})
