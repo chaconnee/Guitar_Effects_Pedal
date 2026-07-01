@@ -18,10 +18,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
 #include "dma.h"
+#include "i2c.h"
 #include "i2s.h"
-#include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
 
@@ -72,6 +71,7 @@ static void processdata(void);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
   SCB->VTOR = FLASH_BASE | 0x4000;
 
@@ -97,18 +97,18 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_I2C1_Init();
-  MX_ADC1_Init();
-  MX_TIM2_Init();
   MX_USB_DEVICE_Init();
   MX_I2S2_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start(&htim2);
 
-  /* Initialize WM8978 codec (guitar mode: L2/R2 input → HP + OUT3/OUT4 output) */
-  if (WM8978_PORT_Init() != WM8978_OK)
+  /* ---- WM8978 + I2S 测试 ---- */
+
+  /* 1. I2C 通信测试: 读 WM8978 寄存器确认 ACK 正常 */
+  int32_t ret = WM8978_PORT_Test();
+  if (ret != 0)
   {
-    /* Codec init failed - LED rapid blink to indicate error */
+    /* I2C 失败: LED 快闪 */
     while (1)
     {
       HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
@@ -116,15 +116,22 @@ int main(void)
     }
   }
 
+  /* 2. WM8978 初始化 (I2C 寄存器配置) */
+  if (WM8978_PORT_Init() != WM8978_OK)
+  {
+    /* Codec init 失败: LED 2Hz 闪烁 */
+    while (1)
+    {
+      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+      HAL_Delay(250);
+    }
+  }
+
+  /* 3. 启动 I2S DMA (1kHz 正弦波测试) */
   AudioPipeline_Init();
 
-  /* Amp always bypassed. LED: ON=cab active, OFF=dry passthrough (PC13 active-low) */
-  amp_sim_effect.bypassed = 1;
-  cab_sim_effect.bypassed = 0;
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); /* LED off = cab off */
-
-  uint32_t key_tick = 0;
-  GPIO_PinState key_last = GPIO_PIN_SET;
+  /* 全部通过: LED 常亮 */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); /* LED on */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -135,24 +142,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     AudioPipeline_Tick();
-
-    /* Button polling (PB0, active-low, 50ms interval as implicit debounce) */
-    if (HAL_GetTick() - key_tick >= 50)
-    {
-      key_tick = HAL_GetTick();
-      GPIO_PinState key_now = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-
-      if (key_last == GPIO_PIN_RESET && key_now == GPIO_PIN_SET)
-      {
-        /* Release detected: toggle cab (amp always bypassed) */
-        cab_sim_effect.bypassed = !cab_sim_effect.bypassed;
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13,
-                          cab_sim_effect.bypassed ? GPIO_PIN_SET : GPIO_PIN_RESET);
-      }
-      key_last = key_now;
-    }
-
-    process_cdc_cmd();
     /* USER CODE END 3 */
   }
 }

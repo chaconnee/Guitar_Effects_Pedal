@@ -5,85 +5,116 @@
 
 #include "effects/amp_sim/amp_sim.h"
 #include "effects/cab_sim/cab_sim.h"
+#include "effects/reverb/reverb.h"
+#include "effects/wav_data.h"
 
-/* I2S RX buffer: stereo, 16-bit signed, same size as TX buffer */
+#define SINE_TEST  1
+
 static int16_t i2s_rx_buffer[AUDIO_BUFFER_SIZE * 2 * 2];
-/* I2S TX buffer: stereo, 16-bit signed */
 static int16_t i2s_tx_buffer[AUDIO_BUFFER_SIZE * 2 * 2];
 static float    dsp_buffer[AUDIO_BUFFER_SIZE];
 
-static volatile uint8_t rx_half;
-static volatile uint8_t rx_pending;
+static volatile uint8_t tx_half;
+static volatile uint8_t tx_pending;
 
 static float master_volume = 0.3f;
 
 static void Process_Half(uint8_t half)
 {
-    /* Extract mono from stereo I2S RX (left channel only) */
-    const int16_t *src = &i2s_rx_buffer[half * AUDIO_BUFFER_SIZE * 2];
+#if SINE_TEST
+    static float phase = 0.0f;
+    int16_t *dst = &i2s_tx_buffer[half * AUDIO_BUFFER_SIZE * 2];
+
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
     {
+        float s = sinf(phase) * 0.3f;
+        phase += 2.0f * 3.14159265f * 1000.0f / 44100.0f;
+        if (phase > 2.0f * 3.14159265f)
+            phase -= 2.0f * 3.14159265f;
+
+        int16_t val = (int16_t)(s * 32767.0f);
+        dst[i * 2]     = val;
+        dst[i * 2 + 1] = val;
+    }
+#else
+    /* WAV 循环播放 + 效果处理 */
+    static uint32_t wav_pos = 0;
+    const int16_t *src = &i2s_rx_buffer[half * AUDIO_BUFFER_SIZE * 2];
+
+    for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++) {
         dsp_buffer[i] = (float)src[i * 2] / 32768.0f;
     }
 
     EffectChain_Process(dsp_buffer, AUDIO_BUFFER_SIZE);
 
-    /* Soft clipping */
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++) {
         dsp_buffer[i] = tanhf(dsp_buffer[i]);
     }
 
-    /* Master volume */
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++) {
         dsp_buffer[i] *= master_volume;
     }
 
-    /* Write stereo output to I2S TX buffer */
+    /* 混入 WAV 循环播放音轨 */
     int16_t *dst = &i2s_tx_buffer[half * AUDIO_BUFFER_SIZE * 2];
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
     {
-        int16_t s = (int16_t)(dsp_buffer[i] * 32767.0f);
-        dst[i * 2]     = s;  /* Left */
-        dst[i * 2 + 1] = s;  /* Right */
+        int32_t mixed = (int32_t)(dsp_buffer[i] * 32767.0f);
+        mixed += (int32_t)wav_data[wav_pos] * 4;  /* 提升 12dB */
+        wav_pos++;
+        if (wav_pos >= WAV_DATA_LEN) wav_pos = 0;
+
+        if (mixed >  32767) mixed =  32767;
+        if (mixed < -32768) mixed = -32768;
+
+        int16_t s = (int16_t)mixed;
+        dst[i * 2]     = s;
+        dst[i * 2 + 1] = s;
     }
+#endif
 }
 
 void AudioPipeline_Init(void)
 {
     EffectChain_Init();
     EffectChain_Add(&amp_sim_effect);
+    EffectChain_Add(&reverb_effect);
     EffectChain_Add(&cab_sim_effect);
 
-    /* Start I2S RX DMA (receives ADC data from WM8978) */
-    HAL_I2S_Receive_DMA(&hi2s2, (uint16_t *)i2s_rx_buffer, AUDIO_BUFFER_SIZE * 2 * 2);
+    /* 预填整个 TX 缓冲区 */
+    Process_Half(0);
+    Process_Half(1);
 
-    /* Start I2S TX DMA (sends DAC data to WM8978) */
-    HAL_I2S_Transmit_DMA(&hi2s2, (uint16_t *)i2s_tx_buffer, AUDIO_BUFFER_SIZE * 2 * 2);
+    /* 全双工 DMA: TX + RX 同步启动 (HAL 自动处理) */
+    HAL_I2SEx_TransmitReceive_DMA(&hi2s2,
+        (uint16_t *)i2s_tx_buffer,
+        (uint16_t *)i2s_rx_buffer,
+        AUDIO_BUFFER_SIZE * 2 * 2);
 }
 
 void AudioPipeline_Tick(void)
 {
-    if (!rx_pending) return;
-    rx_pending = 0;
-    Process_Half(rx_half);
+    if (!tx_pending) return;
+    tx_pending = 0;
+    Process_Half(tx_half);
 }
 
-/* I2S RX half-transfer complete callback */
-void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
+/* TX half-transfer: 已发送 half0, 填充 half0 */
+void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 {
     if (hi2s->Instance == SPI2)
     {
-        rx_half = 0;
-        rx_pending = 1;
+        tx_half = 0;
+        tx_pending = 1;
     }
 }
 
-/* I2S RX full-transfer complete callback */
-void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
+/* TX full-transfer: 已发送 half1, 填充 half1 */
+void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s)
 {
     if (hi2s->Instance == SPI2)
     {
-        rx_half = 1;
-        rx_pending = 1;
+        tx_half = 1;
+        tx_pending = 1;
     }
 }

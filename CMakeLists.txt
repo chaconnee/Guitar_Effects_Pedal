@@ -25,9 +25,10 @@ add_executable(${CMAKE_PROJECT_NAME}
         APP/model/effect.h
         APP/effects/amp_sim/amp_sim.c
         APP/effects/amp_sim/amp_sim.h
-        APP/effects/amp_sim/amp_sim.c
         APP/effects/cab_sim/cab_sim.c
         APP/effects/cab_sim/cab_sim.h
+        APP/effects/reverb/reverb.c
+        APP/effects/reverb/reverb.h
         APP/cdc_command.c
         APP/cdc_command.h
 )

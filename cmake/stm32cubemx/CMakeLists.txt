@@ -10,7 +10,6 @@ set(MX_Defines_Syms
 
 # STM32CubeMX generated include paths
 set(MX_Include_Dirs
-		${CMAKE_CURRENT_SOURCE_DIR}/../../APP
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/../../USB_DEVICE/App
     ${CMAKE_CURRENT_SOURCE_DIR}/../../USB_DEVICE/Target
@@ -21,6 +20,7 @@ set(MX_Include_Dirs
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/Include
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/DSP/Include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978
 )
 
 # STM32CubeMX generated application sources
@@ -31,11 +31,9 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../USB_DEVICE/App/usbd_cdc_if.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/main.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/gpio.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/adc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2c.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2s.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/tim.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32f4xx_it.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32f4xx_hal_msp.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/sysmem.c
@@ -62,20 +60,14 @@ set(STM32_Drivers_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
 )
 
-# WM8978 Audio Codec Driver
-set(WM8978_Driver_Src
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978_port.c
-)
+# Drivers Midllewares
+
 
 set(USB_Device_Library_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
@@ -99,6 +91,12 @@ set(CMSIS_DSP_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/DSP/Source/BasicMathFunctions/arm_scale_f32.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/DSP/Source/CommonTables/arm_common_tables.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/DSP/Source/CommonTables/arm_const_structs.c
+)
+
+# WM8978 Audio Codec Driver
+set(WM8978_Driver_Src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978/wm8978_port.c
 )
 
 # Link directories setup
@@ -137,7 +135,6 @@ target_link_libraries(CMSIS_DSP PUBLIC stm32cubemx)
 # Create WM8978_Driver static library
 add_library(WM8978_Driver OBJECT)
 target_sources(WM8978_Driver PRIVATE ${WM8978_Driver_Src})
-target_include_directories(WM8978_Driver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/WM8978)
 target_link_libraries(WM8978_Driver PUBLIC stm32cubemx)
 
 # Add STM32CubeMX generated application sources to the project
