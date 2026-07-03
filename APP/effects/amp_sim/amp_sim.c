@@ -174,7 +174,7 @@ static void amp_set_param(Effect *self, uint8_t param_id, float value)
 
 Effect amp_sim_effect = {
     .name      = "AmpSim",
-    .bypassed  = 0,
+    .bypassed  = 1,
     .process   = amp_process,
     .set_param = amp_set_param,
     .init      = amp_init,

@@ -127,8 +127,12 @@ int main(void)
     }
   }
 
-  /* 3. 启动 I2S DMA (1kHz 正弦波测试) */
+  /* 3. 启动 I2S DMA (MCLK 开始输出) */
   AudioPipeline_Init();
+
+  /* MCLK 稳定后再重新触发 WM8978 ADC */
+  HAL_Delay(10);
+  WM8978_PORT_EnableADC();
 
   /* 全部通过: LED 常亮 */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); /* LED on */

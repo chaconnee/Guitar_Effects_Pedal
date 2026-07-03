@@ -17,14 +17,14 @@ end
 %% ========== 参数区 (按需修改) ==========
 
 % 输入 WAV 文件路径
-IR_FILE    = 'IR/AC30 brilliant bx44 neve close_dc.wav';
+IR_FILE    = 'IR/OwnHammer_412_MES-ST_BS-90_57-00.wav';
 
 % 输出头文件路径
 OUTPUT_DIR = '../APP/effects/cab_sim';
-OUTPUT_NAME = 'ir_ac30';   % 变量名和文件名
+OUTPUT_NAME = 'ir_OwnHammer_412';   % 变量名和文件名
 
 % 目标参数
-FS         = 32000;    % 目标采样率 (Hz)
+FS         = 44100;    % 目标采样率 (Hz)
 IR_SIZE    = 897;      % 截断长度 (FFT_SIZE - BLOCK_SIZE + 1)
 IR_PEAK    = 0.5;      % 峰值归一化目标
 

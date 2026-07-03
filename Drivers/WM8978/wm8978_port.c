@@ -109,3 +109,14 @@ WM8978_Object_t* WM8978_PORT_GetObj(void)
 {
   return &wm8978_obj;
 }
+
+void WM8978_PORT_EnableADC(void)
+{
+  /* Re-trigger R2: ADCEN + BOOSTEN + L/R output:
+   *   ADCENL=1, ADCENR=1, BOOSTENL=1, BOOSTENR=1,
+   *   LOUT1EN=1, ROUT1EN=1 (same as Init_Guitar) */
+  uint16_t val = WM8978_BIT_ADCENL | WM8978_BIT_ADCENR
+               | WM8978_BIT_BOOSTENL | WM8978_BIT_BOOSTENR
+               | WM8978_BIT_LOUT1EN | WM8978_BIT_ROUT1EN;
+  port_write_reg(WM8978_REG_POWER_MANAGEMENT_2, val);
+}
