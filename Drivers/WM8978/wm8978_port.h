@@ -15,7 +15,7 @@ int32_t WM8978_PORT_Init(void);
 /* Test I2C communication: read chip ID. 0=OK, <0=fail */
 int32_t WM8978_PORT_Test(void);
 
-/* Re-enable ADC after MCLK is stable (must be called after I2S starts) */
+/* Enable ADC after I2S clocks are running (datasheet Fig.46: tadcint=2/fs) */
 void WM8978_PORT_EnableADC(void);
 
 WM8978_Object_t* WM8978_PORT_GetObj(void);

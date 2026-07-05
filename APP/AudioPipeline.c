@@ -20,7 +20,7 @@ static void Process_Half(uint8_t half)
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
         dsp_buffer[i] = (float)src[i * 2] / 32768.0f;
 
-    // EffectChain_Process(dsp_buffer, AUDIO_BUFFER_SIZE);
+    EffectChain_Process(dsp_buffer, AUDIO_BUFFER_SIZE);
 
     int16_t *dst = &i2s_tx_buffer[half * AUDIO_BUFFER_SIZE * 2];
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
@@ -35,8 +35,8 @@ void AudioPipeline_Init(void)
 {
     EffectChain_Init();
     EffectChain_Add(&amp_sim_effect);
-    EffectChain_Add(&reverb_effect);
     EffectChain_Add(&cab_sim_effect);
+    EffectChain_Add(&reverb_effect);
 
     HAL_I2SEx_TransmitReceive_DMA(&hi2s2,
         (uint16_t *)i2s_tx_buffer,

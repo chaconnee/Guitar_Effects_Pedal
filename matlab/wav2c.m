@@ -1,6 +1,6 @@
 %% wav2c.m —— WAV 文件转 C 头文件 (用于 cab_sim 卷积)
 %
-% 功能: 读取 IR WAV 文件，重采样到 32kHz，截断，归一化，输出 .h 文件
+% 功能: 读取 IR WAV 文件，重采样到 44100Hz，截断，归一化，输出 .h 文件
 % 用法: 修改下方参数区，运行脚本即可生成头文件
 %
 % 对应 C 代码: APP/effects/cab_sim/cab_sim.c cab_init()
@@ -17,16 +17,15 @@ end
 %% ========== 参数区 (按需修改) ==========
 
 % 输入 WAV 文件路径
-IR_FILE    = 'IR/OwnHammer_412_MES-ST_BS-90_57-00.wav';
+IR_FILE    = 'IR/AC30 brilliant+bass AT4033a stalevel_dc.wav';
 
 % 输出头文件路径
 OUTPUT_DIR = '../APP/effects/cab_sim';
-OUTPUT_NAME = 'ir_OwnHammer_412';   % 变量名和文件名
+OUTPUT_NAME = 'ir_AC30 brilliant+bass AT4033a stalevel_dc';   % 变量名和文件名
 
 % 目标参数
 FS         = 44100;    % 目标采样率 (Hz)
 IR_SIZE    = 897;      % 截断长度 (FFT_SIZE - BLOCK_SIZE + 1)
-IR_PEAK    = 0.5;      % 峰值归一化目标
 
 % 显示设置
 PLOT_EN    = true;     % 是否绘制分析图
@@ -61,7 +60,7 @@ end
 
 
 %% ========== 3. 截断 + 归一化 ==========
-fprintf('\n[3/4] 截断 + 峰值归一化\n');
+fprintf('\n[3/4] 截断 + 归一化\n');
 
 % 截断到 IR_SIZE
 ir_len = min(IR_SIZE, length(ir_resampled));
@@ -73,14 +72,14 @@ dc_offset = mean(ir_used);
 ir_used = ir_used - dc_offset;
 fprintf('      直流偏移: %.6f (已去除)\n', dc_offset);
 
-% 峰值归一化到 0.8 (参考 NeuralRack)
+% 峰值归一化到 0.8
 peak_before = max(abs(ir_used));
 ir_used = ir_used / peak_before * 0.8;
 fprintf('      峰值归一化: %.6f -> 0.8\n', peak_before);
 
-% 功率归一化 (参考 NeuralRack, norm=0)
-ir_pow = sum(ir_used.*ir_used);  % 总功率，不是平均功率
-ir_gain = 1.5 / ir_pow;  % NeuralRack norm=0 时的增益
+% 功率归一化
+ir_pow = sum(ir_used.*ir_used);
+ir_gain = 1.5 / ir_pow;
 ir_used = ir_used * ir_gain;
 fprintf('      功率归一化: 总功率 %.6f, 增益 %.6f\n', ir_pow, ir_gain);
 fprintf('      归一化后峰值: %.6f\n', max(abs(ir_used)));
@@ -124,13 +123,13 @@ for i = 1:ir_len
     if mod(i, COLS) == 1
         fprintf(fid, '    ');
     end
-    
+
     if i < ir_len
         fprintf(fid, '%.10ff,', ir_used(i));
     else
-        fprintf(fid, '%.10ff', ir_used(i));  % 最后一个不加逗号
+        fprintf(fid, '%.10ff', ir_used(i));
     end
-    
+
     if mod(i, COLS) == 0 || i == ir_len
         fprintf(fid, '\n');
     end
@@ -149,7 +148,7 @@ fprintf('      样本数: %d, 文件大小: %.1f KB\n', ir_len, ir_len*11/1024);
 %% ========== 可选: 绘制分析图 ==========
 if PLOT_EN
     figure('Name', 'IR 分析', 'Position', [50 50 1200 500]);
-    
+
     % 时域波形
     subplot(1,3,1);
     t = (0:ir_len-1) / FS * 1000;
@@ -157,7 +156,7 @@ if PLOT_EN
     xlabel('时间 (ms)'); ylabel('幅度');
     title(sprintf('IR 时域波形 (%d Hz, %d 样本)', FS, ir_len));
     grid on;
-    
+
     % 频率响应
     subplot(1,3,2);
     Nfft = 4096;
@@ -167,14 +166,14 @@ if PLOT_EN
     xlabel('频率 (Hz)'); ylabel('幅度 (dB)');
     title('IR 频率响应');
     grid on; xlim([20 FS/2]); ylim([-60 10]);
-    
+
     % 能量累积
     subplot(1,3,3);
     plot(t, cum_e/total_e*100, 'r', 'LineWidth', 1.5);
     xlabel('时间 (ms)'); ylabel('累积能量 (%)');
     title(sprintf('能量累积 (%.1f%% @ %d 样本)', used_pct, ir_len));
     grid on;
-    
+
     sgtitle(sprintf('WAV -> C 转换: %s', OUTPUT_NAME), 'FontSize', 12);
 end
 

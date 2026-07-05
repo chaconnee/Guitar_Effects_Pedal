@@ -38,9 +38,9 @@ static int ap0_ptr, ap1_ptr, ap2_ptr;
 static float cb0_prev, cb1_prev, cb2_prev, cb3_prev;
 
 /* ── 用户参数 ── */
-static float decay = 0.7f;
-static float mix   = 0.3f;
-static float tone  = 0.5f;
+static float decay = 0.95f;
+static float mix   = 0.55f;
+static float tone  = 0.15f;
 
 /* ── 参数映射 ── */
 
@@ -139,7 +139,7 @@ static void reverb_set_param(Effect *self, uint8_t param_id, float value)
 
 Effect reverb_effect = {
     .name      = "Reverb",
-    .bypassed  = 1,
+    .bypassed  = 0,
     .process   = reverb_process,
     .set_param = reverb_set_param,
     .init      = reverb_init,

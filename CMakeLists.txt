@@ -31,6 +31,7 @@ add_executable(${CMAKE_PROJECT_NAME}
         APP/effects/reverb/reverb.h
         APP/cdc_command.c
         APP/cdc_command.h
+        "APP/effects/cab_sim/ir_AC30 brilliant+bass AT4033a stalevel_dc.h"
 )
 
 add_subdirectory(cmake/stm32cubemx)

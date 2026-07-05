@@ -3,7 +3,7 @@
 #include <string.h>
 #include "main.h"
 
-#include "effects/cab_sim/ir_OwnHammer_412.h"
+#include "effects/cab_sim/ir_AC30 brilliant+bass AT4033a stalevel_dc.h"
 
 /*
  * Overlap-save fast convolution (BLOCK_SIZE=128, 4ms 块周期)
@@ -30,8 +30,8 @@ static void cab_init(Effect *self)
 
     /* 加载 IR: 取前 IR_SIZE 个样本 (NeuralRack 风格归一化: 峰值0.8 + 功率归一化) */
     memset(ir_tmp, 0, sizeof(ir_tmp));
-    uint32_t copy_len = IR_OWNHAMMER_412_LENGTH < IR_SIZE ? IR_OWNHAMMER_412_LENGTH : IR_SIZE;
-    memcpy(ir_tmp, ir_OwnHammer_412, copy_len * sizeof(float));
+    uint32_t copy_len = IR_AC30_BRILLIANT_BASS_AT4033A_STALEVEL_DC_LENGTH < IR_SIZE ? IR_AC30_BRILLIANT_BASS_AT4033A_STALEVEL_DC_LENGTH : IR_SIZE;
+    memcpy(ir_tmp, ir_AC30_brilliant_bass_AT4033a_stalevel_dc, copy_len * sizeof(float));
 
     /* 预计算 IR 的 FFT */
     memset(ir_fft, 0, sizeof(ir_fft));

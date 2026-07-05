@@ -1175,7 +1175,7 @@ int32_t WM8978_Init_Guitar(WM8978_Object_t *pObj)
   (void)WM8978_Delay(pObj, 50);  /* Wait for VMID to stabilize */
 
   /* ---- R2: Power Management 2 ----
-   * ADCENL=1, ADCENR=1 (enable ADC)
+   * ADCENL=1, ADCENR=1 (enable ADC, needs 2nd write after I2S clocks per Fig.46)
    * BOOSTENL=1, BOOSTENR=1 (enable input boost stage)
    * INPPGAENL=0, INPPGAENR=0 (bypass PGA - guitar doesn't need it)
    * LOUT1EN=1, ROUT1EN=1 (enable headphone output)
@@ -1282,22 +1282,22 @@ int32_t WM8978_Init_Guitar(WM8978_Object_t *pObj)
   ret += WM8978_WriteRegister(pObj, WM8978_REG_RIGHT_INPUT_PGA, 0x0040); /* Mute */
 
   /* ---- R47: Left ADC Boost ----
-   * PGABOOSTL=0 (no PGA boost, PGA not used)
-   * L2_2BOOSTVOL=100 (0dB gain from L2 pin to boost stage)
+   * PGABOOSTL=0 (no PGA boost)
+   * L2_2BOOSTVOL=111 (+6dB, datasheet p29: 001=-12, 101=0dB ... 111=+6dB)
    * AUXL2BOOSTVOL=000 (no AUX input)
    *
-   * Guitar 900mVpp = 318mVrms → 0dB gain → -10dBFS, good headroom
+   * Guitar 900mVpp → +6dB → 1.8Vpp → ADC full scale 2.828Vpp ≈ -4dBFS
    */
   ret += WM8978_WriteRegister(pObj, WM8978_REG_LEFT_ADC_BOOST,
-    (0x04 << 4));  /* L2_2BOOSTVOL=100 (0dB) */
+    (0x07 << 4));  /* L2_2BOOSTVOL=111 (+6dB) */
 
   /* ---- R48: Right ADC Boost ----
    * PGABOOSTR=0
-   * R2_2BOOSTVOL=100 (0dB gain from R2 pin)
+   * R2_2BOOSTVOL=111 (+6dB)
    * AUXR2BOOSTVOL=000 (no AUX input)
    */
   ret += WM8978_WriteRegister(pObj, WM8978_REG_RIGHT_ADC_BOOST,
-    (0x04 << 4));  /* R2_2BOOSTVOL=100 (0dB) */
+    (0x07 << 4));  /* R2_2BOOSTVOL=111 (+6dB) */
 
   /* ---- R49: Output Control ----
    * TSDEN=1 (thermal shutdown enabled)
