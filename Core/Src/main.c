@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "dma.h"
 #include "i2c.h"
 #include "i2s.h"
@@ -27,12 +28,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "AudioPipeline.h"
-#include "effects/amp_sim/amp_sim.h"
-#include "effects/cab_sim/cab_sim.h"
-#include "effects/reverb/reverb.h"
-#include "cdc_command.h"
 #include "i2c.h"
 #include "wm8978_port.h"
+#include "pot.h"
+#include "mode_ctrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,6 +100,7 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_I2S2_Init();
   MX_I2C1_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
   /* ---- WM8978 + I2S 测试 ---- */
@@ -131,53 +131,20 @@ int main(void)
   /* 3. 启动 I2S DMA (MCLK/BCLK/LRCK 开始输出) */
   AudioPipeline_Init();
 
-  // /* 默认 amp+cab 开启, LED 亮 (PC13 active-low) */
-  // cab_sim_effect.bypassed = 0;
-  // amp_sim_effect.bypassed = 0;
-   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+  /* 4. 初始化模式控制器 (参数默认值 + LED) */
+  ModeCtrl_Init();
 
-  /* 全部通过: LED 常亮 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t key_tick = 0;
-  GPIO_PinState key_last  = GPIO_PIN_SET;
-  GPIO_PinState key2_last = GPIO_PIN_SET;
-  GPIO_PinState key3_last = GPIO_PIN_SET;
-
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
     AudioPipeline_Tick();
-
-    if (HAL_GetTick() - key_tick >= 100)
-    {
-      key_tick = HAL_GetTick();
-      GPIO_PinState key_now  = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-      GPIO_PinState key2_now = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1);
-      GPIO_PinState key3_now = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
-
-      if (key_last == GPIO_PIN_RESET && key_now == GPIO_PIN_SET)
-        cab_sim_effect.bypassed = !cab_sim_effect.bypassed;
-
-      if (key2_last == GPIO_PIN_RESET && key2_now == GPIO_PIN_SET)
-        amp_sim_effect.bypassed = !amp_sim_effect.bypassed;
-
-      if (key3_last == GPIO_PIN_RESET && key3_now == GPIO_PIN_SET)
-        reverb_effect.bypassed = !reverb_effect.bypassed;
-
-      /* LED on = 任一效果器开启 */
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13,
-        (!cab_sim_effect.bypassed || !amp_sim_effect.bypassed || !reverb_effect.bypassed)
-          ? GPIO_PIN_RESET : GPIO_PIN_SET);
-
-      key_last  = key_now;
-      key2_last = key2_now;
-      key3_last = key3_now;
-    }
+    ModeCtrl_Poll(Pot_Read());
     /* USER CODE END 3 */
   }
 }

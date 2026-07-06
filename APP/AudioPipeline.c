@@ -5,6 +5,7 @@
 #include "effects/amp_sim/amp_sim.h"
 #include "effects/cab_sim/cab_sim.h"
 #include "effects/reverb/reverb.h"
+#include "mode_ctrl.h"
 
 static int16_t i2s_rx_buffer[AUDIO_BUFFER_SIZE * 2 * 2];
 static int16_t i2s_tx_buffer[AUDIO_BUFFER_SIZE * 2 * 2];
@@ -25,7 +26,7 @@ static void Process_Half(uint8_t half)
     int16_t *dst = &i2s_tx_buffer[half * AUDIO_BUFFER_SIZE * 2];
     for (uint16_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
     {
-        int16_t s = (int16_t)(dsp_buffer[i] * 32767.0f);
+        int16_t s = (int16_t)(dsp_buffer[i] * 32767.0f * g_master_volume);
         dst[i * 2]     = s;
         dst[i * 2 + 1] = s;
     }

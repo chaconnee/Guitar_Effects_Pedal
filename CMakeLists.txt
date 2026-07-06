@@ -20,6 +20,10 @@ enable_language(C ASM)
 add_executable(${CMAKE_PROJECT_NAME}
         APP/AudioPipeline.c
         APP/AudioPipeline.h
+        APP/pot.c
+        APP/pot.h
+        APP/mode_ctrl.c
+        APP/mode_ctrl.h
         APP/model/effect_chain.c
         APP/model/effect_chain.h
         APP/model/effect.h
