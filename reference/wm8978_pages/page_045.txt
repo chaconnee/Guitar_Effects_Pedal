@@ -1,0 +1,66 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+45 
+ 
+ 
+ 
+PEAK LIMITER 
+To prevent clipping when a large signal occurs just after a period of quiet, the ALC circuit includes a 
+limiter function. If the ADC input signal exceeds 87.5% of full scale (–1.16dB), the PGA gain is 
+ramped down at the maximum attack rate (as when ALCATK = 0000), until the signal level falls below 
+87.5% of full scale. This function is automatically enabled whenever the ALC is enabled. 
+Note: If ALCATK = 0000, then the limiter makes no difference to the operation of the ALC. It is 
+designed to prevent clipping when long attack times are used. 
+ 
+NOISE GATE (NORMAL MODE ONLY) 
+When the signal is very quiet and consists mainly of noise, the ALC function may cause “noise 
+pumping”, i.e. loud hissing noise during silence periods. The WM8978 has a noise gate function that 
+prevents noise pumping by comparing the signal level at the input pins against a noise gate 
+threshold, NGTH. The noise gate cuts in when: 
+Signal level at ADC [dBFS] < NGTH [dBFS] + PGA gain [dB] + Mic Boost gain [dB] 
+ 
+This is equivalent to:  
+Signal level at input pin [dBFS] < NGTH [dBFS] 
+The PGA gain is then held constant (preventing it from ramping up as it normally would when the 
+signal is quiet). 
+The table below summarises the noise gate control register. The NGTH control bits set the noise 
+gate threshold with respect to the ADC full-scale range. The threshold is adjusted in 6dB steps.  
+Levels at the extremes of the range may cause inappropriate operation, so care should be taken with 
+set–up of the function. The noise gate only operates in conjunction with the ALC and cannot be used 
+in limiter mode. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R35 (23h) 
+ALC Noise Gate 
+Control 
+2:0 
+NGTH 
+ 
+000 
+Noise gate threshold: 
+000 = -39dB 
+001 = -45dB 
+010 = -51db 
+011 = -57dB 
+100 = -63dB 
+101 = -69dB 
+110 = -75dB 
+111 = -81dB 
+3 
+NGATEN 
+0 
+Noise gate function enable 
+1 = enable 
+0 = disable 
+Table 25  ALC Noise Gate Control 
+ 
+The diagrams below show the response of the system to the same signal with and without noise 
+gate. 

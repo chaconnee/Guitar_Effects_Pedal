@@ -1,0 +1,221 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+9 
+ 
+Test Conditions 
+DCVDD=1.8V, AVDD=DBVDD=SPKVDD= 3.3V, TA  = +25
+oC, 1kHz signal, fs = 48kHz, 24-bit audio data unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+Speaker Output  (LOUT2, ROUT2 with 8 bridge tied load, INVROUT2=1) 
+Full scale output voltage, 0dB 
+gain. (Note 9) 
+ 
+SPKBOOST=0 
+ 
+SPKVDD/3.3 
+ 
+Vrms 
+SPKBOOST=1 
+ 
+(SPKVDD/3.3)*1.5 
+ 
+ 
+Output Power 
+PO 
+Output power is very closely correlated with THD; see below 
+Total Harmonic Distortion 
+THD 
+PO =200mW, RL = 8, 
+SPKVDD=3.3V 
+ 
+0.04 
+-68 
+ 
+% 
+dB 
+PO =320mW, RL = 8, 
+SPKVDD=3.3V 
+ 
+1.0 
+-40 
+ 
+% 
+dB 
+PO =500mW, RL = 8, 
+SPKVDD=5V 
+ 
+0.02 
+-74 
+ 
+% 
+dB 
+PO =860mW, RL = 8, 
+SPKVDD=5V 
+ 
+1.0 
+-40 
+ 
+% 
+dB 
+Signal to Noise Ratio 
+SNR 
+SPKVDD=3.3V,  
+RL = 8 
+ 
+90 
+ 
+dB 
+SPKVDD=5V,  
+RL = 8 
+ 
+90 
+ 
+dB 
+Power Supply Rejection Ratio 
+(50Hz-22kHz) 
+PSRR 
+RL = 8 BTL 
+ 
+80 
+ 
+dB 
+RL = 8 BTL 
+SPKVDD=5V (boost) 
+ 
+69 
+ 
+dB 
+OUT3/OUT4 Outputs (with 10k / 50pF load) 
+Full-scale output voltage, 0dB 
+gain (Note 10) 
+ 
+OUT3BOOST=0/ 
+OUT4BOOST=0 
+ 
+SPKVDD/3.3 
+ 
+Vrms 
+OUT3BOOST=1 
+OUT4BOOST=1 
+ 
+(SPKVDD/3.3)*1.5 
+ 
+Vrms 
+Signal to Noise Ratio (Note 6) 
+SNR 
+A-weighted 
+ 
+98 
+ 
+dB 
+Total Harmonic Distortion 
+(Note 7) 
+THD 
+RL = 10 k 
+full-scale signal 
+ 
+-84 
+ 
+dB 
+Channel Separation (Note 8) 
+ 
+1kHz signal 
+ 
+100 
+ 
+dB 
+Power Supply Rejection Ratio 
+(50Hz-22kHz) 
+PSRR 
+RL = 10k 
+ 
+52 
+ 
+dB 
+RL = 10k SPKVDD=5V 
+(boost) 
+ 
+56 
+ 
+dB 
+Microphone Bias 
+Bias Voltage  
+VMICBIAS 
+MBVSEL=0 
+ 
+0.9*AVDD 
+ 
+V 
+MBVSEL=1 
+ 
+0.65*AVDD 
+ 
+V 
+Bias Current Source 
+IMICBIAS 
+ 
+ 
+ 
+3 
+mA 
+Output Noise Voltage 
+Vn 
+1K to 20kHz 
+ 
+15 
+ 
+nV/Hz 
+Digital Input / Output  
+Input HIGH Level 
+VIH 
+ 
+0.7DBVDD
+ 
+ 
+V 
+Input LOW Level 
+VIL 
+ 
+ 
+ 
+0.3DBVDD 
+V 
+Output HIGH Level 
+VOH 
+IOL=1mA 
+0.9DBVDD
+ 
+ 
+V 
+Output LOW Level 
+VOL 
+IOH-1mA 
+ 
+ 
+0.1xDBVDD 
+V 
+Input capacitance 
+ 
+ 
+ 
+10 
+ 
+pF 
+Input leakage 
+ 
+ 
+ 
+50 
+ 
+pA 
+ 

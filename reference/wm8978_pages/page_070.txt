@@ -1,0 +1,50 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+70 
+ 
+DIGITAL AUDIO INTERFACES 
+The audio interface has four pins: 
+ 
+ADCDAT: ADC data output 
+ 
+DACDAT: DAC data input 
+ 
+LRC: Data Left/Right alignment clock 
+ 
+BCLK: Bit clock, for synchronisation 
+ 
+The clock signals BCLK, and LRC can be outputs when the WM8978 operates as a master, or inputs 
+when it is a slave (see Master and Slave Mode Operation, below). 
+Five different audio data formats are supported: 
+ 
+Left justified 
+ 
+Right justified 
+ 
+I
+2S 
+ 
+DSP mode A 
+ 
+DSP mode B 
+ 
+All of these modes are MSB first. They are described in Audio Data Formats, below. Refer to the 
+Electrical Characteristic section for timing information. 
+ 
+MASTER AND SLAVE MODE OPERATION 
+The WM8978 audio interface may be configured as either master or slave. As a master interface 
+device the WM8978 generates BCLK and LRC and thus controls sequencing of the data transfer on 
+ADCDAT and DACDAT. To set the device to master mode register bit MS should be set high.  In 
+slave mode (MS=0), the WM8978 responds with data to clocks it receives over the digital audio 
+interfaces.  
+ 
+AUDIO DATA FORMATS 
+In Left Justified mode, the MSB is available on the first rising edge of BCLK following an LRC 
+transition. The other bits up to the LSB are then transmitted in order. Depending on word length, 
+BCLK frequency and sample rate, there may be unused BCLK cycles before each LRC transition. 
+Figure 36   Left Justified Audio Interface (assuming n-bit word length) 
+ 

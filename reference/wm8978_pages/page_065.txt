@@ -1,0 +1,66 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+65 
+ 
+ 
+Figure 33  Outputs OUT3 and OUT4 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R49 
+Output control 
+3 
+OUT3BOOST 
+0 
+0 = OUT3 output gain = -1; 
+      DC = AVDD / 2 
+1 = OUT3 output gain = +1.5 
+      DC = 1.5 x AVDD / 2 
+4 
+OUT4BOOST 
+0 
+0 = OUT4 output gain = -1; 
+      DC = AVDD / 2 
+1 = OUT4 output gain = +1.5 
+      DC = 1.5 x AVDD / 2 
+R1 
+Power 
+management 
+1 
+8 
+BUFDCOPEN 
+0 
+Dedicated buffer for DC level shifting 
+output stages when in 1.5x gain 
+boost configuration. 
+0=Buffer disabled 
+1=Buffer enabled (required for 1.5x 
+gain boost) 
+Table 46  OUT3 and OUT4 Boost Stages Control 
+ 
+OUT3BOOST/ 
+OUT4BOOST 
+OUTPUT 
+STAGE GAIN 
+OUTPUT DC  
+LEVEL 
+OUTPUT STAGE 
+CONFIGURATION 
+0 
+1x 
+AVDD/2 
+Inverting 
+1 
+1.5x 
+1.5xAVDD/2 
+Non-inverting 
+Table 47  OUT3/OUT4 Output Boost Stage Details 
+ 

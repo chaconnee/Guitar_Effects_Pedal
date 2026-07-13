@@ -1,0 +1,271 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+67 
+ 
+Table 48 shows the polarities of the outputs in various configurations. 
+Unless otherwise stated, polarity is shown with respect to left DAC output in non-inverting mode. 
+Note that only registers relating to the mixer paths are shown here (Mixer enables, volume settings, 
+output enables etc are not shown). 
+CONFIGURATION 
+DACPOLL 
+DACPOLR 
+INVROUT2 
+SPKBOOST 
+OUT3BOOST 
+OUT4BOOST 
+MIXER PATH 
+REGISTERS 
+DIFFERENT 
+FROM DEFAULT 
+OUT4 
+PHASE / MAG 
+OUT3 
+PHASE / MAG 
+LOUT1 
+PHASE / MAG 
+ROUT1 
+PHASE / MAG 
+LOUT2 
+PHASE / MAG 
+ROUT2 
+PHASE / MAG 
+Default: 
+Stereo DAC playback 
+to LOUT1/ROUT1, 
+LOUT2/ROUT2 and 
+OUT4/OUT3 
+0 
+0 
+0 
+0 
+0 
+0 
+ 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+180° 
+ 
+1 
+ 
+180° 
+ 
+1 
+DACs inverted 
+1 
+1 
+0 
+0 
+0 
+0 
+ 
+180° 
+ 
+1 
+180° 
+ 
+1 
+180° 
+ 
+1 
+180° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+Stereo DAC playback 
+to LOUT1/ROUT1 and 
+LOUT2/ROUT2 and 
+OUT4/OUT3 
+(Speaker boost 
+enabled) 
+0 
+0 
+0 
+1 
+0 
+0 
+ 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1.5 
+0° 
+ 
+1.5 
+Stereo DAC playback 
+to LOUT1/ROUT1 and 
+LOUT2/ROUT2 and 
+OUT4/OUT3 
+(OUT3 and OUT4 
+boost enabled) 
+0 
+0 
+0 
+0 
+1 
+1 
+ 
+180° 
+ 
+1.5 
+180° 
+ 
+1.5 
+0° 
+ 
+1 
+0° 
+ 
+1 
+180° 
+ 
+1 
+180° 
+ 
+1 
+Stereo playback to 
+OUT3/OUT4 (DACs 
+input to OUT3/OUT4 
+mixers via left/right 
+mixers) 
+0 
+0 
+0 
+0 
+0 
+0 
+LDAC2OUT3=0 
+RDAC2OUT4=0 
+LMIX2OUT3=1 
+RMIX2OUT4=1 
+180° 
+ 
+1 
+180° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+180° 
+ 
+1 
+180° 
+ 
+1 
+Differential output of 
+right bypass path via 
+OUT3/OUT4 (Phase 
+shown relative to right 
+bypass) 
+0 
+0 
+0 
+0 
+0 
+0 
+BYPR2OUT4=1 
+OUT4_2OUT3=1 
+180° 
+ 
+1 
+0° 
+ 
+1 
+X 
+X 
+X 
+X 
+Differential output of 
+mono mix of DACs via 
+LOUT2/ROUT2 (e.g. 
+BTL speaker drive) 
+0 
+0 
+1 
+0 
+0 
+0 
+ 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+180° 
+ 
+1 
+ 
+0° 
+ 
+1 
+High power speaker 
+drive 
+0 
+0 
+1 
+1 
+0 
+0 
+ 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1 
+0° 
+ 
+1.5 
+ 
+180° 
+ 
+1.5 
+Table 48  Relative Output Phases 
+Note that differential output should not be set up by combining outputs in boost mode with outputs 
+which are not in boost mode as this would cause a DC offset current on the outputs. 

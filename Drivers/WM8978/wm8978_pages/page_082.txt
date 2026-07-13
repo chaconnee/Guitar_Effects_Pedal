@@ -1,0 +1,71 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+82 
+ 
+CONTROL INTERFACE 
+SELECTION OF CONTROL MODE AND 2-WIRE MODE ADDRESS 
+The control interface can operate as either a 3-wire or 2-wire MPU interface. The MODE pin 
+determines the 2 or 3 wire mode as shown in Table 63.      
+The WM8978 is controlled by writing to registers through a serial control interface. A control word 
+consists of 16 bits. The first 7 bits (B15 to B9) are address bits that select which control register is 
+accessed. The remaining 9 bits (B8 to B0) are register bits, corresponding to the 9 bits in each 
+control register.  
+MODE 
+INTERFACE FORMAT 
+Low 
+2 wire 
+High 
+3 wire 
+Table 63 Control Interface Mode Selection 
+3-WIRE SERIAL CONTROL MODE 
+In 3-wire mode, every rising edge of SCLK clocks in one data bit from the SDIN pin. A rising edge on 
+CSB/GPIO1 pin latches in a complete control word consisting of the last 16 bits.  
+Figure 44  3-Wire Serial Control Interface 
+2-WIRE SERIAL CONTROL MODE 
+The WM8978 supports software control via a 2-wire serial bus. Many devices can be controlled by 
+the same bus, and each device has a unique 7-bit device address (this is not the same as the 7-bit 
+address of each register in the WM8978).  
+The WM8978 operates as a slave 2-wire device only. The controller indicates the start of data 
+transfer with a high to low transition on SDIN while SCLK remains high. This indicates that a device 
+address and data will follow. All devices on the 2-wire bus respond to the start condition and shift in 
+the next eight bits on SDIN (7-bit address + Read/Write bit, MSB first). If the device address received 
+matches the address of the WM8978, then the WM8978 responds by pulling SDIN low on the next 
+clock pulse (ACK). If the address is not recognised or the R/W bit is ‘1’ when operating in write only 
+mode, the WM8978 returns to the idle condition and wait for a new start condition and valid address. 
+During a write, once the WM8978 has acknowledged a correct address, the controller sends the first 
+byte of control data (B15 to B8, i.e. the WM8978 register address plus the first bit of register data). 
+The WM8978 then acknowledges the first data byte by pulling SDIN low for one clock pulse. The 
+controller then sends the second byte of control data (B7 to B0, i.e. the remaining 8 bits of register 
+data), and the WM8978 acknowledges again by pulling SDIN low. 
+Transfers are complete when there is a low to high transition on SDIN while SCLK is high. After a 
+complete sequence the WM8978 returns to the idle state and waits for another start condition. If a 
+start or stop condition is detected out of sequence at any point during data transfer (i.e. SDIN 
+changes while SCLK is high), the device jumps to the idle condition. 
+SDIN
+SCLK
+register address and
+1st register data bit
+DEVICE ADDRESS
+(7 BITS)
+RD / WR
+BIT
+ACK
+(LOW)
+CONTROL BYTE 1
+(BITS 15 TO 8)
+CONTROL BYTE 1
+(BITS 7 TO 0)
+remaining 8 bits of
+register data
+STOP
+START
+ACK
+(LOW)
+ACK
+(LOW)
+ 
+Figure 45  2-Wire Serial Control Interface 

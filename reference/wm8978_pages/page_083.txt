@@ -1,0 +1,58 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+83 
+ 
+In 2-wire mode the WM8978 has a fixed device address, 0011010. 
+RESETTING THE CHIP 
+The WM8978 can be reset by performing a write of any value to the software reset register (address 
+0 hex).  This will cause all register values to be reset to their default values.  In addition to this there 
+is a Power-On Reset (POR) circuit which ensures that the registers are set to default when the device 
+is powered up.   
+POWER SUPPLIES 
+The WM8978 can use up to five separate power supplies: 
+AVDD and AGND: Analogue supply, powers all analogue functions except the speaker output and 
+mono output drivers. AVDD can range from 2.5V to 3.6V and has the most significant impact on 
+overall power consumption (except for power consumed in the headphone). A large AVDD slightly 
+improves audio quality. 
+SPKVDD and SPKGND: Headphone and Speaker supplies, power the speaker and mono output 
+drivers. SPKVDD can range from 2.5V to 5V. SPKVDD can be tied to AVDD, but it requires separate 
+layout and decoupling capacitors to curb harmonic distortion. With a larger SPKVDD, louder 
+headphone and speaker outputs can be achieved with lower distortion. If SPKVDD is lower than 
+AVDD, the output signal may be clipped. 
+DCVDD: Digital core supply, powers all digital functions except the audio and control interfaces. 
+DCVDD can range from 1.71V to 3.6V, and has no effect on audio quality. The return path for 
+DCVDD is DGND, which is shared with DBVDD. 
+DBVDD can range from 1.71V to 3.6V.  DBVDD return path is through DGND. 
+It is possible to use the same supply voltage for all four supplies. However, digital and analogue 
+supplies should be routed and decoupled separately on the PCB to keep digital switching noise out of 
+the analogue signal paths. 
+DCVDD should be greater than or equal to 1.9V when using the PLL. 
+ 
+RECOMMENDED POWER UP/DOWN SEQUENCE 
+In order to minimise output pop and click noise, it is recommended that the WM8978 device is 
+powered up and down using one of the following sequences: 
+Power-up when NOT using the output 1.5x boost stage: 
+1. 
+Turn on external power supplies. Wait for supply voltage to settle. 
+2. 
+Mute all analogue outputs. 
+3. 
+Set L/RMIXEN = 1 and DACENL/R = 1 in register R3. 
+4. 
+Set BUFIOEN = 1 and VMIDSEL[1:0] to required value in register R1. Wait for the VMID supply 
+to settle. *Refer notes 1 and 2. 
+5. 
+Set BIASEN = 1 in register R1. 
+6. 
+Set L/ROUT1EN = 1 in register R2. 
+7. 
+Enable other mixers as required. 
+8. 
+Enable other outputs as required. 
+9. 
+Set remaining registers. 
+ 

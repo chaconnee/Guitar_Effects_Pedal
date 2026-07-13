@@ -2,7 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/HybridReverb2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/reference/NeuralRack" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/ST7735S" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/STM32_DSP_Reverb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/audio-multieffect" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/reference/gunshot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/stm32-wm8994" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/reference/stm32digitalReverb" vcs="Git" />
   </component>
 </project>

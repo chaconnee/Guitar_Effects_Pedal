@@ -1,0 +1,84 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+49 
+ 
+The DAC output phase defaults to non-inverted. Setting DACPOLL will invert the DAC output phase 
+on the left channel and DACPOLR inverts the phase on the right channel. 
+AUTO-MUTE 
+The DAC has an auto-mute function which applies an analogue mute when 1024 consecutive zeros 
+are detected.  The mute is released as soon as a non-zero sample is detected.  Automute can be 
+disabled using the AMUTE control bit. 
+DIGITAL HI-FI DAC VOLUME (GAIN) CONTROL 
+The signal volume from each hi-fi DAC can be controlled digitally. The gain and attenuation range is 
+–127dB to 0dB in 0.5dB steps. The level of attenuation for an eight-bit code X is given by:  
+0.5  (X-255) dB  for  1  X  255; 
+MUTE  for  X = 0 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R11  
+Left DAC 
+Digital Volume 
+7:0 
+DACVOLL 
+[7:0] 
+11111111 
+( 0dB ) 
+Left DAC Digital Volume Control 
+0000 0000 = Digital Mute 
+0000 0001 = -127dB 
+0000 0010 = -126.5dB 
+... 0.5dB steps up to 
+1111 1111 = 0dB 
+8 
+DACVU 
+Not 
+latched 
+DAC left and DAC right volume do 
+not update until a 1 is written to 
+DACVU (in reg 11 or 12) 
+R12 
+Right DAC 
+Digital Volume 
+7:0 
+DACVOLR 
+[7:0] 
+11111111 
+( 0dB ) 
+Right DAC Digital Volume Control 
+0000 0000 = Digital Mute 
+0000 0001 = -127dB 
+0000 0010 = -126.5dB 
+... 0.5dB steps up to 
+1111 1111 = 0dB 
+8 
+DACVU 
+Not 
+latched 
+DAC left and DAC right volume do 
+not update until a 1 is written to 
+DACVU (in reg 11 or 12) 
+Table 28  DAC Digital Volume Control 
+Note: An additional gain of up to +12dB can be added using the gain block embedded in the 
+digital peak limiter circuit (see DAC OUTPUT LIMITER section). 
+5-BAND EQUALISER  
+A 5-band graphic equaliser function which can be used to change the output frequency levels to suit 
+the environment.  This can be applied to the ADC or DAC path and is described in the 5-BAND 
+EQUALISER section for further details on this feature. 
+3-D ENHANCEMENT 
+The WM8978 has an advanced digital 3-D enhancement feature which can be used to vary the 
+perceived stereo separation of the left and right channels.  Like the 5-band equaliser this feature can 
+be applied to either the ADC record path or the DAC playback path but not both simultaneously.  See 
+the 3-D STEREO ENHANCEMENT section for further details on this feature. 
+DAC DIGITAL OUTPUT LIMITER 
+The WM8978 has a digital output limiter function.  The operation of this is shown in Figure 25.  In this 
+diagram the upper graph shows the envelope of the input/output signals and the lower graph shows 
+the gain characteristic.  
+ 

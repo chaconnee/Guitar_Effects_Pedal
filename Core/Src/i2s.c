@@ -170,9 +170,9 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* i2sHandle)
     /**I2S2 GPIO Configuration
     PA3     ------> I2S2_MCK
     PB10     ------> I2S2_CK
-    PB12     ------> I2S2_WS
     PB14     ------> I2S2_ext_SD
     PB15     ------> I2S2_SD
+    PB9     ------> I2S2_WS
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_3);
 

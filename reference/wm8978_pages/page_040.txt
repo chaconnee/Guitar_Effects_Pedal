@@ -1,0 +1,122 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+40 
+ 
+ 
+ATTACK AND DECAY TIMES 
+The attack and decay times set the update times for the PGA gain.  The attack time is the time 
+constant used when the gain is reducing.  The decay time is the time constant used when the gain is 
+increasing.  In limiter mode, the time constants are faster than in ALC mode.  The time constants are 
+shown below in terms of a single gain step, a change of 6dB and a change of 90% of the PGAs gain 
+range. 
+Note that, these times will vary slightly depending on the sample rate used (specified by the SR 
+register). 
+NORMAL MODE 
+ALCMODE = 0 (Normal Mode)
+ALCATK
+tATK
+tATK6dB
+tATK90%
+0000
+104µs
+832µs
+6ms
+0001
+208µs
+1.66ms
+12ms
+0010
+416µs
+3.33ms
+24ms
+0011
+832µs
+6.66ms
+48ms
+0100
+1.66ms
+13.3ms
+96ms
+0101
+3.33ms
+26.6ms
+192ms
+0110
+6.66ms
+53.2ms
+384ms
+0111
+13.3ms
+106ms
+767ms
+1000
+26.6ms
+213.2ms
+1.53s
+1001
+53.2ms
+426ms
+3.07s
+1010
+106ms
+852ms
+6.13s
+Attack Time (s)
+ 
+ 
+ALCMODE = 0 (Normal Mode)
+ALCDCY
+tDCY
+tDCY6dB
+tDCY90%
+0000
+410µs
+3.28ms
+23.6ms
+0001
+820µs
+6.56ms
+47.2ms
+0010
+1.64ms
+13.1ms
+94.5ms
+0011
+3.28ms
+26.2ms
+189ms
+0100
+6.56ms
+52.5ms
+378ms
+0101
+13.1ms
+105ms
+756ms
+0110
+26.2ms
+210ms
+1.51s
+0111
+52.5ms
+420ms
+3.02s
+1000
+105ms
+840ms
+6.05s
+1001
+210ms
+1.68s
+12.1s
+1010
+420ms
+3.36s
+24.2s
+Decay Time (s)
+ 
+Table 18  ALC Normal Mode (Attack and Decay times) 

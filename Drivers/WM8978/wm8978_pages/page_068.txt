@@ -1,0 +1,137 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+68 
+ 
+ENABLING THE OUTPUTS 
+Each analogue output of the WM8978 can be separately enabled or disabled. The analogue mixer 
+associated with each output has a separate enable. All outputs are disabled by default. To save 
+power, unused parts of the WM8978 should remain disabled. 
+Outputs can be enabled at any time, but it is not recommended to do so when BUFIO is disabled 
+(BUFIOEN=0) or when BUFDCOP is disabled (BUFDCOPEN=0) when configured in output boost 
+mode, as this may cause pop noise (see “Power Management” and “Applications Information” 
+sections). 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R1 
+Power 
+Management 
+1 
+2 
+BUFIOEN 
+0 
+Unused input/output tie off buffer enable 
+6 
+OUT3MIXEN 
+0 
+OUT3 mixer enable 
+7 
+OUT4MIXEN 
+0 
+OUT4 mixer enable 
+8 
+BUFDCOPEN 
+0 
+Output stage 1.5xAVDD/2 driver enable 
+R2 
+Power 
+Management 
+2 
+8 
+ROUT1EN 
+0 
+ROUT1 output enable 
+7 
+LOUT1EN 
+0 
+LOUT1 output enable 
+6 
+SLEEP 
+0 
+0 = normal device operation 
+1 = residual current reduced in device 
+standby mode if clocks still running 
+R3 
+Power 
+Management 
+3 
+2 
+LMIXEN 
+0 
+Left mixer enable 
+3 
+RMIXEN 
+0 
+Right mixer enable 
+5 
+ROUT2EN 
+0 
+ROUT2 output enable 
+6 
+LOUT2EN 
+0 
+LOUT2 output enable 
+7 
+OUT3EN 
+0 
+OUT3 enable 
+8 
+OUT4EN 
+0 
+OUT4 enable 
+Note: All “Enable” bits are 1 = ON, 0 = OFF 
+Table 49  Output Stages Power Management Control 
+THERMAL SHUTDOWN 
+The speaker outputs can drive very large currents. To protect the WM8978 from overheating a 
+thermal shutdown circuit is included. If the device temperature reaches approximately 125
+0C and the 
+thermal shutdown circuit is enabled (TSDEN=1) then the speaker amplifiers will be disabled if 
+TSDEN is set. The thermal shutdown may also be configured to generate an interrupt. See the GPIO 
+and Interrupt Controller section for details. 
+ REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R49 
+Output 
+control 
+1 
+TSDEN 
+1 
+  
+Thermal Shutdown Enable 
+0 : thermal shutdown disabled 
+1 : thermal shutdown enabled 
+Table 50 Thermal Shutdown 
+UNUSED ANALOGUE INPUTS/OUTPUTS 
+Whenever an analogue input/output is disabled, it remains connected to a voltage source (either 
+AVDD/2 or 1.5xAVDD/2 as appropriate) through a resistor. This helps to prevent pop noise when the 
+output is re-enabled. The resistance between the voltage buffer and the output pins can be controlled 
+using the VROI control bit.  The default impedance is low, so that any capacitors on the outputs can 
+charge up quickly at start-up. If a high impedance is desired for disabled outputs, VROI can then be 
+set to 1, increasing the resistance to about 30k. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R49 
+ 
+0 
+VROI 
+0 
+VREF (AVDD/2 or 1.5xAVDD/2) to 
+analogue output resistance 
+0: approx 1k 
+1: approx 30 k 
+Table 51  Disabled Outputs to VREF Resistance 

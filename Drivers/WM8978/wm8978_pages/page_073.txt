@@ -1,0 +1,95 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+73 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R4 
+Audio 
+Interface 
+Control  
+0 
+MONO 
+0 
+Selects between stereo and mono 
+device operation: 
+0=Stereo device operation 
+1=Mono device operation.  Data appears 
+in ‘left’ phase of LRC 
+1 
+ADCLRSWAP 
+0 
+Controls whether ADC data appears in 
+‘right’ or ‘left’ phases of LRC clock: 
+0=ADC data appear in ‘left’ phase of 
+LRC 
+1=ADC data appears in ‘right’ phase of 
+LRC 
+2 
+DACLRSWAP 
+0 
+Controls whether DAC data appears in 
+‘right’ or ‘left’ phases of LRC clock: 
+0=DAC data appear in ‘left’ phase of 
+LRC 
+1=DAC data appears in ‘right’ phase of 
+LRC 
+4:3 
+FMT 
+10 
+Audio interface Data Format Select: 
+00=Right Justified 
+01=Left Justified 
+10=I
+2S format 
+11= DSP/PCM mode 
+6:5 
+WL 
+10 
+Word length 
+00=16 bits 
+01=20 bits 
+10=24 bits 
+11=32 bits (see note) 
+7 
+LRP 
+ 
+right, left and i2s modes – LRCLK 
+polarity 
+1 = invert LRCLK polarity 
+0 = normal LRCLK polarity 
+DSP Mode – mode A/B select 
+1 = MSB is available o
+n 1st BCLK rising 
+edge after LRC rising edge (mode B) 
+0 = MSB is available o
+n 2nd BCLK rising 
+edge after LRC rising edge (mode A) 
+8 
+BCP 
+ 
+BCLK polarity 
+0=normal 
+1=inverted 
+Table 53  Audio Interface Control 
+ADCLRSWAP bit controls whether the ADC data appears in the right or left phase of the LRC clock 
+as defined for each audio format. Similarly, DACLRSWAP can be used to swap the left DAC data 
+from the left phase to the right phase of the LRC clock and the right DAC data from the right phase to 
+the left phase of the LRC clock. 
+Note: Right Justified Mode will only operate with a maximum of 24 bits. If 32-bit mode is selected, the 
+device will operate in 24-bit mode. 
+AUDIO INTERFACE CONTROL 
+The register bits controlling audio format, word length and master / slave mode are summarised 
+below. The audio interfaces can be controlled individually. 
+Register bit MS selects audio interface operation in master or slave mode. In Master mode BCLK, 
+and LRC are outputs. The frequency of BCLK in master mode are controlled with BCLKDIV. These 
+are divided down versions of master clock.  . 

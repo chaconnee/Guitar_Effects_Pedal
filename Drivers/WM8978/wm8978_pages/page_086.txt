@@ -1,0 +1,35 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+86 
+ 
+Notes: 
+1. 
+The analogue input pin charge time, tmidrail_on, is determined by the VMID pin charge time. This 
+time is dependent upon the value of VMID decoupling capacitor and VMID pin input resistance 
+and AVDD power supply rise time.  
+2. 
+The analogue input pin discharge time, tmidrail_off, is determined by the analogue input coupling 
+capacitor discharge time. The time, tmidrail_off, is measured using a 1μF capacitor on the analogue 
+input but will vary dependent upon the value of input coupling capacitor.  
+3. 
+While the ADC is enabled there will be LSB data bit activity on the ADCDAT pin due to system 
+noise but no significant digital output will be present. 
+4. 
+The VMIDSEL and BIASEN bits must be set to enable analogue input midrail voltage and for 
+normal ADC operation. 
+5. 
+ADCDAT data output delay from power –p - with power supplies starting from –V - is determined 
+primarily by the VMID charge time. ADC initialisation and power management bits may be set 
+immediately after POR is released; VMID charge time will be significantly longer and will dictate 
+when the device is stabilised for analogue input.  
+6. 
+ADCDAT data output delay at power up from device standby (power supplies already applied) is 
+determined by ADC initialisation time, 2/fs.   
+ 
+Figure 47 DAC Power Up and Down Sequence (not to scale) 
+ 
+ 

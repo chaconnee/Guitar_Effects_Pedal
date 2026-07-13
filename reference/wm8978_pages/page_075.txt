@@ -1,0 +1,66 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+75 
+ 
+AUDIO SAMPLE RATES 
+The WM8978 sample rates for the ADCs and the DACs are set using the SR register bits.  The 
+cutoffs for the digital filters and the ALC attack/decay times stated are determined using these values 
+and assume a 256fs master clock rate. 
+If a sample rate that is not explicitly supported by the SR register settings is required then the closest 
+SR value to that sample rate should be chosen, the filter characteristics and the ALC attack, decay 
+and hold times will scale appropriately. 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R7 
+Additional 
+Control 
+3:1 
+SR 
+ 
+000 
+Approximate sample rate (configures the 
+coefficients for the internal digital filters): 
+000=48kHz 
+001=32kHz 
+010=24kHz 
+011=16kHz 
+100=12kHz 
+101=8kHz 
+110-111=reserved 
+Table 55  Sample Rate Control  
+MASTER CLOCK AND PHASE LOCKED LOOP (PLL) 
+The WM8978 has an on-chip phase-locked loop (PLL) circuit that can be used to: 
+Generate master clocks for the WM8978 audio functions from another external clock, e.g. in 
+telecoms applications. 
+Generate and output (on pin CSB/GPIO1 and/or GPI04) a clock for another part of the system that is 
+derived from an existing audio master clock. 
+Figure 41 shows the PLL and internal clocking arrangement on the WM8978.   
+The PLL can be enabled or disabled by the PLLEN register bit. 
+Note: In order to minimise current consumption, the PLL is disabled when the VMIDSEL[1:0] bits are 
+set to 00b. VMIDSEL[1:0] must be set to a value other than 00b to enable the PLL. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R1 
+Power 
+management 1 
+5 
+PLLEN 
+0 
+PLL enable 
+0=PLL off 
+1=PLL on 
+Table 56  PLLEN Control Bit 
+ 

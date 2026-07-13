@@ -1,0 +1,87 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+48 
+ 
+Figure 24  DAC Digital Filter Path 
+The analogue outputs from the DACs can then be mixed with the aux analogue inputs and the ADC 
+analogue inputs. The mix is fed to the output drivers for headphone (LOUT1/ROUT1), speaker 
+(LOUT2/ROUT2) or line (OUT3/OUT4).   OUT3 and OUT4 have additional mixers which allow them 
+to output different signals to the headphone and speaker outputs. 
+DIGITAL PLAYBACK (DAC) PATH  
+Digital data is passed to the WM8978 via the flexible audio interface and is then passed through a 
+variety of advanced digital filters (as shown in Figure 24) to the hi-fi DACs.  The DACs are enabled by 
+the DACENL/R register bits. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R3 
+Power 
+Management 3 
+0 
+DACENL 
+0 
+Left channel DAC enable 
+0 = DAC disabled 
+1 = DAC enabled 
+1 
+DACENR 
+0 
+Right channel DAC enable 
+0 = DAC disabled 
+1 = DAC enabled 
+Table 26  DAC Enable Control 
+The WM8978 also has a Soft Mute function, which, when enabled, gradually attenuates the volume 
+of the digital signal to zero. When disabled, the gain will ramp back up to the digital gain setting. This 
+function is enabled by default. To play back an audio signal, this function must first be disabled by 
+setting the SOFTMUTE bit to zero. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R10 
+DAC Control 
+0 
+DACPOLL 
+0 
+Left DAC output polarity: 
+0 = non-inverted  
+1 = inverted (180 degrees phase shift) 
+1 
+DACPOLR 
+0 
+Right DAC output polarity: 
+0 = non-inverted  
+1 = inverted (180 degrees phase shift) 
+2 
+AMUTE 
+0 
+Automute enable 
+0 = Amute disabled 
+1 = Amute enabled 
+3 
+DACOSR 
+0 
+DAC oversampling rate: 
+0=64x (lowest power) 
+1=128x (best performance) 
+6  
+SOFTMUTE 
+0 
+Softmute enable: 
+0=Enabled 
+1=Disabled 
+Table 27  DAC Control Register 
+The digital audio data is converted to oversampled bit streams in the on-chip, true 24-bit digital 
+interpolation filters. The bitstream data enters the multi-bit, sigma-delta DACs, which convert it to a 
+high quality analogue audio signal. The multi-bit DAC architecture reduces high frequency noise and 
+sensitivity to clock jitter. It also uses a Dynamic Element Matching technique for high linearity and low 
+distortion. 

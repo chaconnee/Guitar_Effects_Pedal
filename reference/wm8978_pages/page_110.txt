@@ -1,0 +1,107 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+110 
+ 
+HIGHPASS FILTER 
+The WM8978 has a selectable digital highpass filter in the ADC filter path.  This filter has two modes, 
+audio and applications.  In audio mode the filter is a 1
+st order IIR with a cut-off of around 3.7Hz.  In 
+applications mode the filter is a 2
+nd order high pass filter with a selectable cut-off frequency. 
+ 
+-40
+-35
+-30
+-25
+-20
+-15
+-10
+-5
+0
+5
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+Frequency (Hz)
+Response (dB)
+ 
+Figure 54  ADC Highpass Filter Response, HPFAPP=0 
+ 
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+0
+200
+400
+600
+800
+1000
+1200
+Frequency (Hz)
+Response (dB)
+-80
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+0
+200
+400
+600
+800
+1000
+1200
+Frequency (Hz)
+Response (dB)
+Figure 55  ADC Highpass Filter Responses (48kHz),  
+ 
+HPFAPP=1, all cut-off settings shown. 
+ Figure 56  ADC Highpass Filter Responses (24kHz),   
+ 
+HPFAPP=1, all cut-off settings shown. 
+-90
+-80
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+0
+200
+400
+600
+800
+1000
+1200
+Frequency (Hz)
+Response (dB)
+ 
+Figure 57  ADC Highpass Filter Responses (12kHz),   
+ 
+HPFAPP=1, all cut-off settings shown. 
+ 

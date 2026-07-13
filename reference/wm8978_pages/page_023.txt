@@ -1,0 +1,29 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+23 
+ 
+ 
+AUXILIARY ANALOGUE INPUTS 
+An analogue stereo FM tuner or other auxiliary analogue input can be connected to the Line inputs of 
+WM8978, and the stereo signal listened to via headphones, or recorded, simultaneously if required. 
+INPUT SIGNAL PATH 
+The WM8978 has a number of flexible analogue inputs.  There are two input channels, Left and 
+Right, each of which consists of an input PGA stage followed by a boost/mix stage which drives into 
+the hi-fi ADC.  Each input path has three input pins which can be configured in a variety of ways to 
+accommodate single-ended, differential or dual differential microphones.  There are two auxiliary 
+input pins which can be fed into to the input boost/mix stage as well as driving into the output path.  A 
+bypass path exists from the output of the boost/mix stage into the output left/right mixers.   
+MICROPHONE INPUTS 
+The WM8978 can accommodate a variety of microphone configurations including single ended and 
+differential inputs.  The inputs to the left differential input PGA are LIN, LIP and L2.  The inputs to the 
+right differential input PGA are RIN, RIP and R2. 
+In single-ended microphone input configuration the microphone signal should be input to LIN or RIN 
+and the internal NOR gate configured to clamp the non-inverting input of the input PGA to VMID. 
+In differential mode the larger signal should be input to LIP or RIP and the smaller (e.g. noisy ground 
+connection) should be input to LIN or RIN. 
+Figure 9  Microphone Input PGA Circuit  
+ 

@@ -1,0 +1,59 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+42 
+ 
+ 
+Figure 19  ALC Min/Max Gain 
+ 
+ALCMAX
+Maximum Gain (dB)
+111
+35.25
+110
+29.25
+101
+23.25
+100
+17.25
+011
+11.25
+010
+5.25
+001
+-0.75
+000
+-6.75
+ 
+Table 21  ALC Max Gain Values 
+ 
+ 
+ALCMIN
+Minimum Gain (dB)
+000
+-12
+001
+-6
+010
+0
+011
+6
+100
+12
+101
+18
+110
+24
+111
+30
+ 
+Table 22  ALC Min Gain Values 
+Note that if the ALC gain setting strays outside the ALC operating range, either by starting the ALC 
+outside of the range or changing the ALCMAX or ALCMIN settings during operation, the ALC will 
+immediately adjust the gain to return to the ALC operating range.  It is recommended that the ALC 
+starting gain is set between the ALCMAX and ALCMIN limits. 
+ 
+ 

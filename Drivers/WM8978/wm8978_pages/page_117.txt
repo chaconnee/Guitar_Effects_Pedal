@@ -1,0 +1,57 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+117 
+ 
+IMPORTANT NOTICE 
+ 
+Wolfson Microelectronics plc (“Wolfson”) products and services are sold subject to Wolfson’s terms and conditions of sale, 
+delivery and payment supplied at the time of order acknowledgement. 
+  
+Wolfson warrants performance of its products to the specifications in effect at the date of shipment. Wolfson reserves the 
+right to make changes to its products and specifications or to discontinue any product or service without notice. Customers 
+should therefore obtain the latest version of relevant information from Wolfson to verify that the information is current.  
+ 
+Testing and other quality control techniques are utilised to the extent Wolfson deems necessary to support its warranty.  
+Specific testing of all parameters of each device is not necessarily performed unless required by law or regulation. 
+ 
+In order to minimise risks associated with customer applications, the customer must use adequate design and operating 
+safeguards to minimise inherent or procedural hazards.  Wolfson is not liable for applications assistance or customer 
+product design.  The customer is solely responsible for its selection and use of Wolfson products.  Wolfson is not liable for 
+such selection or use nor for use of any circuitry other than circuitry entirely embodied in a Wolfson product. 
+ 
+Wolfson’s products are not intended for use in life support systems, appliances, nuclear systems or systems where 
+malfunction can reasonably be expected to result in personal injury, death or severe property or environmental damage.  
+Any use of products by the customer for such purposes is at the customer’s own risk.   
+ 
+Wolfson does not grant any licence (express or implied) under any patent right, copyright, mask work right or other 
+intellectual property right of Wolfson covering or relating to any combination, machine, or process in which its products or 
+services might be or are used.  Any provision or publication of any third party’s products or services does not constitute 
+Wolfson’s approval, licence, warranty or endorsement thereof.  Any third party trade marks contained in this document 
+belong to the respective third party owner. 
+ 
+Reproduction of information from Wolfson datasheets is permissible only if reproduction is without alteration and is 
+accompanied by all associated copyright, proprietary and other notices (including this notice) and conditions.   Wolfson is 
+not liable for any unauthorised alteration of such information or for any reliance placed thereon.   
+ 
+Any representations made, warranties given, and/or liabilities accepted by any person which differ from those contained in 
+this datasheet or in Wolfson’s standard terms and conditions of sale, delivery and payment are made, given and/or 
+accepted at that person’s own risk. Wolfson is not liable for any such representations, warranties or liabilities or for any 
+reliance placed thereon by any person. 
+ 
+ 
+ADDRESS 
+Wolfson Microelectronics plc 
+Westfield House 
+26 Westfield Road 
+Edinburgh 
+EH11 2QB 
+United Kingdom 
+ 
+Tel :: +44 (0)131 272 7000 
+Fax :: +44 (0)131 272 7001 
+Email :: sales@wolfsonmicro.com  
+ 

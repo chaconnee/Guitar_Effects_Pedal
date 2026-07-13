@@ -1,0 +1,136 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+109 
+ 
+DAC FILTER RESPONSES 
+-160
+-140
+-120
+-100
+-80
+-60
+-40
+-20
+0
+20
+0
+0.5
+1
+1.5
+2
+2.5
+Frequency (fs)
+Response (dB)
+2.6
+2.65
+2.7
+2.75
+2.8
+2.85
+2.9
+2.95
+3
+3.05
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+Frequency (fs)
+Response (dB)
+ 
+Figure 48  DAC Digital Filter Frequency Response 
+(128xOSR) 
+Figure 49  DAC Digital Filter Ripple (128xOSR) 
+-160
+-140
+-120
+-100
+-80
+-60
+-40
+-20
+0
+20
+0
+0.5
+1
+1.5
+2
+2.5
+Frequency (fs)
+Response (dB)
+ 
+2.6
+2.65
+2.7
+2.75
+2.8
+2.85
+2.9
+2.95
+3
+3.05
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+Frequency (fs)
+Response (dB)
+ 
+Figure 50  DAC Digital Filter Frequency Response (64xOSR) 
+Figure 51  DAC Digital Filter Ripple (64xOSR) 
+ 
+ADC FILTER RESPONSES 
+-120
+-100
+-80
+-60
+-40
+-20
+0
+0
+0.5
+1
+1.5
+2
+2.5
+3
+Frequency (Fs)
+Response (dB)
+-0.2
+-0.15
+-0.1
+-0.05
+0
+0.05
+0.1
+0.15
+0.2
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+Frequency (Fs)
+Response (dB)
+Figure 52  ADC Digital Filter Frequency Response 
+Figure 53  ADC Digital Filter Ripple 

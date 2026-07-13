@@ -1,0 +1,75 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+12 
+ 
+POWER CONSUMPTION 
+Typical current consumption for various scenarios is shown below. 
+MODE 
+AVDD 
+(3.0V) 
+(mA) 
+DCVDD 
+(1.8V) 
+(mA) 
+DBVDD
+1 
+(3.0V) 
+(mA) 
+TOTAL 
+POWER 
+(mW) 
+Off 
+0.04
+3 
+0.0008 
+<0.0001 
+0.12 
+Sleep (VREF maintained, no clocks) 
+0.04 
+0.0008 
+<0.0001 
+0.12 
+Stereo Record (8kHz)
+2 
+4.1 
+1.0 
+0.001 
+14.1 
+Stereo 16Ω HP Playback (44.1kHz, quiescent)
+2 
+3.3 
+6.2 
+0.004 
+21.1 
+Stereo 16Ω HP Playback (44.1kHz, white noise)
+2 
+5.4 
+7.3 
+0.004 
+29.4 
+Stereo 16Ω HP Playback (44.1kHz, sine wave)
+2 
+18 
+6.7 
+0.004 
+66.1 
+Notes: 
+1.  DBVDD Current will increase with greater loading on digital I/O pins. 
+2.  5 Band EQ is enabled. 
+3.  AVDD standby current will fall to nearer 15uA when thermal shutdown sensor is disabled. 
+Table 1 Power Consumption 
+ESTIMATING SUPPLY CURRENT 
+When either the DAC or ADC is enabled approximately 7mA will be drawn from DCVDD when 
+DCVDD=1.8V and fs=48kHz.  When the PLL is enabled approximately 1.5mA additional current will 
+be drawn from DCVDD. 
+As a general rule, digital supply currents will scale in proportion to sample rates. Supply current for 
+analogue and digital blocks will also be lower at lower supply voltages. 
+Power consumed by the output drivers will depend greatly on the signal characteristics. A quiet 
+signal, or a signal with long periods of silence will consume less power than a signal which is 
+continuously loud. 
+Estimated supply current for the analogue blocks is shown in Table 2. Note that power dissipated in 
+the load is not shown. 

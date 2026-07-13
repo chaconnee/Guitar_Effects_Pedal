@@ -1,0 +1,41 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+59 
+ 
+ 
+Headphone Output using DC Blocking Capacitors: 
+DC Coupled Headphone Output: 
+ 
+ 
+Figure 28  Recommended Headphone Output Configurations 
+When DC blocking capacitors are used, then their capacitance and the load resistance together 
+determine the lower cut-off frequency, fc. Increasing the capacitance lowers fc, improving the bass 
+response. Smaller capacitance values will diminish the bass response. Assuming a 16 load and C1, 
+C2 = 220F: 
+fc = 1 / 2 RLC1 = 1 / (2 x 16 x 220F) = 45 Hz 
+In the DC coupled configuration, the headphone “ground” is connected to the VMID pin.  The OUT3/4 
+pins can be configured as a DC output driver by setting the OUT3MUTE and OUT4MUTE register bit.  
+The DC voltage on VMID in this configuration is equal to the DC offset on the LOUT1 and ROUT1 
+pins therefore no DC blocking capacitors are required. This saves space and material cost in portable 
+applications.   
+Note that OUT3 and OUT4 have an optional output boost of 1.5x.  When these are configured in this 
+output boost mode (OUT3BOOST/OUT4BOOST=1) then the VMID value of these outputs will be 
+equal to 1.5xAVDD/2 and will not match the VMID of the headphone drivers.  Do not use the DC 
+coupled output mode in this configuration. 
+It is recommended to connect the DC coupled outputs only to headphones, and not to the line input 
+of another device. Although the built-in short circuit protection will prevent any damage to the 
+headphone outputs, such a connection may be noisy, and may not function properly if the other 
+device is grounded. 
+SPEAKER OUTPUTS (LOUT2 AND ROUT2) 
+The outputs LOUT2 and ROUT2 are designed to drive an 8Ω BTL speaker but can optionally drive 
+two headphone loads of 16/32 or a line output (see Headphone Output and Line Output sections, 
+respectively).  Each output has an individual volume control PGA, an output boost/level shift bit, a 
+mute and an enable as shown in Figure 29.   LOUT2 and ROUT2 output the left and right channel 
+mixer outputs respectively. 
+The ROUT2 signal path also has an optional invert.  The amplifier used for this invert can be used to 
+mix in the AUXR signal with an adjustable gain range of -15dB -> +6dB.  This allows a ‘beep’ signal 
+to be applied only to the speaker output without affecting the HP or line outputs. 

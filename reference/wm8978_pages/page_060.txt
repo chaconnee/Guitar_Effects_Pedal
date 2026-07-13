@@ -1,0 +1,10 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+60 
+ 
+ 
+Figure 29  Speaker Outputs LOUT2 and ROUT2 

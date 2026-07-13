@@ -18,10 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
 #include "dma.h"
 #include "i2c.h"
 #include "i2s.h"
+#include "spi.h"
+#include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
 
@@ -30,8 +31,9 @@
 #include "AudioPipeline.h"
 #include "i2c.h"
 #include "wm8978_port.h"
-#include "pot.h"
 #include "mode_ctrl.h"
+#include "encoder.h"
+#include "tft.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,7 +73,6 @@ static void processdata(void);
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
   SCB->VTOR = FLASH_BASE | 0x4000;
 
@@ -91,7 +92,9 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  __HAL_RCC_PWR_CLK_ENABLE();
+  HAL_PWR_EnableBkUpAccess();
+  __HAL_RCC_LSE_CONFIG(RCC_LSE_OFF);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -100,7 +103,8 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_I2S2_Init();
   MX_I2C1_Init();
-  MX_ADC1_Init();
+  MX_TIM2_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
   /* ---- WM8978 + I2S 测试 ---- */
@@ -128,11 +132,15 @@ int main(void)
     }
   }
 
-  /* 3. 启动 I2S DMA (MCLK/BCLK/LRCK 开始输出) */
+  /* 3. TFT 屏幕测试 (红绿蓝循环) */
+  TFT_Test();
+
+  /* 4. 启动 I2S DMA (MCLK/BCLK/LRCK 开始输出) */
   AudioPipeline_Init();
 
-  /* 4. 初始化模式控制器 (参数默认值 + LED) */
+  /* 4. 初始化模式控制器 + 编码器 */
   ModeCtrl_Init();
+  Enc_Init();
 
   /* USER CODE END 2 */
 
@@ -144,11 +152,10 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     AudioPipeline_Tick();
-    ModeCtrl_Poll(Pot_Read());
+    ModeCtrl_Poll(Enc_ReadDelta());
     /* USER CODE END 3 */
   }
 }
-
 /**
   * @brief System Clock Configuration
   * @retval None

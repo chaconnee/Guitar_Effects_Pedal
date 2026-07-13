@@ -1,0 +1,124 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+105 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+4:2 
+BYPLMIXVOL 
+000 
+Left bypass volume control to output channel 
+mixer: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+Analogue 
+Outputs 
+1 
+BYPL2L 
+MIX 
+0 
+Left bypass path (from the left channel input 
+boost output) to left output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+0 
+DACL2L 
+MIX 
+1 
+Left DAC output to left output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+51 (33h) 
+8:6 
+AUXRMIXVOL 
+000 
+Aux right channel input to right mixer volume 
+control: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+Analogue 
+Outputs 
+5 
+AUXR2RMIX 
+0 
+Right Auxiliary input to right channel output 
+mixer: 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+4:2 
+BYPRMIXVOL 
+000 
+Right bypass volume control to output channel 
+mixer: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+Analogue 
+Outputs 
+1 
+BYPR2RMIX 
+0 
+Right bypass path (from the right channel input 
+boost output) to right output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+0 
+DACR2RMIX 
+1 
+Right DAC output to right output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+52 (34h) 
+8 
+HPVU 
+N/A 
+LOUT1 and ROUT1 volumes do not update until 
+a 1 is written to HPVU (in reg 52 or 53) 
+Analogue 
+Outputs 
+7 
+LOUT1ZC 
+0 
+Headphone volume zero cross enable: 
+1 = Change gain on zero cross only 
+0 = Change gain immediately 
+Analogue 
+Outputs 
+6 
+LOUT1MUTE 
+0 
+Left headphone output mute: 
+0 = Normal operation 
+1 = Mute 
+Analogue 
+Outputs 

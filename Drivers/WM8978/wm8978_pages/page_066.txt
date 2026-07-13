@@ -1,0 +1,23 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+66 
+ 
+OUTPUT PHASING  
+The relative phases of the analogue outputs will depend upon the following factors: 
+1. 
+DACPOLL and DACPOLR invert bits: Setting these bits to 1 will invert the DAC output. 
+2. 
+Mixer configuration: The polarity of the signal will depend upon the route through the mixer path. 
+For example, DACL can be directly input to the OUT3 mixer, giving a 180° phase shift at the 
+OUT3 mixer output. However, if DACL is input to the OUT3 mixer via the left mixer, an 
+additional phase shift will be introduced, giving 0° phase shift at the OUT3 mixer output. 
+3. 
+Output boost set-up: When 1.5x boost is enabled on an output, no phase shift occurs. When 
+1.5x boost is not enabled, a 180° phase shift occurs. 
+Figure 26 shows where these phase inversions can occur in the output signal path. 
+ 
+Figure 34  Output Signal Path Phasing 

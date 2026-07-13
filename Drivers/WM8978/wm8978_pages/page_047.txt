@@ -1,0 +1,29 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+47 
+ 
+Figure 23  Noise Gate Operation 
+ 
+ 
+OUTPUT SIGNAL PATH 
+The WM8978 output signal paths consist of digital application filters, up-sampling filters, stereo Hi-Fi 
+DACs, analogue mixers, speaker, stereo headphone and stereo line/mono/midrail output drivers. The 
+digital filters and DAC are enabled by register bits DACENL and DACENR. The mixers and output 
+drivers can be separately enabled by individual control bits (see Analogue Outputs). Thus it is 
+possible to utilise the analogue mixing and amplification provided by the WM8978, irrespective of 
+whether the DACs are enabled or not. 
+The WM8978 DACs receive digital input data on the DACDAT pin. The digital filter block processes 
+the data to provide the following functions: 
+ 
+Digital volume control 
+ 
+Graphic equaliser   
+ 
+Digital peak limiter. 
+ 
+Sigma-Delta Modulation 
+High performance sigma-delta 24-bit audio DAC converts the digital data into an analogue signal. 

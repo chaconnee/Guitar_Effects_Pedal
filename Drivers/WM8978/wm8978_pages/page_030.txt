@@ -1,0 +1,61 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+30 
+ 
+MICROPHONE BIASING CIRCUIT 
+The MICBIAS output provides a low noise reference voltage suitable for biasing electret type 
+microphones and the associated external resistor biasing network. Refer to the Applications 
+Information section for recommended external components. The MICBIAS voltage can be altered via 
+the MBVSEL register bit.  When MBVSEL=0, MICBIAS=0.9*AVDD and when MBVSEL=1, 
+MICBIAS=0.65*AVDD.  The output can be enabled or disabled using the MICBEN control bit. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R1 
+Power 
+management 1 
+4 
+MICBEN 
+0 
+Microphone Bias Enable 
+0 = OFF (high impedance output) 
+1 = ON 
+Table 10  Microphone Bias Enable Control 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R44  
+Input control 
+ 
+8 
+MBVSEL 
+0 
+Microphone Bias Voltage Control 
+0 = 0.9 * AVDD 
+1 = 0.65 * AVDD 
+Table 11  Microphone Bias Voltage Control 
+The internal MICBIAS circuitry is shown in Figure 15.  Note that the maximum source current 
+capability for MICBIAS is 3mA. The external biasing resistors therefore must be large enough to limit 
+the MICBIAS current to 3mA. 
+Figure 15  Microphone Bias Schematic 
+ 
+ANALOGUE TO DIGITAL CONVERTER (ADC) 
+The WM8978 uses stereo multi-bit, oversampled sigma-delta ADCs. The use of multi-bit feedback 
+and high oversampling rates reduces the effects of jitter and high frequency noise. The ADC Full 
+Scale input level is proportional to AVDD. With a 3.3V supply voltage, the full scale level is 1.0Vrms. 
+Any voltage greater than full scale may overload the ADC and cause distortion. 
+ 
+ADC DIGITAL FILTERS 
+The ADC filters perform true 24 bit signal processing to convert the raw multi-bit oversampled data 
+from the ADC to the correct sampling frequency to be output on the digital audio interface. The digital 
+filter path for each ADC channel is illustrated in Figure 16. 

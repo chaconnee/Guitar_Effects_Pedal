@@ -1,0 +1,383 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+89 
+ 
+  REGISTER MAP 
+ADDR 
+B[15:9] 
+REGISTER 
+NAME 
+B8 
+B7 
+B6 
+B5 
+B4 
+B3 
+B2 
+B1 
+B0 
+DEF’T 
+VAL 
+DEC HEX 
+(HEX) 
+0 
+00 
+Software Reset 
+Software reset 
+ 
+1 
+01 
+Power manage’t 1 
+BUFDCOP 
+EN 
+OUT4MIX 
+EN 
+OUT3MIX 
+EN 
+PLLEN 
+MICBEN 
+BIASEN 
+BUFIOEN 
+VMIDSEL 
+000 
+2 
+02 
+Power manage’t 2 
+ROUT1EN 
+LOUT1EN 
+SLEEP 
+BOOST 
+ENR 
+BOOST 
+ENL 
+INPPGA 
+ENR 
+INPPGA 
+ENL 
+ADCENR 
+ADCENL 
+000 
+3 
+03 
+Power manage’t 3 
+OUT4EN 
+OUT3EN 
+LOUT2EN ROUT2EN
+0 
+RMIXEN 
+LMIXEN 
+DACENR 
+DACENL 
+000 
+4 
+04 
+Audio Interface 
+BCP 
+LRP 
+WL 
+FMT 
+DAC 
+LRSWAP 
+ADC 
+LRSWAP 
+MONO 
+050 
+5 
+05 
+Companding ctrl 
+0 
+0 
+0 
+WL8 
+DAC_COMP 
+ADC_COMP 
+LOOPBACK
+000 
+6 
+06 
+Clock Gen ctrl 
+CLKSEL 
+MCLKDIV 
+BCLKDIV 
+0 
+MS 
+140 
+7 
+07 
+Additional ctrl 
+0 
+0 
+0 
+0 
+0 
+SR 
+SLOWCLKE
+N 
+000 
+8 
+08 
+GPIO 
+0 
+0 
+0 
+OPCLKDIV 
+GPIO1POL
+GPIO1SEL[2:0] 
+000 
+9 
+09 
+Jack detect control 
+JD_VMID 
+JD_EN 
+JD_SEL 
+0 
+0 
+0 
+0 
+000 
+10 
+0A 
+DAC Control 
+0 
+0 
+SOFT 
+MUTE 
+0 
+0 
+DACOSR 
+128 
+AMUTE 
+DACPOLR DACPOLL
+000 
+11 
+0B 
+Left DAC digital Vol 
+DACVU 
+DACVOLL 
+0FF 
+12 
+0C 
+Right DAC dig’l Vol 
+DACVU 
+DACVOLR 
+0FF 
+13 0D 
+Jack Detect Control 
+ 
+JD_EN1 
+JD_EN0 
+000 
+14 
+0E 
+ADC Control 
+HPFEN 
+HPFAPP 
+HPFCUT 
+ADCOSR 
+128 
+0 
+ADCRPOL ADCLPOL
+100 
+15 
+0F 
+Left ADC Digital Vol
+ADCVU 
+ADCVOLL 
+0FF 
+16 
+10 
+Right ADC Digital 
+Vol 
+ADCVU 
+ADCVOLR 
+0FF 
+18 
+12 
+EQ1 – low shelf 
+EQ3DMODE 
+0 
+EQ1C 
+EQ1G 
+12C 
+19 
+13 
+EQ2 – peak 1 
+EQ2BW 
+0 
+EQ2C 
+EQ2G 
+02C 
+20 
+14 
+EQ3 – peak 2 
+EQ3BW 
+0 
+EQ3C 
+EQ3G 
+02C 
+21 
+15 
+EQ4 – peak 3 
+EQ4BW 
+0 
+EQ4C 
+EQ4G 
+02C 
+22 
+16 
+EQ5 – high shelf 
+0 
+0 
+EQ5C 
+EQ5G 
+02C 
+24 
+18 
+DAC Limiter 1 
+LIMEN 
+LIMDCY 
+LIMATK 
+032 
+25 
+19 
+DAC Limiter 2 
+0 
+0 
+LIMLVL 
+LIMBOOST 
+000 
+27 
+1B 
+Notch Filter 1 
+NFU 
+NFEN 
+NFA0[13:7] 
+000 
+28 
+1C 
+Notch Filter 2 
+NFU 
+0 
+NFA0[6:0] 
+000 
+29 
+1D 
+Notch Filter 3 
+NFU 
+0 
+NFA1[13:7] 
+000 
+30 
+1E 
+Notch Filter 4 
+NFU 
+0 
+NFA1[6:0] 
+000 
+32 
+20 
+ALC control 1 
+ALCSEL 
+0 
+ALCMAXGAIN 
+ALCMINGAIN 
+038 
+33 
+21 
+ALC control 2 
+0 
+ALCHLD 
+ALCLVL 
+00B 
+34 
+22 
+ALC control 3 
+ALCMODE 
+ALCDCY 
+ALCATK 
+032 
+35 
+23 
+Noise Gate 
+0 
+0 
+0 
+0 
+0 
+NGEN 
+NGTH 
+000 
+36 
+24 
+PLL N  
+0 
+0 
+0 
+0 
+PLLPRE 
+SCALE 
+PLLN[3:0] 
+008 
+37 
+25 
+PLL K 1 
+0 
+0 
+0 
+PLLK[23:18] 
+00C 
+38 
+26 
+PLL K 2 
+PLLK[17:9] 
+093 
+39 
+27 
+PLL K 3 
+PLLK[8:0] 
+0E9 
+41 
+29 
+3D control 
+0 
+0 
+0 
+0 
+0 
+DEPTH3D 
+000 
+43 
+2B 
+Beep control 
+0 
+0 
+0 
+MUTER 
+PGA2INV 
+INVROUT2
+BEEPVOL 
+BEEPEN 
+000 
+44 
+2C 
+Input ctrl 
+MBVSEL 
+0 
+R2_2 
+INPPGA 
+RIN2 
+INPPGA 
+RIP2 
+INPPGA 
+0 
+L2_2 
+INPPGA 
+LIN2 
+INPPGA 
+LIP2 
+INPPGA 
+033 

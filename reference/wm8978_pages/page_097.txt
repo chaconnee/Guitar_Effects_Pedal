@@ -1,0 +1,160 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+97 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+18 (12h) 
+8 
+EQ3DMODE 
+1 
+0 = Equaliser and 3D Enhancement applied to 
+ADC path 
+1 = Equaliser and 3D Enhancement applied to 
+DAC path 
+Output Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+ 
+6:5 
+EQ1C 
+ 
+EQ Band 1 Cut-off Frequency: 
+00=80Hz 
+01=105Hz 
+10=135Hz 
+11=175Hz 
+Output Signal 
+Path 
+4:0 
+EQ1G 
+01100 
+EQ Band 1 Gain Control. See Table 36 for 
+details. 
+Output Signal 
+Path 
+19 (13h) 
+8 
+EQ2BW 
+0 
+EQ Band 2 Bandwidth Control 
+0=narrow bandwidth 
+1=wide bandwidth 
+Output Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+Output Signal 
+Path 
+6:5 
+EQ2C 
+01 
+EQ Band 2 Centre Frequency: 
+00=230Hz 
+01=300Hz 
+10=385Hz 
+11=500Hz 
+Output Signal 
+Path 
+4:0 
+EQ2G 
+01100 
+EQ Band 2 Gain Control. See Table 36 for 
+details. 
+Output Signal 
+Path 
+20 (14h) 
+8 
+EQ3BW 
+0 
+EQ Band 3 Bandwidth Control 
+0=narrow bandwidth 
+1=wide bandwidth 
+Output Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+Output Signal 
+Path 
+6:5 
+EQ3C 
+01 
+EQ Band 3 Centre Frequency: 
+00=650Hz 
+01=850Hz 
+10=1.1kHz 
+11=1.4kHz 
+Output Signal 
+Path 
+4:0 
+EQ3G 
+01100 
+EQ Band 3 Gain Control. See Table 36 for 
+details. 
+Output Signal 
+Path 
+21 (15h) 
+8 
+EQ4BW 
+0 
+EQ Band 4 Bandwidth Control 
+0=narrow bandwidth 
+1=wide bandwidth 
+Output Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+Output Signal 
+Path 
+6:5 
+EQ4C 
+01 
+EQ Band 4 Centre Frequency: 
+00=1.8kHz 
+01=2.4kHz 
+10=3.2kHz 
+11=4.1kHz 
+Output Signal 
+Path 
+4:0 
+EQ4G 
+01100 
+EQ Band 4 Gain Control. See Table 36 for 
+details. 
+Output Signal 
+Path 
+22 (16h) 
+8:7 
+ 
+0 
+Reserved 
+Output Signal 
+Path 
+6:5 
+EQ5C 
+01 
+EQ Band 5 Cut-off Frequency: 
+00=5.3kHz 
+01=6.9kHz 
+10=9kHz 
+11=11.7kHz 
+Output Signal 
+Path 

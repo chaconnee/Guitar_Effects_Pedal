@@ -1,0 +1,138 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+32 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R14 
+ADC Control 
+ 
+8 
+HPFEN 
+1 
+High Pass Filter Enable 
+0=disabled  
+1=enabled 
+7 
+HPFAPP 
+0 
+Select audio mode or application mode 
+0=Audio mode (1
+st order, fc = ~3.7Hz) 
+1=Application mode (2
+nd order, fc = 
+HPFCUT) 
+6:4 
+HPFCUT 
+000 
+Application mode cut-off frequency 
+See Table 15 for details. 
+Table 14  ADC Enable Control 
+ 
+HPFCUT 
+[2:0] 
+SR=101/100  
+SR=011/010 
+SR=001/000 
+fs (kHz) 
+8 
+11.025 
+12 
+16 
+22.05 
+24 
+32 
+44.1 
+48 
+000 
+82 
+113 
+122 
+82 
+113 
+122 
+82 
+113 
+122 
+001 
+102 
+141 
+153 
+102 
+141 
+153 
+102 
+141 
+153 
+010 
+131 
+180 
+196 
+131 
+180 
+196 
+131 
+180 
+196 
+011 
+163 
+225 
+245 
+163 
+225 
+245 
+163 
+225 
+245 
+100 
+204 
+281 
+306 
+204 
+281 
+306 
+204 
+281 
+306 
+101 
+261 
+360 
+392 
+261 
+360 
+392 
+261 
+360 
+392 
+110 
+327 
+450 
+490 
+327 
+450 
+490 
+327 
+450 
+490 
+111 
+408 
+563 
+612 
+408 
+563 
+612 
+408 
+563 
+612 
+Table 15  High Pass Filter Cut-off Frequencies (HPFAPP=1). Values in Hz. 
+Note that the High Pass filter values (when HPFAPP=1) are calculated with the assumption  that the 
+SR register bits are set correctly for the actual sample rate as shown in Table 15.   

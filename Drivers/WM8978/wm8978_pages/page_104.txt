@@ -1,0 +1,132 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+104 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+6:4 
+R2_2BOOSTVOL 
+000 
+Controls the R2 pin to the right channel input 
+boost stage: 
+000=Path disabled (disconnected) 
+001=-12dB gain through boost stage 
+010=-9dB gain through boost stage 
+… 
+111=+6dB gain through boost stage 
+Input Signal 
+Path 
+3 
+ 
+0 
+Reserved 
+ 
+2:0 
+AUXR2BOOSTVOL 
+000 
+Controls the auxiliary amplifier to the right 
+channel input boost stage: 
+000=Path disabled (disconnected) 
+001=-12dB gain through boost stage 
+010=-9dB gain through boost stage 
+… 
+111=+6dB gain through boost stage 
+Input Signal 
+Path 
+49 (31h) 
+8:7 
+ 
+00 
+Reserved 
+ 
+6 
+DACL2RMIX 
+0 
+Left DAC output to right output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+5 
+DACR2LMIX 
+0 
+Right DAC output to left output mixer 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 
+4 
+OUT4BOOST 
+0 
+0 = OUT4 output gain = -1; 
+      DC = AVDD / 2 
+1 = OUT4 output gain = +1.5 
+      DC = 1.5 x AVDD / 2 
+Analogue 
+Outputs 
+3 
+OUT3BOOST 
+0 
+0 = OUT3 output gain = -1; 
+      DC = AVDD / 2 
+1 = OUT3 output gain = +1.5 
+      DC = 1.5 x AVDD / 2 
+Analogue 
+Outputs 
+2 
+SPKBOOST 
+0 
+0 = speaker gain = -1; 
+      DC = AVDD / 2 
+1 = speaker gain = +1.5; 
+      DC = 1.5 x AVDD / 2 
+Analogue 
+Outputs 
+1 
+TSDEN 
+1 
+Thermal Shutdown Enable 
+0 : thermal shutdown disabled 
+1 : thermal shutdown enabled 
+Analogue 
+Outputs 
+0 
+VROI 
+0 
+VREF (AVDD/2 or 1.5xAVDD/2) to analogue 
+output resistance 
+0: approx 1k 
+1: approx 30 k 
+Analogue 
+Outputs 
+50 (32h) 
+8:6 
+AUXLMIXVOL 
+000 
+Aux left channel input to left mixer volume 
+control: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+Analogue 
+Outputs 
+5 
+AUXL2LMIX 
+0 
+Left Auxiliary input to left channel output mixer: 
+0 = not selected 
+1 = selected 
+Analogue 
+Outputs 

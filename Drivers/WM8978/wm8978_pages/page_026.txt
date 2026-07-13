@@ -1,0 +1,17 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+26 
+ 
+ 
+Figure 10  Simultaneous Left and Right Volume Updates 
+If the volume is adjusted while the signal is a non-zero value, an audible click can occur as shown in 
+Figure 11. 
+ 
+Figure 11  Click Noise During Volume Update 
+In order to prevent this click noise, a zero cross function is provided. When enabled, this will cause 
+the PGA volume to update only when a zero crossing occurs, minimising click noise as shown in 
+Figure 12. 

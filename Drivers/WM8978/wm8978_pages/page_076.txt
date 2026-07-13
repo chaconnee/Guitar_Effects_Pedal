@@ -1,0 +1,68 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+76 
+ 
+ 
+Figure 41  PLL and Clock Select Circuit 
+The PLL frequency ratio R = f2/f1 (see Figure 41) can be set using the register bits PLLK and PLLN: 
+PLLN = int R 
+PLLK = int (2
+24 (R-PLLN)) 
+Note: The PLL is designed to operate with best performance (shortest lock time and optimum 
+stability) when f2 is between 90 and 100MHz and PLL_N is 8. However, acceptable PLL_N values lie 
+in the range 5 ≤ PLL_N ≤ 13. Do not use values outwith this range and it is recommended that the 
+chosen value of PLL_N is as close to 8 as possible for optimum performance. 
+EXAMPLE: 
+MCLK=12MHz, required clock = 12.288MHz. 
+R should be chosen to ensure 5 < PLLN < 13. There is a fixed divide by 4 in the PLL and a selectable 
+divide by N after the PLL which should be set to divide by 2 to meet this requirement.  
+Enabling the divide by 2 sets the required f2 = 4 x 2 x 12.288MHz = 98.304MHz. 
+R = 98.304 / 12 = 8.192 
+PLLN = int R = 8 
+k = int ( 2
+24 x (8.192 – 8)) = 3221225 = 3126E9h 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R36 
+PLL N value 
+4 
+PLLPRESCALE 
+0 
+0 = MCLK input not divided (default) 
+1 = Divide MCLK by 2 before input to 
+PLL 
+3:0 
+PLLN 
+1000 
+Integer (N) part of PLL input/output 
+frequency ratio. Use values greater 
+than 5 and less than 13. 
+R37  
+PLL K value  1 
+5:0 
+PLLK [23:18] 
+0Ch 
+Fractional (K) part of PLL1 
+input/output frequency ratio (treat as 
+one 24-digit binary number).  
+R38 
+PLL K Value 2 
+8:0 
+PLLK [17:9] 
+093h 
+R39 
+PLL K Value 3 
+8:0 
+PLLK [8:0] 
+0E9h 
+Table 57  PLL Frequency Ratio Control 
+The PLL performs best when f2 is around 90MHz. Its stability peaks at N=8. Some example settings 
+are shown in Table 58. 

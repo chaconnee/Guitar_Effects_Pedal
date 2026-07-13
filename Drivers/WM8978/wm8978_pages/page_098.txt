@@ -1,0 +1,104 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+98 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+4:0 
+EQ5G 
+01100 
+EQ Band 5 Gain Control. See Table 36 for 
+details. 
+Output Signal 
+Path 
+24 (18h) 
+8 
+LIMEN 
+0 
+Enable the DAC digital limiter: 
+0=disabled 
+1=enabled 
+Output Signal 
+Path 
+7:4 
+LIMDCY 
+0011 
+DAC Limiter Decay time (per 6dB gain change) 
+for 44.1kHz sampling.  Note that these will scale 
+with sample rate: 
+0000=750us 
+0001=1.5ms 
+0010=3ms 
+0011=6ms 
+0100=12ms 
+0101=24ms 
+0110=48ms 
+0111=96ms 
+1000=192ms 
+1001=384ms 
+1010=768ms 
+Output Signal 
+Path 
+3:0 
+LIMATK 
+0010 
+DAC Limiter Attack time (per 6dB gain change) 
+for 44.1kHz sampling.  Note that these will scale 
+with sample rate. 
+0000=94us 
+0001=188s 
+0010=375us 
+0011=750us 
+0100=1.5ms 
+0101=3ms 
+0110=6ms 
+0111=12ms 
+1000=24ms 
+1001=48ms 
+1010=96ms 
+1011 to 1111=192ms 
+Output Signal 
+Path 
+25 (19h) 
+8:7 
+ 
+00 
+Reserved 
+ 
+6:4 
+LIMLVL 
+000 
+Programmable signal threshold level 
+(determines level at which the DAC limiter starts 
+to operate) 
+000=-1dB 
+001=-2dB 
+010=-3dB 
+011=-4dB 
+100=-5dB 
+101 to 111=-6dB 
+Output Signal 
+Path 
+3:0 
+LIMBOOST 
+0000 
+DAC Limiter volume boost (can be used as a 
+stand alone volume boost when LIMEN=0): 
+0000=0dB 
+0001=+1dB 
+0010=+2dB 
+… (1dB steps) 
+1011=+11dB 
+1100=+12dB 
+1101 to 1111=reserved 
+Output Signal 
+Path 

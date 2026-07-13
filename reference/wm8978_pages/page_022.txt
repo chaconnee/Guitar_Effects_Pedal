@@ -1,0 +1,65 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+22 
+ 
+OUT3 and OUT4 can be configured to provide an additional stereo lineout from the output of the 
+DACs, the mixers or the input microphone boost stages.  Alternatively OUT4 can be configured as a 
+mono mix of left and right DACs or mixers, or simply a buffered version of the chip midrail reference 
+voltage. OUT3 can also be configured as a buffered VMID output.  This voltage may then be used as 
+a headphone ‘pseudo ground’ allowing removal of the large AC coupling capacitors often used in the 
+output path. 
+AUDIO INTERFACES 
+ 
+The WM8978 has a standard audio interface, to support the transmission of stereo data to and from 
+the chip. This interface is a 3 wire standard audio interface which supports a number of audio data 
+formats including I2S, DSP/PCM Mode (a burst mode in which LRC sync plus 2 data packed words 
+are transmitted), MSB-First, left justified and MSB-First, right justified, and can operate in master or 
+slave modes.   
+CONTROL INTERFACES 
+ 
+To allow full software control over all features, the WM8978 offers a choice of 2 or 3 wire control 
+interface. It is fully compatible and an ideal partner for a wide range of industry standard 
+microprocessors, controllers and DSPs. 
+Selection between the modes is via the MODE pin. In 2 wire mode  the address of the device is fixed 
+as 0011010. 
+ 
+CLOCKING SCHEMES 
+ 
+WM8978 offers the normal audio DAC clocking scheme operation, where 256fs MCLK is provided to 
+the DAC and ADC.  
+A PLL is included which may be used to generate these clocks in the event that they are not available 
+from the system controller. This PLL uses an input clock, typically the 12MHz USB or ilink clock, to 
+generate high quality audio clocks.  If this PLL is not required for generation of these clocks, it can be 
+reconfigured to generate alternative clocks which may then be output on the GPIO pins and used 
+elsewhere in the system. 
+ 
+POWER CONTROL 
+ 
+The design of the WM8978 has given much attention to power consumption without compromising 
+performance. It operates at very low voltages, and includes the ability to power off any unused parts 
+of the circuitry under software control, and includes standby and power off modes. 
+ 
+OPERATION SCENARIOS 
+ 
+Flexibility in the design of the WM8978 allows for a wide range of operational scenarios, some of 
+which are proposed below: 
+Multimedia phone; High quality playback to a stereo headset, a mono ear speaker or a loudspeaker is 
+supported, allowing hi-fi playback to be mixed with voice and other analogue inputs while 
+simultaneously transmitting a differential output from the microphone amplifier. A 5-band EQ enables 
+hi-fi playback to be customised to suit the user's preferences and the music style, while 
+programmable filtering allows fixed-frequency noise (e.g. 217Hz) to be reduced in the digital domain.  
+Stereo Camcorder; The provision of two stereo microphone preamplifiers, allows support for both 
+internal and external microphones. All drivers for speaker, headphone and line output connections are 
+integrated. The selectable ‘application filters’ after the ADC provide for features such as ‘wind noise’ 
+reduction, or mechanical noise reducing filters. 
+Stereo Digital still camera recording; Support for digital stereo recording is similar to the camcorder 
+case. But additionally if the DSC supports MP3 playback, and perhaps recording, the ability of the 
+ADCs to support full 48ks/s high quality stereo recording increases device flexibility.   
+Mono Digital still camera; Full control over device functionality, and power control is provided, 
+allowing for the case of mono DSC recording, when half of the ADC and mic and line functionality 
+may be disabled to save power. In the mono case, the single ADC channel of audio data is sent out 
+over the Left channel of the audio interface.  

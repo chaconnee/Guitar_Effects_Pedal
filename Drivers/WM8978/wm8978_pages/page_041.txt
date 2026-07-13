@@ -1,0 +1,143 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+41 
+ 
+LIMITER MODE 
+ALCMODE = 1 (Limiter Mode)
+ALCATK
+tATKLIM
+tATKLIM6dB
+tATKLIM90%
+0000
+22.7µs
+182µs
+1.31ms
+0001
+45.4µS
+363µs
+2.62ms
+0010
+90.8µS
+726µs
+5.23ms
+0011
+182µS
+1.45ms
+10.5ms
+0100
+363µS
+2.91ms
+20.9ms
+0101
+726µS
+5.81ms
+41.8ms
+0110
+1.45ms
+11.6ms
+83.7ms
+0111
+2.9ms
+23.2ms
+167ms
+1000
+5.81ms
+46.5ms
+335ms
+1001
+11.6ms
+93ms
+669ms
+1010
+23.2ms
+186ms
+1.34s
+Attack Time (s)
+ 
+ 
+ALCMODE = 1 (Limiter Mode)
+ALCDCY
+tDCYLIM
+tDCYLIM6dB
+tDCYLIM90%
+0000
+90.8µs
+726µs
+5.23ms
+0001
+182µS
+1.45ms
+10.5ms
+0010
+363µS
+2.91ms
+20.9ms
+0011
+726µS
+5.81ms
+41.8ms
+0100
+1.45ms
+11.6ms
+83.7ms
+0101
+2.91ms
+23.2ms
+167ms
+0110
+5.81ms
+46.5ms
+335ms
+0111
+11.6ms
+93ms
+669ms
+1000
+23.2ms
+186ms
+1.34s
+1001
+46.5ms
+372ms
+2.68s
+1010
+93ms
+744ms
+5.36s
+Attack Time (s)
+ 
+Table 19  ALC Limiter Mode (Attack and Decay times) 
+ 
+ 
+MINIMUM AND MAXIMUM GAIN 
+The ALCMIN and ALCMAX register bits set the minimum/maximum gain value that the PGA can be 
+set to whilst under the control of the ALC. This has no effect on the PGA when ALC is not enabled. 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R32 
+ALC Control 
+1 
+5:3 
+ALCMAX 
+111 
+Set Maximum Gain of PGA 
+2:0 
+ALCMIN 
+000  
+Set minimum gain of PGA 
+Table 20  ALC Max/Min Gain 
+ 
+In normal mode, ALCMAX sets the maximum boost which can be applied to the signal.  In limiter 
+mode, ALCMAX will normally have no effect (assuming the starting gain value is less than the 
+maximum gain specified by ALCMAX) because the maximum gain is set at the starting gain level. 
+ALCMIN sets the minimum gain value which can be applied to the signal.  
+ 

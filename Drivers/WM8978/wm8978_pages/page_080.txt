@@ -1,0 +1,77 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+80 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R8 
+GPIO 
+Control 
+2:0 
+GPIO1SEL 
+000 
+CSB/GPIO1 pin function select: 
+000= input (CSB/jack detection: 
+depending on MODE setting) 
+001= reserved 
+010=Temp ok 
+011=Amute active 
+100=PLL clk o/p 
+101=PLL lock 
+110=logic 0 
+111=logic 1 
+3 
+GPIO1POL 
+0 
+GPIO1 Polarity invert 
+0=Non inverted 
+1=Inverted 
+5:4 
+OPCLKDIV 
+00 
+PLL Output clock division ratio 
+00=divide by 1 
+01=divide by 2 
+10=divide by 3 
+11=divide by 4 
+Table 61 CSB/GPIO Control 
+Note: If MODE is set to 3 wire mode, CSB/GPIO1 shall be used as CSB input irrespective of the 
+GPIO1SEL[2:] bits. 
+Note that SLOWCLKEN must be enabled when using the Jack Detect function. 
+For further details of the Jack detect operation see the OUTPUT SWITCHING section. 
+OUTPUT SWITCHING (JACK DETECT)  
+When the device is operated using a 2-wire interface the CSB/GPIO1 pin can be used as a switch 
+control input to automatically disable one set of outputs and enable another the most common use for 
+this functionality is as jack detect circuitry. The L2/GPIO2 and R2/GPIO3 pins can also be used for 
+this purpose.  
+The GPIO pins have an internal de-bounce circuit when in this mode in order to prevent the output 
+enables from toggling multiple times due to input glitches.  This de-bounce circuit is clocked from a 
+slow clock with period 2
+21 x MCLK and is enabled by the SLOWCLKEN bit.  
+Notes:  
+1. 
+The SLOWCLKEN bit must be enabled for the jack detect circuitry to operate.  
+2. 
+The GPIOPOL bit is not relevant for jack detection, it is the signal detected at the pin which is 
+used 
+Switching on/off of the outputs is fully configurable by the user. Each output, OUT1, OUT2, OUT3 
+and OUT4 has 2 associated enables. OUT1_EN_0, OUT2_EN_0, OUT3_EN_0 and OUT4_EN_0 are 
+the output enable signals which are used if the selected jack detection pin is at logic 0 (after de-
+bounce). OUT1_EN_1, OUT2_EN_1, OUT3_EN_1 and OUT4_EN_1 are the output enable signals 
+which are used if the selected jack detection pin is at logic 1 (after de-bounce). 
+The jack detection enables operate as follows: 
+All OUT_EN signals have an AND function performed with their normal enable signals (in Table 49). 
+When an output is normally enabled at per Table 51, the selected jack detection enable (controlled 
+by selected jack detection pin polarity) is set 0; it will turn the output off. If the normal enable signal is 
+already OFF (0), the jack detection signal will have no effect due to the AND function. 
+During jack detection if the user desires an output to be un-changed whether the jack is in or not, 
+both the JD_EN settings i.e. JD_EN0 and JD_EN1, should be set to 0000. 

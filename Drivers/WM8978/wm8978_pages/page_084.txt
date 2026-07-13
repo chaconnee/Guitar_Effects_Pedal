@@ -1,0 +1,44 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+84 
+ 
+Power-up when using the output 1.5x boost stage: 
+1. 
+Turn on external power supplies. Wait for supply voltage to settle. 
+2. 
+Mute all analogue outputs. 
+3. 
+Enable unused output chosen from L/ROUT2, OUT3 or OUT4. If unused output not available, 
+chose one of these outputs not required at power up. 
+4. 
+Set BUFDCOPEN = 1 and BUFIOEN = 1 in register R1. 
+5. 
+Set SPKBOOST = 1 in register R49. 
+6. 
+Set VMIDSEL[1:0] to required value in register R1. Wait for the VMID supply to settle. *Refer 
+notes 1 and 2. 
+7. 
+Set L/RMIXEN = 1 and DACENL/R = 1 in register R3. 
+8. 
+Set BIASEN = 1 in register R1. 
+9. 
+Set L/ROUT2EN = 1 in register R3. *Note 3. 
+10. Enable other mixers as required. 
+11. Enable other outputs as required. 
+12. Set remaining registers. 
+ 
+Power Down (all cases): 
+2. 
+Mute all analogue outputs. 
+3. 
+Disable Power Management Register 1. R1 = 0x00. 
+4. 
+Disable Power Management Register 2. R2 = 0x00. 
+5. 
+Disable Power Management Register 3. R3 = 0x00. 
+6. 
+Remove external power supplies.  

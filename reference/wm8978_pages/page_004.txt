@@ -1,0 +1,37 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+4 
+ 
+ 
+PIN CONFIGURATION 
+ 
+ 
+ORDERING INFORMATION 
+ORDER CODE 
+TEMPERATURE 
+RANGE 
+PACKAGE 
+MOISTURE 
+SENSITIVITY LEVEL 
+PEAK SOLDERING 
+TEMPERATURE 
+WM8978CGEFL/V 
+-40C to +100C 
+32-lead QFN (5 x 5 mm) 
+(Pb-free) 
+MSL3 
+260
+oC 
+WM8978CGEFL/RV 
+-40C to +100C 
+32-lead QFN (5 x 5 mm) 
+(Pb-free, tape and reel) 
+MSL3 
+260
+oC 
+Note: 
+Reel quantity = 3,500 
