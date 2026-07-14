@@ -1,0 +1,65 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+13 
+ 
+ 
+REGISTER BIT 
+AVDD CURRENT (mA) 
+AVDD=3.3V 
+BUFDCOPEN 
+0.1 
+OUT4MIXEN 
+0.2 
+OUT3MIXEN 
+0.2 
+PLLEN 
+1.2 (with clocks applied) 
+MICBEN 
+0.5 
+BIASEN 
+0.3 
+BUFIOEN 
+0.1 
+VMIDSEL 
+5KΩ = >0.3, less than 0.1 for 75KΩ 300KΩ settings 
+ROUT1EN 
+0.4 
+LOUT1EN 
+0.4 
+BOOSTENR 
+0.2 
+BOOSTENL 
+0.2 
+INPPGAENR 
+0.2 
+INPPGAENL 
+0.2 
+ADCENR 
+2.6 (x64, ADCOSR=0) 
+4.9 ( x128, ADCOSR=1) 
+ADCENL 
+2.6 (x64, ADCOSR=0) 
+4.9 ( x128, ADCOSR=1) 
+OUT4EN 
+0.2 
+OUT3EN 
+0.2 
+LOUT2EN 
+1mA from SPKVDD + 0.2mA from AVDD in 5V mode 
+ROUT2EN 
+1mA from SPKVDD + 0.2mA from AVDD in 5V mode 
+RMIXEN 
+0.2 
+LMIXEN 
+0.2 
+DACENR 
+1.8 (x64, DACOSR=0) 
+1.9 (x128, DACOSR=1) 
+DACENL 
+1.8 (x64, DACOSR=0) 
+1.9 (x128, DACOSR=1) 
+Table 2  AVDD Supply Current (AVDD=3.3V) 

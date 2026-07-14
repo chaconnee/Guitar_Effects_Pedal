@@ -9,8 +9,8 @@ volatile float g_master_volume = 1.0f;
 
 /* ── saved parameters ── */
 static float  amp_drive_val = 0.0f;
-static float  rv_decay_val  = 0.25f;
-static float  rv_mix_val    = 0.2f;
+static float  rv_decay_val  = 0.95f;
+static float  rv_mix_val    = 0.5f;
 static float  rv_tone_val   = 0.5f;
 static uint8_t cab_ir_idx   = 0;
 
@@ -23,7 +23,6 @@ typedef enum {
 
 static State_t   state       = ST_MAIN;
 static uint8_t   subpage     = 0;
-static bool      caught      = true;
 static uint32_t  led_timer   = 0;
 static uint8_t   led_on      = 0;
 static uint8_t   chain_pos   = 0;
@@ -55,7 +54,7 @@ static void LED_Update(void)
         return;
     }
 
-    period = caught ? (state == ST_AMP ? 1000 : state == ST_CAB ? 600 : 350) : 200;
+    period = (state == ST_AMP ? 1000 : state == ST_CAB ? 600 : 350);
     if (now - led_timer >= period / 2)
     {
         led_timer = now;
@@ -76,7 +75,7 @@ static bool Btn_Rise(GPIO_PinState *last, GPIO_PinState now)
 /* ── enter / exit ── */
 static void EnterState(State_t s, uint8_t sub)
 {
-    state = s; subpage = sub; caught = false;
+    state = s; subpage = sub;
 }
 
 static void ExitState(void)
@@ -85,14 +84,7 @@ static void ExitState(void)
     reverb_effect.set_param(&reverb_effect, 0, rv_decay_val);
     reverb_effect.set_param(&reverb_effect, 1, rv_mix_val);
     reverb_effect.set_param(&reverb_effect, 2, rv_tone_val);
-    state = ST_MAIN; caught = true;
-}
-
-/* ── pot catch-up ── */
-static bool PotCatch(float pot, float target)
-{
-    if (fabsf(pot - target) < 0.03f) { caught = true; return true; }
-    return false;
+    state = ST_MAIN;
 }
 
 /* ── init ── */
@@ -106,7 +98,7 @@ void ModeCtrl_Init(void)
 }
 
 /* ── poll ── */
-void ModeCtrl_Poll(float pot_value)
+void ModeCtrl_Poll(int16_t enc_delta)
 {
     static GPIO_PinState pb0_last = GPIO_PIN_SET;
     static GPIO_PinState pb1_last = GPIO_PIN_SET;
@@ -114,29 +106,30 @@ void ModeCtrl_Poll(float pot_value)
     static GPIO_PinState pa7_last = GPIO_PIN_SET;
     static uint32_t debounce = 0;
 
-    /* 1. pot */
+    /* 1. encoder delta → parameter */
+    float step = (float)enc_delta * 0.005f;
+    float val;
+
     switch (state)
     {
     case ST_MAIN:
     case ST_CAB:
-        g_master_volume = pot_value;
+        val = g_master_volume + step;
+        if (val < 0.0f) val = 0.0f;
+        if (val > 1.0f) val = 1.0f;
+        g_master_volume = val;
         break;
     case ST_AMP:
-        if (caught) { amp_drive_val = pot_value; amp_sim_effect.set_param(&amp_sim_effect, 0, pot_value); }
-        else PotCatch(pot_value, amp_drive_val);
+        val = amp_drive_val + step;
+        if (val < 0.0f) val = 0.0f;
+        if (val > 1.0f) val = 1.0f;
+        amp_drive_val = val;
+        amp_sim_effect.set_param(&amp_sim_effect, 0, val);
         break;
     case ST_RVB:
-        if (caught)
-        {
-            if (subpage == 0) { rv_decay_val = pot_value; reverb_effect.set_param(&reverb_effect, 0, pot_value); }
-            if (subpage == 1) { rv_mix_val   = pot_value; reverb_effect.set_param(&reverb_effect, 1, pot_value); }
-            if (subpage == 2) { rv_tone_val  = pot_value; reverb_effect.set_param(&reverb_effect, 2, pot_value); }
-        }
-        else
-        {
-            float tgt = subpage == 0 ? rv_decay_val : subpage == 1 ? rv_mix_val : rv_tone_val;
-            PotCatch(pot_value, tgt);
-        }
+        if (subpage == 0) { val = rv_decay_val + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_decay_val = val; reverb_effect.set_param(&reverb_effect, 0, val); }
+        if (subpage == 1) { val = rv_mix_val   + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_mix_val   = val; reverb_effect.set_param(&reverb_effect, 1, val); }
+        if (subpage == 2) { val = rv_tone_val  + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_tone_val  = val; reverb_effect.set_param(&reverb_effect, 2, val); }
         break;
     }
 
@@ -147,10 +140,10 @@ void ModeCtrl_Poll(float pot_value)
     if (HAL_GetTick() - debounce < 100) return;
     debounce = HAL_GetTick();
 
-    GPIO_PinState pb0 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-    GPIO_PinState pb1 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1);
-    GPIO_PinState pa1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-    GPIO_PinState pa7 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+    GPIO_PinState pb0 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14);
+    GPIO_PinState pb1 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8);
+    GPIO_PinState pa1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_15);
+    GPIO_PinState pa7 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
 
     /* ── PB1: bypass toggle (MAIN=highlighted, mode=specific) ── */
     if (Btn_Rise(&pb1_last, pb1))
@@ -206,7 +199,6 @@ void ModeCtrl_Poll(float pot_value)
             break;
         case ST_RVB:
             subpage = (subpage + 1) % 3;
-            caught = false;
             break;
         }
     }

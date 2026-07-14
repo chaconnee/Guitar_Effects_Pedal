@@ -1,0 +1,93 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+61 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R54 
+LOUT2 (SPK) 
+Volume 
+control 
+7 
+LOUT2ZC 
+0 
+Speaker volume zero cross enable: 
+1 = Change gain on zero cross only 
+0 = Change gain immediately 
+6 
+LOUT2MUTE 
+0 
+Left speaker output mute: 
+0 = Normal operation 
+1 = Mute 
+5:0 
+LOUT2VOL 
+111001 
+Left speaker output volume: 
+000000 = -57dB 
+... 
+111001 = 0dB 
+... 
+111111 = +6dB 
+8 
+SPKVU 
+Not latched 
+LOUT2 and ROUT2 volumes do not 
+update until a 1 is written to SPKVU 
+(in reg 54 or 55) 
+R55 
+ROUT2 (SPK) 
+Volume 
+control 
+7 
+ROUT2ZC 
+0 
+Speaker volume zero cross enable: 
+1 = Change gain on zero cross only 
+0 = Change gain immediately 
+6 
+ROUT2MUTE 
+0 
+Right speaker output mute: 
+0 = Normal operation 
+1 = Mute 
+5:0 
+ROUT2VOL 
+111001 
+Right speaker output volume: 
+000000 = -57dB 
+... 
+111001 = 0dB 
+... 
+111111 = +6dB 
+8 
+SPKVU 
+Not latched 
+LOUT2 and ROUT2 volumes do not 
+update until a 1 is written to SPKVU 
+(in reg 54 or 55) 
+Table 40  Speaker Volume Control 
+The signal output on LOUT2/ROUT2 comes from the Left/Right Mixer circuits and can be any 
+combination of the DAC output, the Bypass path (output of the input boost stage) and the AUX input.  
+The LOUT2/ROUT2 volume is controlled by the LOUT2VOL/ ROUT2VOL register bits. Gains over 
+0dB may cause clipping if the signal is large.  The LOUT2MUTE/ ROUT2MUTE register bits cause 
+the speaker outputs to be muted (the output DC level is driven out). The output pins remain at the 
+same DC level (DCOP), so that no click noise is produced when muting or un-muting 
+The speaker output stages also have a selectable gain boost of 1.5x (3.52dB).  When this boost is 
+enabled the output DC level is also level shifted (from AVDD/2 to 1.5xAVDD/2) to prevent the signal 
+from clipping.  A dedicated amplifier BUFDCOP, as shown in Figure 30, is used to perform the DC 
+level shift operation.  This buffer must be enabled using the BUFDCOPEN register bit for this 
+operating mode. It should also be noted that if SPKVDD is not equal to or greater than 1.5xAVDD this 
+boost mode may result in signals clipping.  Table 42 summarises the effect of the SPKBOOST 
+control bits.  
+Note: When boost mode is selected, it is necessary to set LOUT2MUTE (R54[6]) and ROUT2MUTE 
+(R55[6]) bits for either output to be muted. 

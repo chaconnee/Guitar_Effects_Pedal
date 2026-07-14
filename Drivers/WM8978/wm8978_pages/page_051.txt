@@ -1,0 +1,82 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+51 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R24 
+DAC digital 
+limiter control 
+1 
+3:0 
+LIMATK 
+ 
+0010 
+Limiter Attack time (per 6dB gain 
+change) for 44.1kHz sampling.  Note 
+that these will scale proportionally with 
+sample rate. 
+0000=94us 
+0001=188s 
+0010=375us 
+0011=750us 
+0100=1.5ms 
+0101=3ms 
+0110=6ms 
+0111=12ms 
+1000=24ms 
+1001=48ms 
+1010=96ms 
+1011 to 1111=192ms 
+7:4 
+LIMDCY 
+0011 
+Limiter Decay time (per 6dB gain 
+change) for 44.1kHz sampling.  Note 
+that these will scale proportionally with 
+sample rate: 
+0000=750us 
+0001=1.5ms 
+0010=3ms 
+0011=6ms 
+0100=12ms 
+0101=24ms 
+0110=48ms 
+0111=96ms 
+1000=192ms 
+1001=384ms 
+1010=768ms 
+ 
+1011 to 1111=1.536s 
+8 
+LIMEN 
+0 
+Enable the DAC digital limiter: 
+0=disabled 
+1=enabled 
+R25 
+DAC digital 
+limiter control 
+2 
+3:0 
+LIMBOOST 
+0000 
+Limiter volume boost (can be used as a 
+stand alone volume boost when 
+LIMEN=0): 
+0000=0dB 
+0001=+1dB 
+0010=+2dB 
+… (1dB steps) 
+1011=+11dB 
+1100=+12dB 
+1101 to 1111=reserved 

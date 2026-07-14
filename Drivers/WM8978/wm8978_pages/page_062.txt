@@ -1,0 +1,109 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+62 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R49 
+Output control 
+2 
+SPKBOOST 
+0 
+0 = speaker gain = -1; 
+      DC = AVDD / 2 
+1 = speaker gain = +1.5; 
+      DC = 1.5 x AVDD / 2 
+R1 
+Power 
+management 
+1 
+8 
+BUFDCOPEN 
+0 
+Dedicated buffer for DC level shifting 
+output stages when in 1.5x gain 
+boost configuration. 
+0=Buffer disabled 
+1=Buffer enabled (required for 1.5x 
+gain boost) 
+Table 41  Speaker Boost Stage Control 
+SPKBOOST 
+OUTPUT 
+STAGE GAIN 
+OUTPUT DC  
+LEVEL 
+OUTPUT STAGE 
+CONFIGURATION 
+0 
+1x (0dB) 
+AVDD/2 
+Inverting 
+1 
+1.5x (3.52dB)  
+1.5xAVDD/2 
+Non-inverting 
+Table 42  Output Boost Stage Details 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R43 
+Beep control 
+5 
+MUTERPGA2INV 
+0 
+Mute input to INVROUT2 mixer 
+4 
+INVROUT2 
+0 
+Invert ROUT2 output 
+3:1 
+BEEPVOL 
+000 
+AUXR input to ROUT2 inverter gain 
+000 = -15dB 
+... 
+111 = +6dB 
+0 
+BEEPEN 
+0 
+0 = mute AUXR beep input 
+1 = enable AUXR beep input 
+Table 43  AUXR – ROUT2 BEEP Mixer Function 
+ 
+ZERO CROSS TIMEOUT 
+A zero-cross timeout function is also provided so that if zero cross is enabled on the input or output 
+PGAs the gain will automatically update after a timeout period if a zero cross has not occurred. This 
+is enabled by setting SLOWCLKEN. The timeout period is dependent on the clock input to the digital 
+and is equal to 2
+21 * input clock period.  
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R7 
+Additional 
+Control 
+0 
+SLOWCLKEN 
+0 
+Slow clock enable.  Used for both the 
+jack insert detect debounce circuit and 
+the zero cross timeout. 
+0 = slow clock disabled 
+1 = slow clock enabled 
+Table 44 Timeout Clock Enable Control 

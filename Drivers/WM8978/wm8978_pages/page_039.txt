@@ -1,0 +1,40 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+39 
+ 
+LIMITER MODE 
+In limiter mode, the ALC will reduce peaks that go above the threshold level, but will not increase the 
+PGA gain beyond the starting level.  The starting level is the PGA gain setting when the ALC is 
+enabled in limiter mode.  If the ALC is started in limiter mode, this is the gain setting of the PGA at 
+start-up.  If the ALC is switched into limiter mode after running in ALC mode, the starting gain will be 
+the gain at switchover.  The diagram below shows an example of limiter mode. 
+ 
+ 
+Figure 18  ALC Limiter Mode Operation 
+ALC LIMITER MODE INITIALISATION SEQUENCE 
+In order to properly initialise the ALC function, the following sequence of register writes is required: 
+1. 
+Set INPPGAVOLL to the required input PGA gain (R45[5:0]). 
+2. 
+Set INPPGAVOLR to the required input PGA gain (R46[5:0]). 
+3. 
+Enable analogue inputs (R44[2:0]) as required. 
+4. 
+Disable input PGA – set INPPGAENR (R2[3] =0) and INPPGAENL (R2[2] =0). 
+5. 
+Set ALCMAXGAIN (R32[5:3]) and ALCMINGAIN (R32[2:0]) to the required level for 
+operation. 
+6. 
+Set ALCLVL (R33[3:0]) to the required level for operation.  
+7. 
+Set R34 to 0x000. 
+8. 
+Wait for 1ms to allow the input PGA gain to update by the limiter circuit. 
+9. 
+Enable Limiter mode (R34[8]=1). 
+10. Wait for 1ms to allow the input PGA gain to update by the limiter circuit. 
+11. Enable input PGA – set INPPGAENR (R2[3] =1) and INPPGAENL (R2[2] =1). 

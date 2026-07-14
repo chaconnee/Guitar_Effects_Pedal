@@ -1,0 +1,99 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+85 
+ 
+Notes: 
+1. 
+This step enables the internal device bias buffer and the VMID buffer for unassigned 
+inputs/outputs. This will provide a startup reference voltage for all inputs and outputs. This will 
+cause the inputs and outputs to ramp towards VMID (NOT using output 1.5x boost) or 1.5 x 
+(AVDD/2) (using output 1.5x boost) in a way that is controlled and predictable (see note 2). 
+2. 
+Choose the value of the VMIDSEL bits based on the startup time (VMIDSEL=10 for slowest 
+startup, VMIDSEL=11 for fastest startup). Startup time is defined by the value of the VMIDSEL 
+bits (the reference impedance) and the external decoupling capacitor on VMID.  
+3. 
+Setting DACEN to off while operating in x1.5 boost mode will cause the VMID voltage to drop to 
+AVDD/2 midrail level and cause an output pop.  
+In addition to the power on sequence, it is recommended that the zero cross functions are used when 
+changing the volume in the PGAs to avoid any audible pops or clicks. 
+Vpora
+DGND
+Internal POR active
+Device Ready
+No Power
+Vpor_off
+Power Supply
+POR
+I2S Clocks
+ADC Internal
+State
+tmidrail_on
+Analogue Inputs
+ADCDAT pin
+GD
+ADCEN bit
+Power down
+Init
+Normal Operation
+Normal Operation
+Init
+PD
+Power down
+ADC enabled
+ADC enabled
+ADC off
+tadcint
+DNC
+INPPGAEN bit
+tadcint
+INPPGA enabled
+DNC
+GD
+GD
+GD
+POR
+POR Undefined
+VMID enabled
+VMIDSEL/
+BIASEN bits
+AVDD/2
+tmidrail_off
+(Note 1)
+(Note 2)
+(Note 3)
+(Note 4)
+Vpor_on
+ 
+Figure 46 ADC Power Up and Down Sequence (not to scale) 
+ 
+SYMBOL 
+MIN 
+TYPICAL 
+MAX 
+UNIT 
+tmidrail_on 
+ 
+500 
+ 
+ms 
+tmidrail_off 
+ 
+>10 
+ 
+s 
+tadcint 
+ 
+2/fs 
+ 
+n/fs 
+ADC Group Delay 
+ 
+29/fs 
+ 
+n/fs 
+Table 64  Typical POR Operation (typical simulated values) 

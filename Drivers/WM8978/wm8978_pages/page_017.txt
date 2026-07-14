@@ -1,0 +1,82 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+17 
+ 
+CONTROL INTERFACE TIMING – 3-WIRE MODE 
+Figure 4 Control Interface Timing – 3-Wire Serial Control Mode 
+Test Conditions 
+DCVDD = 1.8V, DBVDD = AVDD = SPKVDD = 3.3V, DGND = AGND = SPKGND = 0V, TA=+25
+oC, Slave Mode, fs=48kHz, 
+MCLK = 256fs, 24-bit data, unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+MIN 
+TYP 
+MAX 
+UNIT 
+Program Register Input Information 
+SCLK rising edge to CSB rising edge 
+tSCS 
+80 
+ 
+ 
+ns 
+SCLK pulse cycle time 
+tSCY 
+200 
+ 
+ 
+ns 
+SCLK pulse width low 
+tSCL 
+80 
+ 
+ 
+ns 
+SCLK pulse width high 
+tSCH 
+80 
+ 
+ 
+ns 
+SDIN to SCLK set-up time 
+tDSU 
+40 
+ 
+ 
+ns 
+SCLK to SDIN hold time 
+tDHO 
+40 
+ 
+ 
+ns 
+CSB pulse width low 
+tCSL 
+40 
+ 
+ 
+ns 
+CSB pulse width high 
+tCSH 
+40 
+ 
+ 
+ns 
+CSB rising to SCLK rising  
+tCSS 
+40 
+ 
+ 
+ns 
+Pulse width of spikes that will be suppressed 
+tps 
+0 
+ 
+5 
+ns 
+ 

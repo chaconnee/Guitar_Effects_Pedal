@@ -1,0 +1,53 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+15 
+ 
+ 
+SIGNAL TIMING REQUIREMENTS 
+SYSTEM CLOCK TIMING 
+MCLK
+tMCLKL
+tMCLKH
+tMCLKY
+ 
+Figure 1 System Clock Timing Requirements 
+Test Conditions 
+DCVDD=1.8V, DBVDD=AVDD=SPKVDD=3.3V, DGND=AGND=SPKGND=0V, TA = +25
+oC 
+PARAMETER 
+SYMBOL 
+CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+System Clock Timing Information 
+MCLK cycle time 
+TMCLKY 
+MCLK=SYSCLK (=256fs) 
+81.38 
+ 
+ 
+ns 
+MCLK input to PLL
+ Note 1 
+20 
+ 
+ 
+ns 
+MCLK duty cycle 
+TMCLKDS 
+ 
+60:40 
+ 
+40:60 
+ 
+Note 1:  
+PLL pre-scaling and PLL N and K values should be set appropriately so that SYSCLK is no greater than 12.288MHz. 
+ 
+AUDIO INTERFACE TIMING – MASTER MODE 
+Figure 2 Digital Audio Data Timing – Master Mode (see Control Interface) 

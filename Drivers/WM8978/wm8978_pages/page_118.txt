@@ -1,0 +1,26 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+118 
+ 
+REVISION HISTORY 
+ 
+DATE 
+REV 
+ORIGINATOR 
+CHANGES 
+26/09/11 
+4.5 
+JMacD 
+Order codes changed from WM8978GEFL/V and WM8978GEFL/RV to 
+WM8978CGEFL/V and WM8978CGEFL/RV to reflect change to copper wire 
+bonding. 
+26/09/11 
+4.5 
+JMacD 
+Package Diagram changed to DM101.A 
+ 
+ 

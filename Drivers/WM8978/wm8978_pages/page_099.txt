@@ -1,0 +1,150 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+99 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+27 (1Bh) 
+8 
+NFU 
+0 
+Notch filter update.  The notch filter values used 
+internally only update when one of  the NFU bits 
+is set high. 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7 
+NFEN 
+0 
+Notch filter enable: 
+0=Disabled 
+1=Enabled 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+6:0 
+NFA0[13:7] 
+0000000 
+Notch Filter a0 coefficient, bits [13:7] 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+28 (1Ch) 
+8 
+NFU 
+0 
+Notch filter update.  The notch filter values used 
+internally only update when one of  the NFU bits 
+is set high. 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7 
+ 
+0 
+Reserved 
+ 
+6:0 
+NFA0[6:0] 
+0000000 
+Notch Filter a0 coefficient, bits [6:0] 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+29 (1Dh) 
+8 
+NFU 
+0 
+Notch filter update.  The notch filter values used 
+internally only update when one of  the NFU bits 
+is set high. 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7 
+ 
+0 
+Reserved 
+ 
+6:0 
+NFA1[13:7] 
+0000000 
+Notch Filter a1 coefficient, bits [13:7] 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+30 (1Eh) 
+8 
+NFU 
+0 
+Notch filter update.  The notch filter values used 
+internally only update when one of  the NFU bits 
+is set high. 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7 
+ 
+0 
+Reserved 
+ 
+6:0 
+NFA1[6:0] 
+0000000 
+Notch Filter a1 coefficient, bits [6:0] 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+32 (20h) 
+8:7 
+ALCSEL 
+00 
+ALC function select: 
+00=ALC off 
+01=ALC right only 
+10=ALC left only 
+11=ALC both on 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+6 
+ 
+0 
+Reserved 
+ 
+5:3 
+ALCMAXGAIN 
+111 
+Set Maximum Gain of PGA 
+111=+35.25dB 
+110=+29.25dB 
+101=+23.25dB 
+100=+17.25dB 
+011=+11.25dB 
+010=+5.25dB 
+001=-0.75dB 
+000=-6.75dB 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 

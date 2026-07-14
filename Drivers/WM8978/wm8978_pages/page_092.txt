@@ -1,0 +1,142 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+92 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+2 
+INPPGAENL 
+0 
+Left channel input PGA enable 
+0 = disabled 
+1 = enabled 
+Power 
+Management 
+1 
+ADCENR 
+0 
+Enable ADC right channel: 
+0 = ADC disabled 
+1 = ADC enabled 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+0 
+ADCENL 
+0 
+Enable ADC left channel: 
+0 = ADC disabled 
+1 = ADC enabled 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+3 (03h) 
+8 
+OUT4EN 
+0 
+OUT4 enable 
+0 = disabled 
+1 = enabled 
+Power 
+Management 
+7 
+OUT3EN 
+0 
+OUT3 enable 
+0 = disabled 
+1 = enabled 
+Power 
+Management 
+6 
+LOUT2EN 
+0 
+LOUT2 enable 
+0 = disabled 
+1 = enabled 
+Power 
+Management 
+5 
+ROUT2EN 
+0 
+ROUT2 enable 
+0 = disabled 
+1 = enabled 
+Power 
+Management 
+3 
+RMIXEN 
+0 
+Right output channel mixer enable: 
+0 = disabled 
+1 = enabled 
+Analogue 
+Outputs 
+2 
+LMIXEN 
+0 
+Left output channel mixer enable: 
+0 = disabled 
+1 = enabled 
+Analogue 
+Outputs 
+1 
+DACENR 
+0 
+Right channel DAC enable 
+0 = DAC disabled 
+1 = DAC enabled 
+Analogue 
+Outputs 
+0 
+DACENL 
+0 
+Left channel DAC enable 
+0 = DAC disabled 
+1 = DAC enabled 
+Analogue 
+Outputs 
+4 (04h) 
+8 
+BCP 
+0 
+BCLK polarity 
+0=normal 
+1=inverted 
+Digital Audio 
+Interfaces 
+7 
+LRP 
+0 
+right, left and i2s modes – LRCLK polarity 
+1 = invert LRCLK polarity 
+0 = normal LRCLK polarity 
+Digital Audio 
+Interfaces 
+DSP Mode – mode A/B select 
+1 = MSB is available o
+n 1st BCLK rising edge 
+after LRC rising edge (mode B) 
+0 = MSB is available o
+n 2nd BCLK rising edge 
+after LRC rising edge (mode A) 
+6:5 
+WL 
+10 
+Word length 
+00=16 bits 
+01=20 bits 
+10=24 bits 
+11=32 bits 
+Digital Audio 
+Interfaces 

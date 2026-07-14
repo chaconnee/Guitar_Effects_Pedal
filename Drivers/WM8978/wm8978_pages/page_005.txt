@@ -1,0 +1,147 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+5 
+ 
+PIN DESCRIPTION 
+PIN  
+NAME 
+TYPE 
+DESCRIPTION 
+1 
+LIP 
+Analogue input 
+Left Mic Pre-amp positive input 
+2 
+LIN 
+Analogue input 
+Left Mic Pre-amp negative input 
+3 
+L2/GPIO2 
+Analogue input 
+Left channel line input/secondary mic pre-amp positive input/GPIO2 pin 
+4 
+RIP 
+Analogue input 
+Right Mic Pre-amp positive input 
+5 
+RIN 
+Analogue input 
+Right Mic Pre-amp negative input 
+6 
+R2/GPIO3 
+Analogue input 
+Right channel line input/secondary mic pre-amp positive input/GPIO3 pin 
+7 
+LRC 
+Digital Input / Output 
+DAC and ADC Sample Rate Clock 
+8 
+BCLK 
+Digital Input / Output 
+Digital Audio Port Clock 
+9 
+ADCDAT 
+Digital Output 
+ADC Digital Audio Data Output 
+10 
+DACDAT 
+Digital Input 
+DAC Digital Audio Data Input 
+11 
+MCLK 
+Digital Input 
+Master Clock Input 
+12 
+DGND 
+Supply 
+Digital ground  
+13 
+DCVDD 
+Supply 
+Digital core logic supply  
+14 
+DBVDD 
+Supply 
+Digital buffer (I/O) supply  
+15 
+CSB/GPIO1 
+Digital Input / Output 
+3-Wire Control Interface Chip Select / GPIO1 pin 
+16 
+SCLK 
+Digital Input 
+3-Wire Control Interface Clock Input / 2-Wire Control Interface Clock 
+Input 
+17 
+SDIN 
+Digital Input / Output 
+3-Wire Control Interface Data Input / 2-Wire Control Interface Data Input 
+18 
+MODE 
+Digital Input 
+Control Interface Selection 
+19 
+AUXL 
+Analogue input 
+Left Auxillary input 
+20 
+AUXR 
+Analogue input 
+Right Auxillary input 
+21 
+OUT4 
+Analogue Output 
+Buffered midrail Headphone pseudo-ground, or Right line output or MONO 
+mix output 
+22 
+OUT3 
+Analogue Output 
+Buffered midrail Headphone pseudo-ground, or Left line output 
+23 
+ROUT2 
+Analogue Output 
+Second right output, or BTL speaker driver positive output 
+24 
+SPKGND 
+Supply 
+Speaker ground (feeds speaker amp and OUT3/OUT4) 
+25 
+LOUT2 
+Analogue Output 
+Second left output, or BTL speaker driver negative output 
+26 
+SPKVDD 
+Supply 
+Speaker supply (feed speaker amp only) 
+27 
+VMID 
+Reference 
+Decoupling for ADC and DAC reference voltage 
+28 
+AGND 
+Supply 
+Analogue ground (feeds ADC and DAC) 
+29 
+ROUT1 
+Analogue Output 
+Headphone or Line Output Right 
+30 
+LOUT1 
+Analogue Output 
+Headphone or Line Output Left 
+31 
+AVDD 
+Supply 
+Analogue supply (feeds ADC and DAC) 
+32 
+MICBIAS 
+Analogue Output 
+Microphone Bias 
+ 
+Note: 
+It is recommended that the QFN ground paddle should be connected to analogue ground on the application PCB. Refer to 
+the application note WAN_0118 on “Guidelines on How to Use QFN Packages and Create Associated PCB Footprints”. 

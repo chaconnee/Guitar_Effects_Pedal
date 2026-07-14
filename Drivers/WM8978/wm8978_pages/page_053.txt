@@ -1,0 +1,121 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+53 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R20 
+EQ Band 3 
+Control 
+4:0 
+EQ3G 
+ 
+01100 
+(0dB) 
+Band 3 Gain Control. See Table 36 for 
+details. 
+6:5 
+EQ3C 
+ 
+01 
+Band 3 Centre Frequency: 
+00=650Hz 
+01=850Hz 
+10=1.1kHz 
+11=1.4kHz 
+8 
+EQ3BW 
+0 
+Band 3 Bandwidth Control 
+0=narrow bandwidth 
+1=wide bandwidth 
+Table 33  EQ Band 3 Control  
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R21 
+EQ Band 4 
+Control 
+4:0 
+EQ4G 
+ 
+01100 
+(0dB) 
+Band 4 Gain Control. See Table 36 for 
+details 
+6:5 
+EQ4C 
+ 
+01 
+Band 4 Centre Frequency: 
+00=1.8kHz 
+01=2.4kHz 
+10=3.2kHz 
+11=4.1kHz 
+8 
+EQ4BW 
+0 
+Band 4 Bandwidth Control 
+0=narrow bandwidth 
+1=wide bandwidth 
+Table 34  EQ Band 4 Control  
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R22 
+EQ Band 5 
+Gain Control 
+4:0 
+EQ5G 
+ 
+01100 
+(0dB) 
+Band 5 Gain Control. See Table 36 for 
+details. 
+6:5 
+EQ5C 
+ 
+01 
+Band 5 Cut-off Frequency: 
+00=5.3kHz 
+01=6.9kHz 
+10=9kHz 
+11=11.7kHz 
+Table 35  EQ Band 5 Control  
+ 
+GAIN REGISTER 
+GAIN 
+00000 
++12dB 
+00001 
++11dB 
+00010 
++10dB 
+…. (1dB steps) 
+ 
+01100 
+0dB 
+01101 
+-1dB 
+11000 
+-12dB 
+11001 to 11111 
+Reserved 
+Table 36  Gain Register Table 

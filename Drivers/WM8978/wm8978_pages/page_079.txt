@@ -1,0 +1,90 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+79 
+ 
+u-law Companding 
+0
+20
+40
+60
+80
+100
+120
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Normalised Input
+Companded Output
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Normalised Output
+ 
+Figure 42  u-Law Companding  
+ 
+A-law Companding
+0
+20
+40
+60
+80
+100
+120
+0
+0.2
+0.4
+0.6
+0.8
+1
+Normalised Input
+Companded Output
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Normalised Output
+ 
+Figure 43  A-Law Companding  
+ 
+GENERAL PURPOSE INPUT/OUTPUT 
+The WM8978 has three dual purpose input/output pins. 
+ 
+CSB/GPIO1: CSB / GPIO pin 
+ 
+L2/GPIO2: Left channel line input / headphone detection input 
+ 
+R2/GPIO3: Right channel line input / headphone detection input 
+The GPIO2 and GPIO3 functions are provided for use as jack detection inputs. 
+The GPIO1 function is provided for use as a jack detection input or a general purpose output. 
+The default configuration for the CSB/GPIO1 pin is to be an input. 
+When setup as an input, the CSB/GPIO1 pin can either be used as CSB or for jack detection, 
+depending on how the MODE pin is set.  
+Table 49 illustrates the functionality of the GPIO1 pin when used as a general purpose output.  
+ 

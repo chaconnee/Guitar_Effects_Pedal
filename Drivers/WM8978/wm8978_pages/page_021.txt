@@ -1,0 +1,60 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+21 
+ 
+DEVICE DESCRIPTION 
+INTRODUCTION 
+The WM8978 is a low power audio CODEC combining a high quality stereo audio DAC and ADC, with 
+flexible line and microphone input and output processing. Applications for this device include 
+multimedia phones, stereo digital camcorders, and digital still cameras with either mono or stereo 
+record and playback capability. 
+FEATURES 
+ 
+The chip offers great flexibility in use, and so can support many different modes of operation as 
+follows: 
+MICROPHONE INPUTS 
+ 
+Two pairs of stereo microphone inputs are provided, allowing a pair of stereo microphones to be 
+pseudo-differentially connected, with user defined gain using internal resistors. The provision of the 
+common mode input pin for each stereo input allows for rejection of common mode noise on the 
+microphone inputs (level depends on gain setting chosen). A microphone bias is output from the chip 
+which can be used to bias both microphones. The signal routing can be configured to allow manual 
+adjustment of mic levels, or to allow the ALC loop to control the level of mic signal that is transmitted. 
+Total gain through the microphone paths of up to +55.25dB can be selected. 
+PGA AND ALC OPERATION 
+ 
+A programmable gain amplifier is provided in the input path to the ADC. This may be used manually 
+or in conjunction with a mixed analogue/digital automatic level control (ALC) which keeps the 
+recording volume constant.  
+LINE INPUTS (AUXL, AUXR) 
+ 
+The inputs, AUXL and AUXR, can be used as a stereo line input or as an input for warning tones (or 
+‘beeps’) etc. These inputs can be summed into the record paths, along with the microphone preamp 
+outputs, so allowing for mixing of audio with ‘backing music’ etc as required. 
+ADC 
+ 
+The stereo ADC uses a 24-bit delta sigma oversampling architecture to deliver optimum performance 
+with low power consumption. 
+HI-FI DAC 
+ 
+The hi-fi DAC provides high quality audio playback suitable for all portable audio hi-fi type 
+applications, including MP3 players and portable disc players of all types. 
+OUTPUT MIXERS 
+ 
+Flexible mixing is provided on the outputs of the device. A stereo mixer is provided for the stereo 
+headphone or line outputs, LOUT1/ROUT1, and additional summers on the OUT3/OUT4 outputs 
+allow for an optional differential or stereo line output on these pins. Gain adjustment PGAs are 
+provided for the LOUT1/ROUT1 and LOUT2/ROUT2 outputs, and signal switching is provided to allow 
+for all possible signal combinations. The output buffers can be configured in several ways, allowing 
+support of up to three sets of external transducers; ie stereo headphone, BTL speaker, and BTL 
+earpiece may be connected simultaneously. Thermal implications should be considered before 
+simultaneous full power operation of all outputs is attempted. 
+Alternatively, if a speaker output is not required, the LOUT2 and ROUT2 pins might be used as a 
+stereo headphone driver, (disable output invert buffer on ROUT2). In that case two sets of 
+headphones might be driven, or the LOUT2 and ROUT2 pins used as a line output driver. 
+ 
+ 

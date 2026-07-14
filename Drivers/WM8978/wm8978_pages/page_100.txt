@@ -1,0 +1,160 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+100 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+2:0 
+ALCMINGAIN 
+000  
+Set minimum gain of PGA 
+000=-12dB 
+001=-6dB 
+010=0dB 
+011=+6dB 
+100=+12dB 
+101=+18dB 
+110=+24dB 
+111=+30dB 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+33 (21h) 
+8 
+ 
+0 
+Reserved 
+ 
+ 
+7:4 
+ALCHLD 
+0000 
+ALC hold time before gain is increased.  
+0000 = 0ms 
+0001 = 2.67ms 
+0010 = 5.33ms 
+… (time doubles with every step) 
+1010 or higher = 1.36s 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+ 
+3:0 
+ALCLVL 
+1011 
+ALC target – sets signal level at ADC input 
+1111 : -1.5dBFS 
+1110 : -1.5dBFS 
+1101 : -3dBFS 
+1100 : -4.5dB management...... (-1.5dB steps) 
+0001 : -21dBFS 
+0000 : -22.5dBFS 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+34 (22h) 
+8 
+ALCMODE 
+0 
+Determines the ALC mode of operation: 
+0=ALC mode 
+1=Limiter mode 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+7:4 
+ALCDCY 
+[3:0] 
+0011 
+Decay (gain ramp-up) time  
+(ALCMODE ==0) 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+ 
+Per step 
+Per 6dB 
+90% of range 
+0000 
+410us 
+3.28ms 
+23.6ms 
+0001 
+820us 
+6.56ms 
+47.2ms 
+0010 
+1.64ms 
+13.1ms 
+94.5ms 
+… (time doubles with every step) 
+1010 
+or 
+higher 
+420ms 
+3.36s 
+24.2s 
+0011 
+Decay (gain ramp-up) time  
+(ALCMODE ==1) 
+ 
+Per step 
+Per 6dB 
+90% of range 
+0000 
+90.8us 
+726us 
+5.23ms 
+0001 
+182us 
+1.45ms 
+10.5ms 
+0010 
+363us 
+2.91ms 
+20.9ms 
+… (time doubles with every step) 
+1010 
+93ms 
+744ms 
+5.36s 
+3:0 
+ALCATK 
+0010 
+ALC attack (gain ramp-down) time  
+(ALCMODE == 0) 
+Input Limiter/ 
+Automatic 
+Level Control 
+(ALC) 
+ 
+Per step 
+Per 6dB 
+90% of range 
+0000 
+104us 
+832us 
+6ms 
+0001 
+208us 
+1.66ms 
+12ms 
+0010 
+416us 
+3.33ms 
+24ms 
+… (time doubles with every step) 

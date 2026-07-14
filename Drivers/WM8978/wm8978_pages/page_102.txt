@@ -1,0 +1,145 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+102 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+4 
+INVROUT2 
+0 
+Mute input to INVROUT2 mixer 
+Analogue 
+Outputs 
+3:1 
+BEEPVOL 
+000 
+AUXR input to ROUT2 inverter gain 
+000 = -15dB 
+... 
+111 = +6dB 
+Analogue 
+Outputs 
+0 
+BEEPEN 
+0 
+0 = mute AUXR beep input 
+1 = enable AUXR beep input 
+Analogue 
+Outputs 
+44 (2Ch) 
+8 
+MBVSEL 
+0 
+Microphone Bias Voltage Control 
+0 = 0.9 * AVDD 
+1 = 0.65 * AVDD 
+Input Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+ 
+6 
+R2_2INPPGA 
+0 
+Connect R2 pin to right channel input PGA 
+positive terminal. 
+0=R2 not connected to input PGA 
+1=R2 connected to input PGA amplifier positive 
+terminal (constant input impedance). 
+Input Signal 
+Path 
+5 
+RIN2INPPGA 
+1 
+Connect RIN pin to right channel input PGA 
+negative terminal. 
+0=RIN not connected to input PGA 
+1=RIN connected to right channel input PGA 
+amplifier negative terminal. 
+Input Signal 
+Path 
+4 
+RIP2INPPGA 
+1 
+Connect RIP pin to right channel input PGA 
+amplifier positive terminal. 
+0 = RIP not connected to input PGA 
+1 = right channel input PGA amplifier positive 
+terminal connected to RIP (constant input 
+impedance) 
+Input Signal 
+Path 
+3 
+ 
+0 
+Reserved 
+ 
+2 
+L2_2INPPGA 
+0 
+Connect L2 pin to left channel input PGA 
+positive terminal. 
+0=L2 not connected to input PGA 
+1=L2 connected to input PGA amplifier positive 
+terminal (constant input impedance). 
+Input Signal 
+Path 
+1 
+LIN2INPPGA 
+1 
+Connect LIN pin to left channel input PGA 
+negative terminal. 
+0=LIN not connected to input PGA 
+1=LIN connected to input PGA amplifier negative 
+terminal. 
+Input Signal 
+Path 
+0 
+LIP2INPPGA 
+1 
+Connect LIP pin to left channel input PGA 
+amplifier positive terminal. 
+0 = LIP not connected to input PGA 
+1 = input PGA amplifier positive terminal 
+connected to LIP (constant input impedance) 
+Input Signal 
+Path 
+45 (2Dh) 
+8 
+INPPGAUPDATE 
+N/A 
+INPPGAVOLL and INPPGAVOLR volume do not 
+update until a 1 is written to INPPGAUPDATE (in 
+reg 45 or 46) 
+Input Signal 
+Path 
+7 
+INPPGAZCL 
+0 
+Left channel input PGA zero cross enable: 
+0=Update gain when gain register changes 
+1=Update gain on 1
+st zero cross after gain 
+register write. 
+Input Signal 
+Path 
+6 
+INPPGAMUTEL 
+0 
+Mute control for left channel input PGA: 
+0=Input PGA not muted, normal operation 
+1=Input PGA muted (and disconnected from the 
+following input BOOST stage). 
+Input Signal 
+Path 

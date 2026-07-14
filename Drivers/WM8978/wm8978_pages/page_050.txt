@@ -1,0 +1,25 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+50 
+ 
+ 
+Figure 25  DAC Digital Limiter Operation 
+The limiter has a programmable upper threshold which is close to 0dB. Referring to Figure 25, in 
+normal operation (LIMBOOST=000 => limit only) signals below this threshold are unaffected by the 
+limiter.  Signals above the upper threshold are attenuated at a specific attack rate (set by the LIMATK 
+register bits) until the signal falls below the threshold.  The limiter also has a lower threshold 1dB 
+below the upper threshold.  When the signal falls below the lower threshold the signal is amplified at 
+a specific decay rate (controlled by LIMDCY register bits) until a gain of 0dB is reached.  Both 
+threshold levels are controlled by the LIMLVL register bits.  The upper threshold is 0.5dB above the 
+value programmed by LIMLVL and the lower threshold is 0.5dB below the LIMLVL value. 
+VOLUME BOOST 
+The limiter has programmable upper gain which boosts signals below the threshold to compress the 
+dynamic range of the signal and increase its perceived loudness.  This operates as an ALC function 
+with limited boost capability.  The volume boost is from 0dB to +12dB in 1dB steps, controlled by the 
+LIMBOOST register bits. 
+The output limiter volume boost can also be used as a stand alone digital gain boost when the limiter 
+is disabled. 

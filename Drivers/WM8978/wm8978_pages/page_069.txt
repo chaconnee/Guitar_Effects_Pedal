@@ -1,0 +1,49 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+69 
+ 
+A dedicated buffer is available for tying off unused analogue I/O pins as shown in Figure 35.  This 
+buffer can be enabled using the BUFIOEN register bit.  
+If the SPKBOOST, OUT3BOOST or OUT4BOOST bits are set then the relevant outputs will be tied to 
+the output of the DC level shift buffer at 1.5xAVDD/2 when disabled.  
+Figure 35 summarises the tie-off options for the speaker and mono output pins. 
+ 
+Figure 35  Unused Input/Output Pin Tie-off Buffers 
+L/ROUT2EN/ 
+OUT3/4EN 
+OUT3BOOST/ 
+OUT4BOOST/ 
+SPKBOOST 
+VROI 
+OUTPUT CONFIGURATION 
+0  
+0 
+0 
+1kΩ tie-off to AVDD/2 
+0  
+0 
+1 
+30kΩ tie-off to AVDD/2 
+0 
+1 
+0 
+1kΩ tie-off to 1.5xAVDD/2 
+0 
+1 
+1 
+30kΩ tie-off to 1.5xAVDD/2 
+1 
+0 
+X 
+Output enabled (DC level=AVDD/2) 
+1 
+1 
+X 
+Output enabled (DC level=1.5xAVDD/2) 
+Table 52 Unused Output Pin Tie-off Options 
+ 
+ 

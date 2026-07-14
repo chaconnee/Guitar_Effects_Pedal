@@ -1,0 +1,220 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+8 
+ 
+Test Conditions 
+DCVDD=1.8V, AVDD=DBVDD=SPKVDD= 3.3V, TA  = +25
+oC, 1kHz signal, fs = 48kHz, 24-bit audio data unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+Automatic Level Control (ALC) 
+Target Record Level 
+ 
+ 
+-22.5 
+ 
+-1.5 
+dB 
+Programmable gain 
+ 
+ 
+-12 
+ 
+35.25 
+ 
+Gain Hold Time (Note 3,5) 
+tHOLD 
+MCLK = 12.288MHz 
+(Note 3) 
+0, 2.67, 5.33, 10.67, … , 43691 
+(time doubles with each step) 
+ms 
+Gain Ramp-Up (Decay) Time 
+(Note 4,5) 
+tDCY 
+ALCMODE=0 (ALC), 
+MCLK=12.288MHz 
+(Note 3) 
+3.3, 6.6, 13.1, … , 3360 
+(time doubles with each step) 
+ms 
+ALCMODE=1 (limiter), 
+MCLK=12.288MHz 
+(Note 3) 
+0.73, 1.45, 2.91, … , 744 
+(time doubles with each step) 
+Gain Ramp-Down (Attack) Time 
+(Note 4,5) 
+tATK 
+ALCMODE=0 (ALC), 
+MCLK=12.288MHz 
+(Note 3) 
+0.83, 1.66, 3.33, … , 852 
+(time doubles with each step) 
+ms 
+ALCMODE=1 (limiter), 
+MCLK=12.288MHz 
+(Note 3) 
+0.18, 0.36, 0.73, … , 186 
+(time doubles with each step) 
+Mute Attenuation 
+ 
+ 
+ 
+120 
+ 
+dB 
+Analogue to Digital Converter (ADC) 
+Signal to Noise Ratio (Note 6) 
+SNR 
+A-weighted, 0dB gain 
+85 
+95 
+ 
+dB 
+Total Harmonic Distortion 
+(Note 7) 
+THD 
+-3dBFS input 
+ 
+-84 
+-74 
+dB 
+Channel Separation (Note 9) 
+ 
+1kHz input signal 
+ 
+110 
+ 
+dB 
+Digital to Analogue Converter (DAC) to Line-Out (LOUT1, ROUT1 with 10k / 50pF load) 
+Full-scale output 
+ 
+PGA gains set to 0dB, 
+OUT34BOOST=0 
+ 
+AVDD/3.3 
+ 
+Vrms 
+PGA gains set to 0dB,
+OUT34BOOST=1 
+ 
+1.5x 
+(AVDD/3.3) 
+ 
+Signal to Noise Ratio (Note 6) 
+SNR 
+A-weighted 
+90 
+98 
+ 
+dB 
+Total Harmonic Distortion 
+(Note 7) 
+THD 
+RL = 10k 
+full-scale signal 
+ 
+-84 
+-76 
+dB 
+Channel Separation (Note 8) 
+ 
+1kHz signal 
+ 
+110 
+ 
+dB 
+Output Mixers (LMX1, RMX1) 
+Maximum PGA gain into mixer  
+ 
+ 
+ 
++6 
+ 
+dB 
+Minimum PGA gain into mixer  
+ 
+ 
+ 
+-15 
+ 
+dB 
+PGA gain step into mixer 
+ 
+Guaranteed monotonic
+ 
+3 
+ 
+dB 
+Analogue Outputs (LOUT1, ROUT1, LOUT2, ROUT2) 
+Maximum Programmable Gain  
+ 
+ 
+ 
++6 
+ 
+dB 
+Minimum Programmable Gain  
+ 
+ 
+ 
+-57 
+ 
+dB 
+Programmable Gain step size 
+ 
+Guaranteed monotonic
+ 
+1 
+ 
+dB 
+Mute attenuation 
+ 
+1kHz, full scale signal 
+ 
+85 
+ 
+dB 
+Headphone Output (LOUT1, ROUT1 with 32 load) 
+0dB full scale output voltage 
+ 
+ 
+ 
+AVDD/3.3 
+ 
+Vrms 
+Signal to Noise Ratio 
+SNR 
+A-weighted 
+ 
+102 
+ 
+dB 
+Total Harmonic Distortion 
+THD 
+RL = 16, Po=20mW 
+AVDD=3.3V 
+ 
+0.003 
+-92 
+ 
+% 
+dB 
+RL = 32 , Po=20mW 
+AVDD=3.3V 
+ 
+0.008 
+- 82 
+ 
+% 
+dB 

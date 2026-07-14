@@ -1,0 +1,15 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+27 
+ 
+ 
+Figure 12  Volume Update Using Zero Cross Detection 
+If there is a long period where no zero-crossing occurs, a timeout circuit in the WM8978 will 
+automatically update the volume. The volume updates will occur between one and two timeout 
+periods, depending on when the INPPGAUPDATE bit is set as shown in Figure 13. 
+ 
+Figure 13  Volume Update after Timeout 

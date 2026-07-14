@@ -20,10 +20,12 @@ enable_language(C ASM)
 add_executable(${CMAKE_PROJECT_NAME}
         APP/AudioPipeline.c
         APP/AudioPipeline.h
-        APP/pot.c
-        APP/pot.h
         APP/mode_ctrl.c
         APP/mode_ctrl.h
+        APP/encoder.c
+        APP/encoder.h
+        APP/tft.c
+        APP/tft.h
         APP/model/effect_chain.c
         APP/model/effect_chain.h
         APP/model/effect.h
@@ -33,8 +35,6 @@ add_executable(${CMAKE_PROJECT_NAME}
         APP/effects/cab_sim/cab_sim.h
         APP/effects/reverb/reverb.c
         APP/effects/reverb/reverb.h
-        APP/cdc_command.c
-        APP/cdc_command.h
         "APP/effects/cab_sim/ir_AC30 brilliant+bass AT4033a stalevel_dc.h"
 )
 

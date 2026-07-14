@@ -1,0 +1,26 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+19 
+ 
+INTERNAL POWER ON RESET CIRCUIT 
+ 
+ 
+Figure 6  Internal Power on Reset Circuit Schematic 
+The WM8978 includes an internal Power-On-Reset Circuit (POR), as shown in Figure 6, which is 
+used reset the digital logic into a default state after power up. The POR circuit is powered from AVDD 
+and monitors DVDD. It asserts PORB low if AVDD or DVDD is below a minimum threshold.  
+ 
+ 
+Figure 7 Typical Power up Sequence where AVDD is Powered before DVDD 
+ Figure 7 shows a typical power-up sequence where AVDD comes up first. When AVDD goes above 
+the minimum threshold, Vpora, there is enough voltage for the circuit to guarantee PORB is asserted 
+low and the chip is held in reset. In this condition, all writes to the control interface are ignored. AVDD 
+will then ramp up to full supply level. Next DVDD rises to Vpord_on and PORB is released high and all 
+registers are in their default state and writes to the control interface may take place. 
+On power down, where AVDD falls first, PORB is asserted low whenever AVDD drops below the 
+minimum threshold Vpora_off. 
+ 
