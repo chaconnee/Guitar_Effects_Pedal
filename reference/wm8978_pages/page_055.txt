@@ -1,0 +1,10 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+55 
+ 
+ 
+Figure 26  Left/Right Output Channel Mixers 

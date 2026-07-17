@@ -22,8 +22,6 @@ add_executable(${CMAKE_PROJECT_NAME}
         APP/AudioPipeline.h
         APP/mode_ctrl.c
         APP/mode_ctrl.h
-        APP/encoder.c
-        APP/encoder.h
         APP/tft.c
         APP/tft.h
         APP/model/effect_chain.c

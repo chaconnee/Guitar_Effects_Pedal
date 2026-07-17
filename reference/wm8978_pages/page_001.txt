@@ -1,0 +1,97 @@
+w 
+WM8978
+ 
+Stereo CODEC with Speaker Driver 
+ 
+WOLFSON MICROELECTRONICS plc 
+ 
+To receive regular email updates, sign up at http://www.wolfsonmicro.com/enews 
+Production Data, October 2011, Rev 4.5 
+Copyright 2011  Wolfson Microelectronics plc
+ 
+DESCRIPTION 
+The WM8978 is a low power, high quality stereo CODEC 
+designed for portable applications such as multimedia phone, 
+digital still camera or digital camcorder. 
+The device integrates preamps for stereo differential mics, and 
+includes drivers for speakers, headphone and differential or 
+stereo line output. External component requirements are 
+reduced as no separate microphone or headphone amplifiers 
+are required.   
+Advanced on-chip digital signal processing includes a 5-band 
+equaliser, a mixed signal Automatic Level Control for the 
+microphone or line input through the ADC as well as a purely 
+digital limiter function for record or playback. Additional digital 
+filtering options are available in the ADC path, to cater for 
+application filtering such as ‘wind noise reduction’. 
+The WM8978 digital audio interface can operate as a master or 
+a slave.  An internal PLL can generate all required audio clocks 
+for the CODEC from common reference clock frequencies, such 
+as 12MHz and 13MHz. 
+The WM8978 operates at analogue supply voltages from 2.5V to 
+3.3V, although the digital core can operate at voltages down to 
+1.71V to save power. The speaker outputs and OUT3/4 line 
+outputs can run from a 5V supply if increased output power is 
+required. Individual sections of the chip can also be powered 
+down under software control. 
+ 
+ 
+BLOCK DIAGRAM 
+FEATURES 
+Stereo CODEC:  
+ 
+DAC SNR 98dB, THD -84dB (‘A’ weighted @ 48kHz) 
+ 
+ADC SNR 95dB, THD -84dB (‘A’ weighted @ 48kHz) 
+ 
+On-chip Headphone Driver with ‘capless’ option 
+- 
+40mW per channel into 16 / 3.3V SPKVDD 
+ 
+1W output power into 8 BTL speaker / 5V SPKVDD 
+- 
+Capable of driving piezo speakers 
+- 
+Stereo speaker drive configuration 
+Mic Preamps: 
+ 
+Stereo Differential or mono microphone Interfaces 
+- 
+Programmable preamp gain 
+- 
+Psuedo differential inputs with common mode 
+rejection 
+- 
+Programmable ALC / Noise Gate in ADC path 
+ 
+Low-noise bias supplied for electret microphones 
+Other Features: 
+ 
+Enhanced 3-D function for improved stereo separation 
+ 
+Digital playback limiter 
+ 
+5-band Equaliser (record or playback) 
+ 
+Programmable ADC High Pass Filter (wind noise reduction) 
+ 
+Programmable ADC Notch Filter 
+ 
+Aux inputs for stereo analogue input signals or ‘beep’ 
+ 
+On-chip PLL supporting 12, 13, 19.2MHz and other clocks 
+ 
+Support for 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 and 
+48kHz sample rates 
+ 
+Low power, low voltage 
+- 
+2.5V to 3.6V (digital: 1.71V to 3.6V) 
+ 
+5x5mm 32-lead QFN package 
+APPLICATIONS 
+ 
+Stereo Camcorder or DSC 
+ 
+Multimedia Phone 
+ 

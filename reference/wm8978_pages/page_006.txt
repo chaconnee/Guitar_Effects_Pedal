@@ -1,0 +1,106 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+6 
+ 
+ABSOLUTE MAXIMUM RATINGS  
+Absolute Maximum Ratings are stress ratings only. Permanent damage to the device may be caused by continuously 
+operating at or beyond these limits. Device functional operating limits and guaranteed performance specifications are given 
+under Electrical Characteristics at the test conditions specified. 
+ 
+ESD Sensitive Device. This device is manufactured on a CMOS process. It is therefore generically susceptible 
+to damage from excessive static voltages. Proper ESD precautions must be taken during handling and storage 
+of this device. 
+Wolfson tests its package types according to IPC/JEDEC J-STD-020B for Moisture Sensitivity to determine acceptable storage 
+conditions prior to surface mount assembly. These levels are: 
+MSL1 = unlimited floor life at <30C / 85% Relative Humidity. Not normally stored in moisture barrier bag. 
+MSL2 = out of bag storage for 1 year at <30C / 60% Relative Humidity. Supplied in moisture barrier bag. 
+MSL3 = out of bag storage for 168 hours at <30C / 60% Relative Humidity. Supplied in moisture barrier bag. 
+The Moisture Sensitivity Level for each package type is specified in Ordering Information. 
+CONDITION 
+MIN 
+MAX 
+DBVDD, DCVDD, AVDD supply voltages 
+-0.3V 
++4.5V 
+SPKVDD supply voltage 
+-0.3V 
++7V 
+Voltage range digital inputs 
+DGND -0.3V 
+DVDD +0.3V 
+Voltage range analogue inputs 
+AGND -0.3V 
+AVDD +0.3V 
+Operating temperature range, TA 
+-40C 
++100C 
+Storage temperature after soldering 
+-65C 
++150C 
+Notes: 
+1. 
+Analogue and digital grounds must always be within 0.3V of each other. 
+2. 
+All digital and analogue supplies are completely independent from each other. 
+ 
+RECOMMENDED OPERATING CONDITIONS 
+PARAMETER 
+SYMBOL 
+TEST 
+CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+Digital supply range (Core) 
+DCVDD 
+ 
+1.71
+1 
+ 
+3.6 
+V 
+Digital supply range (Buffer) 
+DBVDD 
+ 
+1.71
+2 
+ 
+3.6 
+V 
+Analogue core supply range 
+AVDD 
+ 
+2.5 
+ 
+3.6 
+V 
+Analogue output supply range 
+SPKVDD 
+ 
+2.5 
+ 
+5.5 
+V 
+Ground 
+DGND, AGND,  
+SPKGND 
+ 
+ 
+0 
+ 
+V 
+Notes: 
+1. 
+When using the PLL, DCVDD must not be less than 1.9V. 
+2. 
+DBVDD must be greater than or equal to DCVDD.  
+3. 
+Analogue supplies have to be  to digital supplies. 
+4. 
+In non-boosted mode, SPKVDD should = AVDD, if boosted SPKVDD should be  1.5x AVDD. 
+ 

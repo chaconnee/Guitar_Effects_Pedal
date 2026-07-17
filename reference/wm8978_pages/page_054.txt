@@ -1,0 +1,66 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+54 
+ 
+3D STEREO ENHANCEMENT 
+The WM8978 has a digital 3D enhancement option to increase the perceived separation between the 
+left and right channels. Selection of 3D for record or playback is controlled by register bit 
+EQ3DMODE. Switching this bit from record to playback or from playback to record may only be done 
+when ADC and DAC are disabled. The WM8978 control interface will only allow EQ3DMODE to be 
+changed when ADC and DAC are disabled (ie ADCENL = 0, ADCENR = 0, DACENL = 0 and 
+DACENR = 0). 
+The DEPTH3D setting controls the degree of stereo expansion. 
+When 3D enhancement is used, it may be necessary to attenuate the signal by 6dB to avoid limiting. 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R41 (29h) 
+3D 
+3:0 
+DEPTH3D[3:0] 
+0000 
+Stereo depth  
+0000: 0% (minimum 3D effect) 
+0001: 6.67% 
+.... 
+1110: 93.3% 
+1111: 100% (maximum 3D effect)  
+Table 37 3D Stereo Enhancement Function 
+ANALOGUE OUTPUTS 
+The WM8978 has three sets of stereo analogue outputs.  These are: 
+ 
+LOUT1 and ROUT1 which are normally used to drive a headphone load. 
+ 
+LOUT2 and ROUT2 – normally used to drive an 8Ω BTL speaker. 
+ 
+OUT3 and OUT4 – can be configured as a stereo line out (OUT3 is left output and 
+OUT4 is right output).  OUT4 can also be used to provide a mono mix of left and right 
+channels. 
+ 
+LOUT2, ROUT2, OUT3 and OUT4 are supplied from SPKVDD and are capable of driving up to 
+1.5Vrms signals as shown in Figure 26. LOUT1 and ROUT1 are supplied from AVDD and can only 
+drive out a 1V rms signal (AVDD/3.3).   
+LOUT1, ROUT1, LOUT2 and ROUT2 have individual analogue volume PGAs with -57dB to +6dB 
+ranges. 
+There are four output mixers in the output signal path, the left and right channel mixers which control 
+the signals to speaker, headphone (and optionally the line outputs) and also dedicated OUT3 and 
+OUT4 mixers.   
+LEFT AND RIGHT OUTPUT CHANNEL MIXERS  
+The left and right output channel mixers are shown in Figure 26.  These mixers allow the AUX inputs, 
+the ADC bypass and the DAC left and right channels to be combined as desired.   This allows a 
+mono mix of the DAC channels to be done as well as mixing in external line-in from the AUX or 
+speech from the input bypass path. 
+The AUX and bypass inputs have individual volume control from -15dB to +6dB and the DAC volume 
+can be adjusted in the digital domain if required.  The output of these mixers is connected to both the 
+headphone (LOUT1 and ROUT1) and speaker (LOUT2 and ROUT2) and can optionally be 
+connected to the OUT3 and OUT4 mixers. 
+ 
+ 

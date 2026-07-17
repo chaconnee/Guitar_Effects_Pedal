@@ -1,0 +1,181 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+90 
+ 
+ADDR 
+B[15:9] 
+REGISTER 
+NAME 
+B8 
+B7 
+B6 
+B5 
+B4 
+B3 
+B2 
+B1 
+B0 
+DEF’T 
+VAL 
+DEC HEX 
+(HEX) 
+45 
+2D 
+Left INP PGA gain 
+ctrl 
+INPPGA 
+UPDATE 
+INPPGAZC
+L 
+INPPGA 
+MUTEL 
+INPPGAVOLL 
+010 
+46 
+2E 
+Right INP PGA gain 
+ctrl 
+INPGA 
+UPDATE 
+INPPGAZC
+R 
+INPPGA 
+MUTER 
+INPPGAVOLR 
+010 
+47 
+2F 
+Left ADC Boost ctrl PGABOOSTL 
+0 
+L2_2BOOSTVOL 
+0 
+AUXL2BOOSTVOL 
+100 
+48 
+30 
+Right ADC Boost 
+ctrl 
+PGABOOSTR
+0 
+R2_2BOOSTVOL 
+0 
+AUXR2BOOSTVOL 
+100 
+49 
+31 
+Output ctrl 
+0 
+0 
+DACL2 
+RMIX 
+DACR2 
+LMIX 
+OUT4 
+BOOST 
+OUT3 
+BOOST 
+SPK 
+BOOST 
+TSDEN 
+VROI 
+002 
+50 
+32 
+Left mixer ctrl 
+AUXLMIXVOL 
+AUXL2LMIX
+BYPLMIXVOL 
+BYPL2LMIX DACL2LMIX
+001 
+51 
+33 
+Right mixer ctrl 
+AUXRMIXVOL 
+AUXR2RMI
+X 
+BYPRMIXVOL 
+BYPR2RMIX DACR2RMIX
+001 
+52 
+34 
+LOUT1 (HP) 
+volume ctrl 
+HPVU 
+LOUT1ZC 
+LOUT1 
+MUTE 
+LOUT1VOL 
+039 
+53 
+35 
+ROUT1 (HP) 
+volume ctrl 
+HPVU 
+ROUT1ZC 
+ROUT1 
+MUTE 
+ROUT1VOL 
+039 
+54 
+36 
+LOUT2 (SPK) 
+volume ctrl 
+SPKVU 
+LOUT2ZC 
+LOUT2 
+MUTE 
+LOUT2VOL 
+039 
+55 
+37 
+ROUT2 (SPK) 
+volume ctrl 
+SPKVU 
+ROUT2ZC 
+ROUT2 
+MUTE 
+ROUT2VOL 
+039 
+56 
+38 
+OUT3 mixer ctrl 
+0 
+0 
+OUT3 
+MUTE 
+0 
+0 
+OUT4_ 
+2OUT3 
+BYPL2 
+OUT3 
+LMIX2 
+OUT3 
+LDAC2 
+OUT3 
+001 
+57 
+39 
+OUT4 (MONO) 
+mixer ctrl 
+0 
+0 
+OUT4 
+MUTE 
+HALFSIG 
+LMIX2 
+OUT4 
+LDAC2 
+OUT4 
+BYPR2 
+OUT4 
+RMIX2 
+OUT4 
+RDAC2 
+OUT4 
+001 
+Table 69 WM8978 Register Map 

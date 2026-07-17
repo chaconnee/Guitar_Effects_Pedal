@@ -1,0 +1,95 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+36 
+ 
+INPUT LIMITER / AUTOMATIC LEVEL CONTROL (ALC) 
+The WM8978 has an automatic PGA gain control circuit, which can function as an input peak limiter 
+or as an automatic level control (ALC).  
+ The Automatic Level Control (ALC) provides continuous adjustment of the input PGA in response to 
+the amplitude of the input signal.  A digital peak detector monitors the input signal amplitude and 
+compares it to a register defined threshold level (ALCLVL).   
+If the signal is below the threshold, the ALC will increase the gain of the PGA at a rate set by 
+ALCDCY.  If the signal is above the threshold, the ALC will reduce the gain of the PGA at a rate set 
+by ALCATK. 
+The ALC has two modes selected by the ALCMODE register: normal mode and peak limiter mode.  
+The ALC/limiter function is enabled by setting the register bit R32[8] ALCSEL. 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R32 (20h) 
+ALC Control 
+1 
+2:0 
+ALCMIN 
+[2:0] 
+000 (-12dB) 
+Set minimum gain of PGA 
+000 = -12dB 
+001 = -6dB 
+010 = 0dB 
+011 = +6dB 
+100 = +12dB 
+101 = +18dB 
+110 = +24dB 
+111 = +30dB 
+5:3 
+ALCMAX 
+[2:0] 
+111 
+(+35.25dB) 
+Set Maximum Gain of PGA 
+111 = +35.25dB 
+110 = +29.25dB 
+101 = +23.25dB 
+100 = +17.25dB 
+011 = +11.25dB 
+010 = +5.25dB 
+001 = -0.75dB 
+000 = -6.75dB 
+8:7 
+ALCSEL 
+00 
+ALC function select 
+00 = ALC disabled 
+01 = Right channel ALC enabled 
+10 = Left channel ALC enabled 
+11 = Both channels ALC enabled 
+R33 (21h) 
+ALC Control 
+2 
+  
+3:0 
+ALCLVL 
+[3:0] 
+1011 
+(-6dB) 
+ALC target – sets signal level at ADC 
+input 
+1111 = -1.5dBFS 
+1110 = -1.5dBFS 
+1101 = -3dBFS 
+1100 = -4.5dBFS 
+1011 = -6dBFS 
+1010 = -7.5dBFS 
+1001 = -9dBFS 
+1000 = -10.5dBFS 
+0111 = -12dBFS 
+0110 = -13.5dBFS 
+0101 = -15dBFS 
+0100 = -16.5dBFS 
+0011 = -18dBFS 
+0010 = -19.5dBFS 
+0001 = -21dBFS 
+0000 = -22.5dBFS 
+8 
+Reserved 
+0  
+Reserved. Set to 0. 

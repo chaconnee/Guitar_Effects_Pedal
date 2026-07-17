@@ -1,0 +1,128 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+103 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+5:0 
+INPPGAVOLL 
+010000 
+Left channel input PGA volume 
+000000 = -12dB 
+000001 = -11.25db 
+. 
+010000 = 0dB 
+. 
+111111 = 35.25dB 
+Input Signal 
+Path 
+46 (2Eh) 
+8 
+INPPGAUPDATE 
+N/A 
+INPPGAVOLL and INPPGAVOLR volume do not 
+update until a 1 is written to INPPGAUPDATE (in 
+reg 45 or 46) 
+Input Signal 
+Path 
+7 
+INPPGAZCR 
+0 
+Right channel input PGA zero cross enable: 
+0=Update gain when gain register changes 
+1=Update gain on 1
+st zero cross after gain 
+register write. 
+Input Signal 
+Path 
+6 
+INPPGAMUTER 
+0 
+Mute control for right channel input PGA: 
+0=Input PGA not muted, normal operation 
+1=Input PGA muted (and disconnected from the 
+following input BOOST stage). 
+Input Signal 
+Path 
+5:0 
+INPPGAVOLR 
+010000 
+Right channel input PGA volume 
+000000 = -12dB 
+000001 = -11.25db 
+. 
+010000 = 0dB 
+. 
+111111 = +35.25dB 
+Input Signal 
+Path 
+47 (2Fh) 
+8 
+PGABOOSTL 
+1 
+Boost enable for left channel input PGA: 
+0 = PGA output has +0dB gain through input 
+BOOST stage.  
+1 = PGA output has +20dB gain through input 
+BOOST stage. 
+Input Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+ 
+6:4 
+L2_2BOOSTVOL 
+000 
+Controls the L2 pin to the left channel input 
+boost stage: 
+000=Path disabled (disconnected) 
+001=-12dB gain through boost stage 
+010=-9dB gain through boost stage 
+… 
+111=+6dB gain through boost stage 
+Input Signal 
+Path 
+3 
+ 
+0 
+Reserved 
+ 
+2:0 
+AUXL2BOOSTVOL 
+000 
+Controls the auxiliary amplifier to the left channel 
+input boost stage: 
+000=Path disabled (disconnected) 
+001=-12dB gain through boost stage 
+010=-9dB gain through boost stage 
+… 
+111=+6dB gain through boost stage 
+Input Signal 
+Path 
+48 (30h) 
+8 
+PGABOOSTR 
+1 
+Boost enable for right channel input PGA: 
+0 = PGA output has +0dB gain through input 
+BOOST stage.  
+1 = PGA output has +20dB gain through input 
+BOOST stage. 
+Input Signal 
+Path 
+7 
+ 
+0 
+Reserved 
+ 

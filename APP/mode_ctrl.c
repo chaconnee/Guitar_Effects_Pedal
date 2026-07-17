@@ -98,78 +98,32 @@ void ModeCtrl_Init(void)
 }
 
 /* ── poll ── */
-void ModeCtrl_Poll(int16_t enc_delta)
+void ModeCtrl_Poll(void)
 {
-    static GPIO_PinState pb0_last = GPIO_PIN_SET;
-    static GPIO_PinState pb1_last = GPIO_PIN_SET;
-    static GPIO_PinState pa1_last = GPIO_PIN_SET;
-    static GPIO_PinState pa7_last = GPIO_PIN_SET;
+    static GPIO_PinState btn1_last = GPIO_PIN_SET;
+    static GPIO_PinState btn2_last = GPIO_PIN_SET;
+    static GPIO_PinState btn3_last = GPIO_PIN_SET;
     static uint32_t debounce = 0;
 
-    /* 1. encoder delta → parameter */
-    float step = (float)enc_delta * 0.005f;
-    float val;
-
-    switch (state)
-    {
-    case ST_MAIN:
-    case ST_CAB:
-        val = g_master_volume + step;
-        if (val < 0.0f) val = 0.0f;
-        if (val > 1.0f) val = 1.0f;
-        g_master_volume = val;
-        break;
-    case ST_AMP:
-        val = amp_drive_val + step;
-        if (val < 0.0f) val = 0.0f;
-        if (val > 1.0f) val = 1.0f;
-        amp_drive_val = val;
-        amp_sim_effect.set_param(&amp_sim_effect, 0, val);
-        break;
-    case ST_RVB:
-        if (subpage == 0) { val = rv_decay_val + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_decay_val = val; reverb_effect.set_param(&reverb_effect, 0, val); }
-        if (subpage == 1) { val = rv_mix_val   + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_mix_val   = val; reverb_effect.set_param(&reverb_effect, 1, val); }
-        if (subpage == 2) { val = rv_tone_val  + step; if (val < 0.0f) val = 0.0f; if (val > 1.0f) val = 1.0f; rv_tone_val  = val; reverb_effect.set_param(&reverb_effect, 2, val); }
-        break;
-    }
-
-    /* 2. LED every frame */
+    /* 1. LED every frame */
     LED_Update();
 
-    /* 3. buttons every 100ms */
+    /* 2. buttons every 100ms */
     if (HAL_GetTick() - debounce < 100) return;
     debounce = HAL_GetTick();
 
-    GPIO_PinState pb0 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14);
-    GPIO_PinState pb1 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8);
-    GPIO_PinState pa1 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_15);
-    GPIO_PinState pa7 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+    GPIO_PinState btn1 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+    GPIO_PinState btn2 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
+    GPIO_PinState btn3 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15);
 
-    /* ── PB1: bypass toggle (MAIN=highlighted, mode=specific) ── */
-    if (Btn_Rise(&pb1_last, pb1))
-    {
-        if (state == ST_MAIN)
-        {
-            if (chain_pos == 0)      amp_sim_effect.bypassed = !amp_sim_effect.bypassed;
-            else if (chain_pos == 1) cab_sim_effect.bypassed = !cab_sim_effect.bypassed;
-            else                     reverb_effect.bypassed  = !reverb_effect.bypassed;
-        }
-        else if (state == ST_AMP)
-            amp_sim_effect.bypassed  = !amp_sim_effect.bypassed;
-        else if (state == ST_CAB)
-            cab_sim_effect.bypassed  = !cab_sim_effect.bypassed;
-        else if (state == ST_RVB)
-            reverb_effect.bypassed   = !reverb_effect.bypassed;
-    }
-
-    /* ── PA7: EXIT (parameter modes → MAIN) ── */
-    if (Btn_Rise(&pa7_last, pa7))
+    /* ── btn3: EXIT (parameter modes → MAIN) ── */
+    if (Btn_Rise(&btn3_last, btn3))
     {
         if (state != ST_MAIN) ExitState();
     }
 
-    /* ── PA1: cycle effect chain highlight (MAIN only) ── */
-    if (Btn_Rise(&pa1_last, pa1))
+    /* ── btn1: cycle effect chain highlight (MAIN only) ── */
+    if (Btn_Rise(&btn1_last, btn1))
     {
         if (state == ST_MAIN)
         {
@@ -181,8 +135,8 @@ void ModeCtrl_Poll(int16_t enc_delta)
         }
     }
 
-    /* ── PB0: enter / cycle ── */
-    if (Btn_Rise(&pb0_last, pb0))
+    /* ── btn2: enter / cycle ── */
+    if (Btn_Rise(&btn2_last, btn2))
     {
         switch (state)
         {

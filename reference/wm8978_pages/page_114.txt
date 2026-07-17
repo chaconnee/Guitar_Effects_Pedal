@@ -1,0 +1,39 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+114 
+ 
+Figure 71 shows the result of having the gain set on more than one channel simultaneously.  The 
+blue traces show each band (lowest cut-off/centre frequency) with 12dB gain.  The red traces show 
+the cumulative effect of all bands with +12dB gain and all bands -12dB gain, with EqxBW=0 for the 
+peak filters.   
+10
+-1
+10
+0
+10
+1
+10
+2
+10
+3
+10
+4
+10
+5
+-15
+-10
+-5
+0
+5
+10
+15
+20
+Frequency (Hz)
+Magnitude (dB)
+ 
+Figure 71 Cumulative Frequency Boost/Cut 
+ 

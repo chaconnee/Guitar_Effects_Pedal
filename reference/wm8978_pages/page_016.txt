@@ -1,0 +1,124 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+16 
+ 
+ 
+Test Conditions 
+DCVDD=1.8V, 
+DBVDD=AVDD=SPKVDD=3.3V, 
+DGND=AGND=SPKGND=0V, 
+TA=+25
+oC, 
+Master 
+Mode, 
+fs=48kHz, 
+MCLK=256fs, 24-bit data, unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+MIN 
+TYP 
+MAX 
+UNIT 
+Audio Data Input Timing Information 
+ 
+ 
+ 
+ 
+LRC propagation delay from BCLK falling edge 
+tDL 
+ 
+ 
+10 
+ns 
+ADCDAT propagation delay from BCLK falling edge 
+tDDA 
+ 
+ 
+10 
+ns 
+DACDAT setup time to BCLK rising edge 
+tDST 
+10 
+ 
+ 
+ns 
+DACDAT hold time from BCLK rising edge 
+tDHT 
+10 
+ 
+ 
+ns 
+ 
+AUDIO INTERFACE TIMING – SLAVE MODE 
+Figure 3 Digital Audio Data Timing – Slave Mode 
+Test Conditions 
+DCVDD=1.8V, DBVDD=AVDD=SPKVDD=3.3V,  DGND=AGND=SPKGND=0V,  TA=+25
+oC, Slave Mode, fs=48kHz,  
+MCLK= 256fs, 24-bit data, unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+MIN 
+TYP 
+MAX 
+UNIT 
+Audio Data Input Timing Information 
+ 
+ 
+ 
+ 
+BCLK cycle time 
+tBCY 
+50 
+ 
+ 
+ns 
+BCLK pulse width high 
+tBCH 
+20 
+ 
+ 
+ns 
+BCLK pulse width low 
+tBCL 
+20 
+ 
+ 
+ns 
+LRC set-up time to BCLK rising edge 
+tLRSU 
+10 
+ 
+ 
+ns 
+LRC hold time from BCLK rising edge 
+tLRH 
+10 
+ 
+ 
+ns 
+DACDAT hold time from BCLK rising edge 
+tDH 
+10 
+ 
+ 
+ns 
+DACDAT set-up time to BCLK rising edge 
+ 
+tDs 
+10 
+ 
+ 
+ns 
+ADCDAT propagation delay from BCLK falling edge 
+tDD 
+ 
+ 
+10 
+ns 
+Note:  
+BCLK period should always be greater than or equal to MCLK period. 
+ 

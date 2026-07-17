@@ -1,0 +1,63 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+20 
+ 
+ 
+Figure 8 Typical Power up Sequence where DVDD is Powered before AVDD 
+ 
+Figure 8 shows a typical power-up sequence where DVDD comes up first. First it is assumed that 
+DVDD is already up to specified operating voltage. When AVDD goes above the minimum threshold, 
+Vpora, there is enough voltage for the circuit to guarantee PORB is asserted low and the chip is held in 
+reset. In this condition, all writes to the control interface are ignored. When AVDD rises to Vpora_on, 
+PORB is released high and all registers are in their default state and writes to the control interface 
+may take place. 
+On power down, where DVDD falls first, PORB is asserted low whenever DVDD drops below the 
+minimum threshold Vpord_off. 
+ 
+SYMBOL 
+MIN 
+TYP 
+MAX 
+UNIT 
+Vpora 
+0.4 
+0.6 
+0.8 
+V 
+Vpora_on 
+0.9 
+1.2 
+1.6 
+V 
+Vpora_off 
+0.4 
+0.6 
+0.8 
+V 
+Vpord_on 
+0.5 
+0.7 
+0.9 
+V 
+Vpord_off 
+0.4 
+0.6 
+0.8 
+V 
+Table 3  Typical POR operation (typical simulated values) 
+Notes: 
+1. 
+If AVDD and DVDD suffer a brown-out (i.e. drop below the minimum recommended operating 
+level but do not go below Vpora_off or Vpord_off) then the chip will not reset and will resume normal 
+operation when the voltage is back to the recommended level again.  
+2. 
+The chip will enter reset at power down when AVDD or DVDD falls below Vpora_off or Vpord_off. This 
+may be important if the supply is turned on and off frequently by a power management system. 
+3. 
+The minimum tpor period is maintained even if DVDD and AVDD have zero rise time. This 
+specification is guaranteed by design rather than test. 
+ 

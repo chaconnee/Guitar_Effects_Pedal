@@ -1,0 +1,107 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+56 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R49 
+Output mixer 
+control 
+5 
+DACR2LMIX 
+0 
+Right DAC output to left output mixer 
+0 = not selected 
+1 = selected 
+6 
+DACL2RMIX 
+0 
+Left DAC output to right output mixer 
+0 = not selected 
+1 = selected 
+R50 
+Left channel 
+output mixer 
+control 
+0 
+DACL2LMIX 
+1 
+Left DAC output to left output mixer 
+0 = not selected 
+1 = selected 
+1 
+BYPL2LMIX 
+0 
+Left bypass path (from the left 
+channel input boost output) to left 
+output mixer 
+0 = not selected 
+1 = selected 
+4:2 
+BYPLMIXVOL 
+000 
+Left bypass volume control to output 
+channel mixer: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+5 
+AUXL2LMIX 
+0 
+Left Auxiliary input to left channel 
+output mixer: 
+0 = not selected 
+1 = selected 
+8:6 
+AUXLMIXVOL 
+000 
+Aux left channel input to left mixer 
+volume control: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 
+R51 
+Right channel 
+output mixer 
+control 
+0 
+DACR2RMIX 
+1 
+Right DAC output to right output 
+mixer 
+0 = not selected 
+1 = selected 
+1 
+BYPR2RMIX 
+0 
+Right bypass path (from the right 
+channel input boost output) to right 
+output mixer 
+0 = not selected 
+1 = selected 
+4:2 
+BYPRMIXVOL 
+000 
+Right bypass volume control to 
+output channel mixer: 
+000 = -15dB 
+001 = -12dB 
+… 
+101 = 0dB 
+110 = +3dB 
+111 = +6dB 

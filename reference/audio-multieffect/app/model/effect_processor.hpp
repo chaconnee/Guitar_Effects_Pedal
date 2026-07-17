@@ -1,0 +1,312 @@
+/*
+ * effect_processor.hpp
+ *
+ *  Created on: 4 sty 2023
+ *      Author: kwarc
+ */
+
+#ifndef MODEL_EFFECT_PROCESSOR_HPP_
+#define MODEL_EFFECT_PROCESSOR_HPP_
+
+#include <functional>
+#include <variant>
+#include <memory>
+#include <array>
+
+#include <middlewares/actor.hpp>
+#include <middlewares/usb/usb_audio.hpp>
+
+#include <hal_audio.hpp>
+
+#include "effect_interface.hpp"
+
+namespace mfx
+{
+
+namespace effect_processor_events
+{
+
+struct initialize
+{
+
+};
+
+struct ipc_data
+{
+    /* Used only in dual-core configuration */
+};
+
+struct shutdown
+{
+
+};
+
+struct configuration
+{
+    uint8_t main_input_vol;
+    uint8_t aux_input_vol;
+    uint8_t output_vol;
+    bool output_muted;
+    bool mic_routed_to_aux;
+    bool usb_audio_if_enabled;
+    bool usb_direct_mon_enabled;
+};
+
+struct start_audio
+{
+
+};
+
+struct process_audio
+{
+
+};
+
+struct get_dsp_load
+{
+
+};
+
+struct add_effect
+{
+    effect_id id;
+};
+
+struct remove_effect
+{
+    effect_id id;
+};
+
+struct move_effect
+{
+    effect_id id;
+    int32_t step;
+};
+
+struct bypass_effect
+{
+    effect_id id;
+    bool bypassed;
+};
+
+struct set_input_volume
+{
+    uint8_t main_input_vol;
+    uint8_t aux_input_vol;
+};
+
+struct set_output_volume
+{
+    uint8_t output_vol;
+};
+
+struct route_mic_to_aux
+{
+    bool value;
+};
+
+struct set_mute
+{
+    bool value;
+};
+
+struct enable_usb_audio_if
+{
+    bool value;
+};
+
+struct enable_usb_direct_mon
+{
+    bool value;
+};
+
+struct set_effect_controls
+{
+    effect_controls ctrl;
+};
+
+struct get_effect_attributes
+{
+    effect_id id;
+};
+
+struct enumerate_effects_attributes
+{
+
+};
+
+struct dsp_load_changed
+{
+    uint8_t load_pct;
+};
+
+struct effect_attributes_changed
+{
+    effect_attr basic;
+    effect_specific_attr specific;
+};
+
+struct effect_attributes_enumerated
+{
+    bool last;
+    effect_attr basic;
+    effect_specific_attr specific;
+};
+
+struct mute_changed
+{
+    bool value;
+};
+
+struct volume_range_info
+{
+    uint8_t main_input_vol_min;
+    uint8_t main_input_vol_max;
+
+    uint8_t aux_input_vol_min;
+    uint8_t aux_input_vol_max;
+
+    uint8_t output_vol_min;
+    uint8_t output_vol_max;
+};
+
+struct input_volume_changed
+{
+    uint8_t main_input_vol;
+    uint8_t aux_input_vol;
+
+    float main_input_vol_db;
+    float aux_input_vol_db;
+};
+
+struct output_volume_changed
+{
+    uint8_t output_vol;
+
+    float output_vol_db;
+};
+
+struct update_mute
+{
+    bool muted;
+};
+
+using incoming = std::variant
+<
+    initialize,
+    ipc_data,
+    shutdown,
+    configuration,
+    start_audio,
+    process_audio,
+    get_dsp_load,
+    add_effect,
+    remove_effect,
+    move_effect,
+    bypass_effect,
+    set_input_volume,
+    set_output_volume,
+    route_mic_to_aux,
+    set_mute,
+    enable_usb_audio_if,
+    enable_usb_direct_mon,
+    set_effect_controls,
+    get_effect_attributes,
+    enumerate_effects_attributes
+>;
+
+using outgoing = std::variant
+<
+    volume_range_info,
+    dsp_load_changed,
+    mute_changed,
+    input_volume_changed,
+    output_volume_changed,
+    effect_attributes_changed,
+    effect_attributes_enumerated
+>;
+
+}
+
+class effect_processor_base : public middlewares::actor<effect_processor_events::incoming,
+                                                        effect_processor_events::outgoing>
+{
+public:
+    effect_processor_base() : actor("effect_processor", configTASK_PRIO_REALTIME, 4096) {}
+private:
+    virtual void dispatch(const event &e) {};
+};
+
+class effect_processor : public effect_processor_base
+{
+public:
+    effect_processor();
+    ~effect_processor();
+
+private:
+    void dispatch(const event &e) override;
+
+    /* Event handlers */
+    void event_handler(const effect_processor_events::initialize &e);
+    void event_handler(const effect_processor_events::ipc_data &e){};
+    void event_handler(const effect_processor_events::shutdown &e);
+    void event_handler(const effect_processor_events::configuration &e);
+    void event_handler(const effect_processor_events::start_audio &e);
+    void event_handler(const effect_processor_events::add_effect &e);
+    void event_handler(const effect_processor_events::remove_effect& e);
+    void event_handler(const effect_processor_events::move_effect& e);
+    void event_handler(const effect_processor_events::bypass_effect &e);
+    void event_handler(const effect_processor_events::set_mute &e);
+    void event_handler(const effect_processor_events::set_input_volume &e);
+    void event_handler(const effect_processor_events::set_output_volume &e);
+    void event_handler(const effect_processor_events::route_mic_to_aux &e);
+    void event_handler(const effect_processor_events::enable_usb_audio_if &e);
+    void event_handler(const effect_processor_events::enable_usb_direct_mon &e);
+    void event_handler(const effect_processor_events::process_audio &e);
+    void event_handler(const effect_processor_events::get_dsp_load &e);
+    void event_handler(const effect_processor_events::set_effect_controls &e);
+    void event_handler(const effect_processor_events::get_effect_attributes &e);
+    void event_handler(const effect_processor_events::enumerate_effects_attributes &e);
+
+    void set_controls(const tuner_attr::controls &ctrl);
+    void set_controls(const tremolo_attr::controls &ctrl);
+    void set_controls(const echo_attr::controls &ctrl);
+    void set_controls(const chorus_attr::controls &ctrl);
+    void set_controls(const reverb_attr::controls &ctrl);
+    void set_controls(const overdrive_attr::controls &ctrl);
+    void set_controls(const cabinet_sim_attr::controls &ctrl);
+    void set_controls(const vocoder_attr::controls &ctrl);
+    void set_controls(const phaser_attr::controls &ctrl);
+    void set_controls(const amp_sim_attr::controls &ctrl);
+
+    void notify_effect_attributes_changed(const effect *eff);
+
+    std::unique_ptr<effect> create_new(effect_id id);
+    bool find_effect(effect_id id, std::vector<std::unique_ptr<effect>>::iterator &it);
+    effect* find_effect(effect_id id);
+
+    void audio_capture_cb(const hal::audio_devices::codec::input_sample_t *input, uint16_t length);
+    void audio_play_cb(uint16_t sample_index);
+
+    uint8_t get_processing_load(void);
+
+    std::vector<std::unique_ptr<effect>> effects;
+
+    hal::audio_devices::codec audio;
+    hal::audio_devices::codec::input_buffer_t<2 * config::dsp_buffer_size> audio_input;
+    hal::audio_devices::codec::output_buffer_t<2 * config::dsp_buffer_size> audio_output;
+
+
+    effect::dsp_input dsp_main_input;
+    effect::dsp_input dsp_aux_input;
+    effect::dsp_output dsp_output;
+
+    uint32_t processing_time_us;
+
+    bool usb_direct_mon;
+    middlewares::usb_audio usb_audio;
+};
+
+}
+
+#endif /* MODEL_EFFECT_PROCESSOR_HPP_ */

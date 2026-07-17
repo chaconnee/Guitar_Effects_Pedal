@@ -22,7 +22,6 @@
 #include "i2c.h"
 #include "i2s.h"
 #include "spi.h"
-#include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
 
@@ -32,7 +31,6 @@
 #include "i2c.h"
 #include "wm8978_port.h"
 #include "mode_ctrl.h"
-#include "encoder.h"
 #include "tft.h"
 /* USER CODE END Includes */
 
@@ -74,9 +72,9 @@ static void processdata(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  SCB->VTOR = FLASH_BASE | 0x4000;
-
-  HAL_RCC_DeInit();
+  // SCB->VTOR = FLASH_BASE | 0x4000;
+  //
+  // HAL_RCC_DeInit();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -103,7 +101,6 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_I2S2_Init();
   MX_I2C1_Init();
-  MX_TIM2_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
@@ -138,9 +135,8 @@ int main(void)
   /* 4. 启动 I2S DMA (MCLK/BCLK/LRCK 开始输出) */
   AudioPipeline_Init();
 
-  /* 4. 初始化模式控制器 + 编码器 */
+  /* 4. 初始化模式控制器 */
   ModeCtrl_Init();
-  Enc_Init();
 
   /* USER CODE END 2 */
 
@@ -152,7 +148,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     AudioPipeline_Tick();
-    ModeCtrl_Poll(Enc_ReadDelta());
+    ModeCtrl_Poll();
     /* USER CODE END 3 */
   }
 }

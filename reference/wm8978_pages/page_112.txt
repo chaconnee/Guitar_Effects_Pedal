@@ -1,0 +1,85 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+112 
+ 
+ 
+10
+-1
+10
+0
+10
+1
+10
+2
+10
+3
+10
+4
+10
+5
+-15
+-10
+-5
+0
+5
+10
+15
+Frequency (Hz)
+Magnitude (dB)
+10
+-1
+10
+0
+10
+1
+10
+2
+10
+3
+10
+4
+10
+5
+-15
+-10
+-5
+0
+5
+10
+15
+Frequency (Hz)
+Magnitude (dB)
+ 
+Figure 63 EQ Band 3 – Peak Filter Centre Frequencies, EQ3B Figure 64  EQ Band 3 – Peak Filter Gains for Lowest Cut-off 
+ 
+Frequency, EQ3BW=0 
+10
+-2
+10
+-1
+10
+0
+10
+1
+10
+2
+10
+3
+10
+4
+-15
+-10
+-5
+0
+5
+10
+15
+Frequency (Hz)
+Magnitude (dB)
+ 
+Figure 65  EQ Band 3 – EQ3BW=0, EQ3BW=1 
+ 

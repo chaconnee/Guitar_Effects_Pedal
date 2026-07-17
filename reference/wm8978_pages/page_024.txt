@@ -1,0 +1,104 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+24 
+ 
+The input PGAs are enabled by the IPPGAENL/R register bits. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R2 
+Power 
+Management 
+2 
+2 
+INPPGAENL 
+0 
+Left channel input PGA enable 
+0 = disabled 
+1 = enabled 
+3 
+INPPGAENR 
+0 
+Right channel input PGA enable 
+0 = disabled 
+1 = enabled 
+Table 4  Input PGA Enable Register Settings 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R44 
+Input 
+Control 
+ 
+0 
+LIP2INPPGA 
+1 
+Connect LIP pin to left channel input PGA 
+amplifier positive terminal. 
+0 = LIP not connected to input PGA 
+1 = input PGA amplifier positive terminal 
+connected to LIP (constant input 
+impedance) 
+1 
+LIN2INPPGA 
+1 
+Connect LIN pin to left channel input PGA 
+negative terminal. 
+0=LIN not connected to input PGA 
+1=LIN connected to input PGA amplifier 
+negative terminal. 
+2 
+L2_2INPPGA 
+0 
+Connect L2 pin to left channel input PGA 
+positive terminal. 
+0=L2 not connected to input PGA 
+1=L2 connected to input PGA amplifier 
+positive terminal (constant input 
+impedance). 
+4 
+RIP2INPPGA 
+1 
+Connect RIP pin to right channel input 
+PGA amplifier positive terminal. 
+0 = RIP not connected to input PGA 
+1 = right channel input PGA amplifier 
+positive terminal connected to RIP 
+(constant input impedance) 
+5 
+RIN2INPPGA 
+1 
+Connect RIN pin to right channel input 
+PGA negative terminal. 
+0=RIN not connected to input PGA 
+1=RIN connected to right channel input 
+PGA amplifier negative terminal. 
+6 
+R2_2INPPGA 
+0 
+Connect R2 pin to right channel input PGA 
+positive terminal. 
+0=R2 not connected to input PGA 
+1=R2 connected to input PGA amplifier 
+positive terminal (constant input 
+impedance). 
+Table 5 Input PGA Control 
+INPUT PGA VOLUME CONTROLS 
+The input microphone PGAs have a gain range from -12dB to +35.25dB in 0.75dB steps.  The gain 
+from the LIN/RIN input to the PGA output and from the L2/R2 amplifier to the PGA output are always 
+common and controlled by the register bits INPPGAVOLL/R[5:0].  These register bits also affect the 
+LIP pin when LIP2INPPGA=1, the L2 pin when L2_2INPPGA=1, the RIP pin when RIP2INPPGA=1 
+and the L2 pin when L2_2INPPGA=1. 
+When the Automatic Level Control (ALC) is enabled the input PGA gains are controlled automatically 
+and the INPPGAVOLL/R bits should not be used.   

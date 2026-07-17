@@ -1,0 +1,81 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+78 
+ 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R5 
+Companding 
+Control 
+ 
+0 
+LOOPBACK 
+0 
+Digital loopback function 
+0=No loopback 
+1=Loopback enabled, ADC data output 
+is fed directly into DAC data input. 
+2:1 
+ADC_COMP 
+0 
+ADC companding 
+00=off (linear mode) 
+01=reserved 
+10=µ-law 
+11=A-law 
+4:3 
+DAC_COMP 
+0 
+DAC companding 
+00=off (linear mode) 
+01=reserved 
+10=µ-law 
+11=A-law 
+5 
+WL8 
+0 
+0=off 
+1=device operates in 8-bit mode 
+Table 59  Companding Control 
+Companding involves using a piecewise linear approximation of the following equations (as set out 
+by ITU-T G.711 standard) for data compression: 
+-law (where =255 for the U.S. and Japan): 
+F(x) = ln( 1 + |x|) / ln( 1 + )           -1 ≤ x ≤ 
+4 
+A-law (where A=87.6 for Europe): 
+F(x) = A|x| / ( 1 + lnA)    
+ 
+  for x  ≤ 1/A 
+F(x) = ( 1 + lnA|x|) / (1 + lnA)      
+  for 1/A ≤ x ≤ 1 
+ 
+The companded data is also inverted as recommended by the G.711 standard (all 8 bits are inverted 
+for -law, all even data bits are inverted for A-law).  The data will be transmitted as the first 8 MSB’s 
+of data.   
+Companding converts 13 bits (-law) or 12 bits (A-law) to 8 bits using non-linear quantization.  The 
+input data range is separated into 8 levels, allowing low amplitude signals better precision than that 
+of high amplitude signals.  This is to exploit the operation of the human auditory system, where louder 
+sounds do not require as much resolution as quieter sounds.   The companded signal is an 8-bit word 
+containing sign (1-bit), exponent (3-bits) and mantissa (4-bits). 
+Setting the WL8 register bit allows the device to operate with 8-bit data. In this mode it is possible to 
+use 8 BCLK’s per LRC frame. When using DSP mode B, this allows 8-bit data words to be output 
+consecutively every 8 BCLK’s and can be used with 8-bit data words using the A-law and u-law 
+companding functions. 
+  
+BIT7 
+BIT[6:4] 
+BIT[3:0] 
+SIGN 
+EXPONENT 
+MANTISSA 
+Table 60  8-bit Companded Word Composition 
+ 

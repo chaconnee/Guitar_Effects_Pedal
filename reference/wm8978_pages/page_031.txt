@@ -1,0 +1,69 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+31 
+ 
+Figure 16  ADC Digital Filter Path 
+The ADCs are enabled by the ADCENL/R register bit. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R2 
+Power 
+management 2 
+0 
+ADCENL 
+0 
+Enable ADC left channel: 
+0 = ADC disabled 
+1 = ADC enabled 
+1 
+ADCENR 
+0 
+Enable ADC right channel: 
+0 = ADC disabled 
+1 = ADC enabled 
+Table 12  ADC Enable Control 
+The polarity of the output signal can also be changed under software control using the 
+ADCLPOL/ADCRPOL register bit.   The oversampling rate of the ADC can be adjusted using the 
+ADCOSR register bit.  With ADCOSR=0 the oversample rate is 64x which gives lowest power 
+operation and when ADCOSR=1 the oversample rate is 128x which gives best performance. 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+R14 
+ADC Control 
+0 
+ADCLPOL 
+0 
+ADC left channel polarity adjust: 
+0=normal  
+1=inverted 
+1 
+ADCRPOL 
+0 
+ADC right channel polarity adjust: 
+0=normal  
+1=inverted 
+3 
+ADCOSR 
+0 
+ADC oversample rate select: 
+0=64x (lower power) 
+1=128x (best performance) 
+Table 13  ADC Control 
+SELECTABLE HIGH PASS FILTER 
+A selectable high pass filter is provided.  To disable this filter set HPFEN=0.  The filter has two 
+modes controlled by HPFAPP. In Audio Mode (HPFAPP=0) the filter is first order, with a cut-off 
+frequency of 3.7Hz. In Application Mode (HPFAPP=1) the filter is second order, with a cut-off 
+frequency selectable via the HPFCUT register. The cut-off frequencies when HPFAPP=1 are shown 
+in Table 15. 

@@ -1,0 +1,199 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+7 
+ 
+ELECTRICAL CHARACTERISTICS 
+Test Conditions 
+DCVDD=1.8V, AVDD=DBVDD=SPKVDD= 3.3V, TA  = +25
+oC, 1kHz signal, fs = 48kHz, 24-bit audio data unless otherwise stated. 
+PARAMETER 
+SYMBOL 
+TEST CONDITIONS 
+MIN 
+TYP 
+MAX 
+UNIT 
+Microphone Preamp Inputs (LIP, LIN, RIP, RIN, L2, R2) 
+Full-scale Input Signal Level – 
+note this changes in proportion 
+to AVDD (Note 1) 
+VINFS 
+PGABOOST = 0dB 
+INPPGAVOL = 0dB 
+ 
+1.0 
+0 
+ 
+Vrms 
+dBV 
+Mic PGA equivalent input noise 
+At 35.25dB 
+gain 
+0 to 20kHz 
+ 
+150 
+ 
+uV 
+Input resistance  
+RMICIN 
+Gain set to 35.25dB 
+ 
+1.6 
+ 
+k 
+RMICIN 
+Gain set to 0dB 
+ 
+47 
+ 
+k 
+RMICIN 
+Gain set to -12dB 
+ 
+75 
+ 
+k 
+RMICIP 
+L/RIP2INPPGA = 1 
+ 
+94 
+ 
+k 
+CMICIN 
+ 
+ 
+10 
+ 
+pF 
+MIC Programmable Gain Amplifier (PGA) 
+Maximum Programmable Gain 
+ 
+ 
+ 
+35.25 
+ 
+dB 
+Minimum Programmable Gain 
+ 
+ 
+ 
+-12 
+ 
+dB 
+Programmable Gain Step Size 
+ 
+Guaranteed monotonic
+ 
+0.75 
+ 
+dB 
+Mute Attenuation 
+ 
+ 
+ 
+120 
+ 
+dB 
+Selectable Input Gain Boost (0/+20dB) 
+Gain Boost on PGA input 
+ 
+Boost disabled 
+ 
+0 
+ 
+dB 
+Boost enabled 
+ 
+20 
+ 
+dB 
+Maximum Gain from AUXL/R or 
+L/R2 input to boost/mixer 
+ 
+ 
+ 
++6 
+ 
+dB 
+Minimum Gain from AUXL/R or 
+L/R2 input to boost/mixer 
+ 
+ 
+ 
+-12 
+ 
+dB 
+Gain step size to boost/mixer 
+ 
+Guaranteed monotonic
+ 
+3 
+ 
+dB 
+Auxiliary Analogue Inputs (AUXL, AUXR) 
+Full-scale Input Signal Level 
+(0dB) – note this changes in 
+proportion to AVDD 
+VINFS 
+ 
+ 
+AVDD/3.3 
+0 
+ 
+Vrms 
+dBV 
+Input Resistance 
+(Note 2)  
+RAUXINLMIN 
+Left Input boost and mixer 
+enabled, at max gain 
+ 
+4.3 
+ 
+k 
+RAUXINLTYP 
+Left Input boost and mixer 
+enabled, at 0dB gain 
+ 
+8.6 
+ 
+k 
+RAUXINLMAX 
+Left Input boost and mixer 
+enabled, at min gain 
+ 
+39.1 
+ 
+k 
+RAUXINRMIN 
+Right Input boost, mixer and 
+beep enabled, at max gain 
+ 
+3 
+ 
+k 
+RAUXINRTYP 
+Right Input boost, mixer and 
+beep enabled, at 0dB gain 
+ 
+6 
+ 
+k 
+RAUXINRMAX 
+Right Input boost, mixer  and 
+beep enabled, at min gain 
+ 
+29 
+ 
+k 
+Input Capacitance 
+CMICIN 
+ 
+ 
+10 
+ 
+pF 

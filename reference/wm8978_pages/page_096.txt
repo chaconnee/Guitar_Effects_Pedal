@@ -1,0 +1,157 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+96 
+ 
+REGISTER 
+ADDRESS 
+BIT 
+LABEL 
+DEFAULT 
+DESCRIPTION 
+REFER TO 
+13 (0Dh) 
+8 
+ 
+0 
+Reserved 
+ 
+7:4 
+JD_EN1 
+0000 
+Output enabled when selected jack detection 
+input is logic 1 
+[4]= OUT1_EN_1 
+[5]= OUT2_EN_1 
+[6]= OUT3_EN_1 
+[7]= OUT4_EN_1 
+Output 
+Switching 
+(Jack Detect) 
+3:0 
+JD_EN0 
+0000 
+Output enabled when selected jack detection 
+input is logic 0. 
+[0]= OUT1_EN_0 
+[1]= OUT2_EN_0 
+[2]= OUT3_EN_0 
+[3]= OUT4_EN_0 
+Output 
+Switching 
+(Jack Detect) 
+14 (0Eh) 
+8 
+HPFEN 
+1 
+High Pass Filter Enable 
+0=disabled  
+1=enabled 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7 
+HPFAPP 
+0 
+Select audio mode or application mode 
+0=Audio mode (1
+st order, fc = ~3.7Hz) 
+1=Application mode (2
+nd order, fc = HPFCUT) 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+6:4 
+HPFCUT 
+000 
+Application mode cut-off frequency 
+See Table 15 for details. 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+3 
+ADCOSR 
+128 
+0 
+ADC oversample rate select 
+0 = 64x (lowest power) 
+1 = 128x (best SNR) 
+Power 
+Management 
+2 
+ 
+0 
+Reserved 
+ 
+1 
+ADCRPOL 
+0 
+ADC right channel polarity adjust: 
+0=normal  
+1=inverted 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+0 
+ADCLPOL 
+0 
+ADC left channel polarity adjust: 
+0=normal  
+1=inverted 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+15 (0Fh) 
+8 
+ADCVU 
+N/A 
+ADC left and ADC right volume do not update 
+until a 1 is written to ADCVU (in reg 16 or 17) 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7:0 
+ADCVOLL 
+11111111 
+Left ADC Digital Volume Control 
+0000 0000 = Digital Mute 
+0000 0001 = -127dB 
+0000 0010 = -126.5dB 
+... 0.5dB steps up to 
+1111 1111 = 0dB 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+16 (10h) 
+8 
+ADCVU 
+N/A 
+ADC left and ADC right volume do not update 
+until a 1 is written to ADCVU (in reg 16 or 17) 
+Analogue to 
+Digital 
+Converter 
+(ADC) 
+7:0 
+ADCVOLR 
+11111111 
+Right ADC Digital Volume Control 
+0000 0000 = Digital Mute 
+0000 0001 = -127dB 
+0000 0010 = -126.5dB 
+... 0.5dB steps up to 
+1111 1111 = 0dB 
+Analogue to 
+Digital 
+Converter 
+(ADC) 

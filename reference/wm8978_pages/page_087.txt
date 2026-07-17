@@ -1,0 +1,69 @@
+Production Data 
+WM8978 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+87 
+ 
+SYMBOL 
+MIN 
+TYPICAL 
+MAX 
+UNIT 
+tline_midrail_on 
+ 
+500 
+ 
+ms 
+tline_midrail_off 
+ 
+1 
+ 
+s 
+thp_midrail_on 
+ 
+500 
+ 
+ms 
+thp__midrail_off 
+ 
+6 
+ 
+s 
+tdacint 
+ 
+2/fs 
+ 
+n/fs 
+DAC Group Delay 
+ 
+29/fs 
+ 
+n/fs 
+Table 65  Typical POR Operation (typical simulated values) 
+Notes: 
+1. 
+The lineout charge time, tline_midrail_on, is mainly determined by the VMID pin charge time. This time 
+is dependent upon the value of VMID decoupling capacitor and VMID pin input resistance and 
+AVDD power supply rise time. The values above were measured using a 4.7μF capacitor. 
+2. 
+It is not advisable to allow DACDAT data input during initialisation of the DAC. If the DAC data 
+value is not zero at point of initialisation, then this is likely to cause a pop noise on the analogue 
+outputs. The same is also true if the DACDAT is removed at a non-zero value, and no mute 
+function has been applied to the signal beforehand. 
+3. 
+The lineout discharge time, tline_midrail_off, is dependent upon the value of the lineout coupling 
+capacitor and the leakage resistance path to ground. The values above were measured using a 
+10μF output capacitor. 
+4. 
+The headphone charge time, thp_midrail_on, is dependent upon the value of VMID decoupling 
+capacitor and VMID pin input resistance and AVDD power supply rise time. The values above 
+were measured using a 4.7μF VMID decoupling capacitor. 
+5. 
+The headphone discharge time, thp_midrail_off, is dependent upon the value of the headphone 
+coupling capacitor and the leakage resistance path to ground. The values above were measured 
+using a 100μF capacitor. 
+6. 
+The VMIDSEL and BIASEN bits must be set to enable analogue output midrail voltage and for 
+normal DAC operation.    

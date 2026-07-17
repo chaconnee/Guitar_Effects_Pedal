@@ -1,0 +1,34 @@
+WM8978  
+Production Data 
+w 
+PD, Rev 4.5, October 2011 
+ 
+ 
+10 
+ 
+TERMINOLOGY 
+1. 
+Input level to RIP and LIP is limited to a maximum of -3dB or THD+N performance will be reduced. 
+2. 
+Note when BEEP path is not enabled then AUXL and AUXR have the same input impedances. 
+3. 
+Hold Time is the length of time between a signal detected being too quiet and beginning to ramp up the gain. It does 
+not apply to ramping down the gain when the signal is too loud, which happens without a delay. 
+4. 
+Ramp-up and Ramp-Down times are defined as the time it takes for the PGA to sweep across 90% of its gain range.  
+5. 
+All hold, ramp-up and ramp-down times scale proportionally with MCLK 
+6. 
+Signal-to-noise ratio (dB) – SNR is a measure of the difference in level between the full scale output and the output 
+with no signal applied. (No Auto-zero or Automute function is employed in achieving these results). 
+7. 
+THD+N (dB) – THD+N is a ratio, of the rms values, of (Noise + Distortion)/Signal. 
+8. 
+Channel Separation (dB) – Also known as Cross-Talk.  This is a measure of the amount one channel is isolated from 
+the other. Measured by applying a full scale signal to one channel input and measuring the level of signal apparent at 
+the other channel output.  
+9. 
+The maximum output voltage can be limited by the speaker power supply.  If OUT3BOOST, OUT4BOOST or 
+SPKBOOST is set then SPKVDD should be 1.5xAVDD to prevent clipping taking place in the output stage (when PGA 
+gains are set to 0dB). 
+ 

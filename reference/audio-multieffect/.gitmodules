@@ -1,0 +1,15 @@
+[submodule "libs/lvgl"]
+	path = libs/lvgl
+	url = https://github.com/lvgl/lvgl.git
+[submodule "libs/littlefs"]
+	path = libs/littlefs
+	url = https://github.com/littlefs-project/littlefs.git
+[submodule "libs/nlohmann_json"]
+	path = libs/nlohmann_json
+	url = https://github.com/nlohmann/json.git
+[submodule "libs/tinyusb"]
+	path = libs/tinyusb
+	url = https://github.com/hathach/tinyusb.git
+[submodule "libs/FreeRTOS"]
+	path = libs/FreeRTOS
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
