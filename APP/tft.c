@@ -2,10 +2,10 @@
 #include "spi.h"
 #include "main.h"
 
-#define TFT_CS_LOW   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET)
-#define TFT_CS_HIGH  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET)
-#define TFT_DC_CMD   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET)
-#define TFT_DC_DATA  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET)
+#define TFT_CS_LOW   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET)
+#define TFT_CS_HIGH  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET)
+#define TFT_DC_CMD   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET)
+#define TFT_DC_DATA  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET)
 #define TFT_RST_LOW  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET)
 #define TFT_RST_HIGH HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET)
 
@@ -197,7 +197,7 @@ static const uint8_t p_C2[]  = { 0x0D,0x00 };
 static const uint8_t p_C3[]  = { 0x8D,0x2A };
 static const uint8_t p_C4[]  = { 0x8D,0xEE };
 static const uint8_t p_C5[]  = { 0x06 };
-static const uint8_t p_36[]  = { 0xE0 };
+static const uint8_t p_36[]  = { 0x20 };
 static const uint8_t p_3A[]  = { 0x55 };
 static const uint8_t p_E0[]  = { 0x0b,0x17,0x0a,0x0d,0x1a,0x19,0x16,0x1d,0x21,0x26,0x37,0x3c,0x00,0x09,0x05,0x01 };
 static const uint8_t p_E1[]  = { 0x0c,0x19,0x09,0x0d,0x1b,0x19,0x15,0x1d,0x21,0x26,0x39,0x3E,0x00,0x09,0x05,0x10 };
