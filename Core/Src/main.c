@@ -135,7 +135,7 @@ int main(void)
   }
 
   /* 3. TFT 屏幕测试 (红绿蓝循环) */
-  TFT_Test();
+  TFT_Init();
 
   /* 4. 初始化模式控制器 */
   ModeCtrl_Init();

@@ -149,11 +149,14 @@ static const uint8_t font5x7[96][5] = {
     {0x44,0x64,0x54,0x4C,0x44}, /* z */
 };
 
+static uint16_t tft_bg = 0xFFFF;   /* 字符背景色(不透明) */
+
 void TFT_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color)
 {
     if (c < 32 || c > 127) c = 32;
     const uint8_t *glyph = font5x7[c - 32];
-    uint8_t bg[2] = { 0xFF, 0xFF };   /* 0xFFFF=opaque=black on 常白面板 */
+    uint8_t fg[2] = { color >> 8, color & 0xFF };
+    uint8_t bg[2] = { tft_bg >> 8, tft_bg & 0xFF };
 
     TFT_SetWindow(x, y, FONT_W, FONT_H);
     SPI_WriteCmd(0x2C);
@@ -165,7 +168,7 @@ void TFT_DrawChar(uint16_t x, uint16_t y, char c, uint16_t color)
         for (int col = 0; col < FONT_W; col++)
         {
             if (col < 5 && row < 8 && (glyph[col] & (1 << (7 - row))))
-                HAL_SPI_Transmit(&hspi1, (uint8_t *)&color, 2, 100);
+                HAL_SPI_Transmit(&hspi1, fg, 2, 100);
             else
                 HAL_SPI_Transmit(&hspi1, bg, 2, 100);
         }
@@ -182,6 +185,27 @@ void TFT_DrawStr(uint16_t x, uint16_t y, const char *s, uint16_t color)
         x += FONT_W;
         s++;
     }
+}
+
+void TFT_DrawStrEx(uint16_t x, uint16_t y, const char *s, uint16_t fg, uint16_t bg)
+{
+    tft_bg = bg;
+    TFT_DrawStr(x, y, s, fg);
+    tft_bg = 0xFFFF;
+}
+
+void TFT_FillRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color)
+{
+    if (!w || !h) return;
+    TFT_SetWindow(x, y, w, h);
+
+    SPI_WriteCmd(0x2C);
+    TFT_CS_LOW; TFT_DC_DATA;
+    uint8_t c[2] = { color >> 8, color & 0xFF };
+    uint32_t count = (uint32_t)w * h;
+    for (uint32_t i = 0; i < count; i++)
+        HAL_SPI_Transmit(&hspi1, c, 2, 100);
+    TFT_CS_HIGH;
 }
 
 /* ── Init sequence ── */

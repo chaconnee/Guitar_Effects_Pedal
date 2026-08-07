@@ -14,8 +14,8 @@
 #define DRIVE_MAX 25.0f
 
 /* ── 用户参数 ── */
-static float drive  = 0.8f;
-static float volume = 0.25f;
+static float drive  = 0.9f;
+static float volume = 0.15f;
 
 /* ── 压缩器状态 ── */
 static float comp_env = 0.0f;

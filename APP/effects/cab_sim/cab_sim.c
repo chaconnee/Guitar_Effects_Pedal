@@ -4,8 +4,18 @@
 #include "main.h"
 
 #include "effects/cab_sim/ir_zila_212.h"
-#include "effects/cab_sim/ir_ac30.h"
-#include "effects/cab_sim/ir_OwnHammer_412.h"
+#include "effects/cab_sim/ir_AC30 brilliant+bass AT4033a stalevel_dc.h"
+#include "effects/cab_sim/YA VX30 212 BLU Mix 01.h"
+#include "effects/cab_sim/YA VX15 112 BLU Mix 01.h"
+#include "effects/cab_sim/YA MTCH 212 ESD H Mix 05.h"
+#include "effects/cab_sim/YA PRNC 110 OX Mix 09.h"
+#include "effects/cab_sim/YA VLUX 210 P10R Mix 11.h"
+#include "effects/cab_sim/ir_slot5.h"
+#include "effects/cab_sim/ir_slot6.h"
+#include "effects/cab_sim/ir_slot7.h"
+#include "effects/cab_sim/ir_slot8.h"
+#include "effects/cab_sim/ir_slot9.h"
+#include "effects/cab_sim/ir_slot10.h"
 
 #define BLOCK_SIZE  128
 #define IR_SIZE     897
@@ -25,8 +35,8 @@ volatile uint32_t g_cab_us_last = 0;
 
 uint8_t cab_current_ir = 2;
 
-static const float *ir_tables[IR_COUNT] = { ir_zila_212, ir_ac30, ir_OwnHammer_412 };
-static const uint32_t ir_lengths[IR_COUNT] = { IR_ZILA_212_LENGTH, IR_AC30_LENGTH, IR_OWNHAMMER_412_LENGTH };
+static const float *ir_tables[IR_COUNT] = { ir_zila_212, ir_AC30_brilliant_bass_AT4033a_stalevel_dc, YA_VX30_212_BLU_Mix_01, YA_VX15_112_BLU_Mix_01, YA_MTCH_212_ESD_H_Mix_05, YA_PRNC_110_OX_Mix_09, YA_VLUX_210_P10R_Mix_11, ir_slot5, ir_slot6, ir_slot7, ir_slot8, ir_slot9, ir_slot10 };
+static const uint32_t ir_lengths[IR_COUNT] = { IR_ZILA_212_LENGTH, IR_AC30_BRILLIANT_BASS_AT4033A_STALEVEL_DC_LENGTH, YA_VX30_212_BLU_MIX_01_LENGTH, YA_VX15_112_BLU_MIX_01_LENGTH, YA_MTCH_212_ESD_H_MIX_05_LENGTH, YA_PRNC_110_OX_MIX_09_LENGTH,YA_VLUX_210_P10R_MIX_11_LENGTH, IR_SLOT5_LENGTH, IR_SLOT6_LENGTH, IR_SLOT7_LENGTH, IR_SLOT8_LENGTH, IR_SLOT9_LENGTH, IR_SLOT10_LENGTH };
 
 void CabSim_SelectIR(uint8_t idx)
 {

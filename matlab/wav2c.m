@@ -17,11 +17,11 @@ end
 %% ========== 参数区 (按需修改) ==========
 
 % 输入 WAV 文件路径
-IR_FILE    = 'IR/AC30 brilliant+bass AT4033a stalevel_dc.wav';
+IR_FILE    = 'IR/YA VLUX 210 P10R Mix 11.wav';
 
 % 输出头文件路径
 OUTPUT_DIR = '../APP/effects/cab_sim';
-OUTPUT_NAME = 'ir_AC30 brilliant+bass AT4033a stalevel_dc';   % 变量名和文件名
+OUTPUT_NAME = 'YA VLUX 210 P10R Mix 11';   % 变量名和文件名
 
 % 目标参数
 FS         = 44100;    % 目标采样率 (Hz)

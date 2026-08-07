@@ -4,7 +4,7 @@
 #include "model/effect.h"
 #include <stdint.h>
 
-#define IR_COUNT 3
+#define IR_COUNT 13
 
 extern Effect cab_sim_effect;
 extern uint8_t cab_current_ir;
