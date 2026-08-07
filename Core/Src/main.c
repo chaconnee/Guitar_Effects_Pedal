@@ -106,34 +106,36 @@ int main(void)
 
   /* ---- WM8978 + I2S 测试 ---- */
 
+  /* 0. 先启动 I2S DMA → MCLK/BCLK/LRCK 开始输出，WM8978 才能可靠响应 I2C */
+  AudioPipeline_Init();
+
+
   /* 1. I2C 通信测试: 读 WM8978 寄存器确认 ACK 正常 */
-  int32_t ret = WM8978_PORT_Test();
-  if (ret != 0)
-  {
-    /* I2C 失败: LED 快闪 */
-    while (1)
-    {
-      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-      HAL_Delay(100);
-    }
-  }
+  // int32_t ret = WM8978_PORT_Test();
+  // if (ret != 0)
+  // {
+  //   /* I2C 失败: LED 快闪 */
+  //   while (1)
+  //   {
+  //     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+  //     HAL_Delay(100);
+  //   }
+  // }
 
   /* 2. WM8978 上电配置 (模拟块+混音+I2S iface, R2 不含 ADCEN) */
   if (WM8978_PORT_Init() != WM8978_OK)
   {
-    /* Codec init 失败: LED 2Hz 闪烁 */
+    /* Codec init 失败: LED 闪烁 + 反复发送复位帧, 供示波器抓波形 */
     while (1)
     {
       HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-      HAL_Delay(250);
+      WM8978_PORT_Reset();      /* 帧间隔约 200ms, 波形清晰分隔 */
+      HAL_Delay(200);
     }
   }
 
   /* 3. TFT 屏幕测试 (红绿蓝循环) */
   TFT_Test();
-
-  /* 4. 启动 I2S DMA (MCLK/BCLK/LRCK 开始输出) */
-  AudioPipeline_Init();
 
   /* 4. 初始化模式控制器 */
   ModeCtrl_Init();

@@ -121,4 +121,13 @@ void WM8978_PORT_EnableADC(void)
     WM8978_BIT_LOUT1EN | WM8978_BIT_ROUT1EN);
 }
 
+/* 发送一次 R0=0 软件复位写帧 (0x34 + 0x00 0x00),
+ * 供初始化失败时反复调用以在示波器上抓取 I2C 波形 */
+void WM8978_PORT_Reset(void)
+{
+  uint8_t buf[2] = {0x00, 0x00};
+  HAL_I2C_Master_Transmit(&hi2c1,
+    (uint16_t)(WM8978_I2C_ADDR_DEFAULT << 1), buf, 2, 100);
+}
+
 

@@ -52,7 +52,7 @@ void Settings_Load(Settings_t *s)
     {
         s->magic        = SETTINGS_MAGIC;
         s->amp_drive    = 0.8f;
-        s->rv_decay     = 0.7f;
+        s->rv_decay     = 0.4f;
         s->rv_mix       = 0.3f;
         s->rv_tone      = 0.5f;
         s->ir_index     = 0;

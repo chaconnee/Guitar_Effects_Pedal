@@ -18,6 +18,9 @@ int32_t WM8978_PORT_Test(void);
 /* Enable ADC after I2S clocks are running (datasheet Fig.46: tadcint=2/fs) */
 void WM8978_PORT_EnableADC(void);
 
+/* Send one R0=0 software-reset frame; for repeated capture on scope */
+void WM8978_PORT_Reset(void);
+
 WM8978_Object_t* WM8978_PORT_GetObj(void);
 
 #endif /* WM8978_PORT_H */

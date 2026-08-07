@@ -9,7 +9,7 @@ volatile float g_master_volume = 1.0f;
 
 /* ── saved parameters ── */
 static float  amp_drive_val = 0.0f;
-static float  rv_decay_val  = 0.95f;
+static float  rv_decay_val  = 0.55f;
 static float  rv_mix_val    = 0.5f;
 static float  rv_tone_val   = 0.5f;
 static uint8_t cab_ir_idx   = 0;

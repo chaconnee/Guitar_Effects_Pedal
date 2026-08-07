@@ -40,9 +40,9 @@ static int ap0_ptr, ap1_ptr, ap2_ptr;
 static float cb0_prev, cb1_prev, cb2_prev, cb3_prev;
 
 /* ── 用户参数 ── */
-static float decay = 0.95f;
-static float mix   = 0.55f;
-static float tone  = 0.15f;
+static float decay = 0.45f;
+static float mix   = 0.35f;
+static float tone  = 0.5f;
 
 /* ── 参数映射 ── */
 
