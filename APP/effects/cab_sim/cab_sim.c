@@ -17,7 +17,13 @@ static float ir_fft   [FFT_SIZE_X2];
 static float in_fft   [FFT_SIZE_X2];
 static float slide_buf[FFT_SIZE];
 
-uint8_t cab_current_ir = 0;
+volatile uint32_t g_cab_us_max  = 0;
+volatile uint32_t g_cab_us_min  = 0xFFFFFFFF;
+volatile uint64_t g_cab_us_sum  = 0;
+volatile uint32_t g_cab_cnt     = 0;
+volatile uint32_t g_cab_us_last = 0;
+
+uint8_t cab_current_ir = 2;
 
 static const float *ir_tables[IR_COUNT] = { ir_zila_212, ir_ac30, ir_OwnHammer_412 };
 static const uint32_t ir_lengths[IR_COUNT] = { IR_ZILA_212_LENGTH, IR_AC30_LENGTH, IR_OWNHAMMER_412_LENGTH };
@@ -51,6 +57,17 @@ static void cab_init(Effect *self)
 static void cab_process(Effect *self, float *in, float *out, uint16_t len)
 {
     (void)self; (void)len;
+
+    static uint8_t dwt_ready = 0;
+    if (!dwt_ready)
+    {
+        CoreDebug->DEMCR |= (1 << 24);
+        DWT->CYCCNT = 0;
+        DWT->CTRL  |= (1 << 0);
+        dwt_ready = 1;
+    }
+    uint32_t t0 = DWT->CYCCNT;
+
     memmove(slide_buf, slide_buf + BLOCK_SIZE, (FFT_SIZE - BLOCK_SIZE) * sizeof(float));
     memcpy(slide_buf + (FFT_SIZE - BLOCK_SIZE), in, BLOCK_SIZE * sizeof(float));
     memcpy(in_fft, slide_buf, FFT_SIZE * sizeof(float));
@@ -60,6 +77,13 @@ static void cab_process(Effect *self, float *in, float *out, uint16_t len)
     const float *ifft_out = in_fft + FFT_SIZE;
     for (uint16_t i = 0; i < BLOCK_SIZE; i++)
         out[i] = ifft_out[FFT_SIZE - BLOCK_SIZE + i];
+
+    uint32_t us = (DWT->CYCCNT - t0) / 96;
+    g_cab_us_last = us;
+    if (us > g_cab_us_max) g_cab_us_max = us;
+    if (us < g_cab_us_min) g_cab_us_min = us;
+    g_cab_us_sum += us;
+    g_cab_cnt++;
 }
 
 static void cab_set_param(Effect *self, uint8_t param_id, float value)
